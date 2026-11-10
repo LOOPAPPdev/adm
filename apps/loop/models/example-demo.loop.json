@@ -1,0 +1,286 @@
+{
+  "schema": "loop.project",
+  "schemaVersion": 1,
+  "exportedAt": "2026-01-01T00:00:00.000Z",
+  "notice": "Demonstração local. Dados de exemplo e hipóteses não são dados confirmados do cliente. Simulação visual — não execução real.",
+  "project": {
+    "id": "demo",
+    "name": "Operação Exemplo · dados de exemplo",
+    "version": 1,
+    "status": "draft",
+    "archived": false,
+    "isDemo": true,
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "discovery": {
+      "B01": [
+        {
+          "id": "B01_q1",
+          "text": "Qual é o objetivo principal do projeto?",
+          "answer": "Mostrar a operação atual e comparar intervenções possíveis (exemplo fictício).",
+          "status": "hypothesis",
+          "custom": false
+        },
+        {
+          "id": "B01_q2",
+          "text": "O que está dentro e fora da fronteira analisada?",
+          "answer": "",
+          "status": "unknown",
+          "custom": false
+        }
+      ],
+      "B02": [
+        {
+          "id": "B02_q1",
+          "text": "Quem decide sobre mudanças na operação?",
+          "answer": "",
+          "status": "unknown",
+          "custom": false
+        }
+      ],
+      "B03": [
+        {
+          "id": "B03_q1",
+          "text": "Quais ferramentas e canais a operação usa hoje?",
+          "answer": "Planilha, e-mail e aplicativo de mensagens (exemplo fictício).",
+          "status": "hypothesis",
+          "custom": false
+        }
+      ],
+      "B04": [
+        {
+          "id": "B04_q1",
+          "text": "Qual evento inicia o processo?",
+          "answer": "Solicitação recebida",
+          "status": "hypothesis",
+          "custom": false
+        },
+        {
+          "id": "B04_q2",
+          "text": "Qual é o volume por período (com unidade)?",
+          "answer": "",
+          "status": "unknown",
+          "custom": false
+        }
+      ],
+      "B05": [
+        {
+          "id": "B05_q1",
+          "text": "Onde ocorrem as transferências entre responsáveis?",
+          "answer": "",
+          "status": "unknown",
+          "custom": false
+        }
+      ],
+      "B06": [
+        {
+          "id": "B06_q1",
+          "text": "Quais decisões e exceções interrompem o fluxo?",
+          "answer": "",
+          "status": "unknown",
+          "custom": false
+        }
+      ],
+      "B07": [
+        {
+          "id": "B07_q1",
+          "text": "Quais indicadores são medidos hoje (tempo, custo, qualidade)?",
+          "answer": "",
+          "status": "unknown",
+          "custom": false
+        }
+      ],
+      "B08": [
+        {
+          "id": "B08_q1",
+          "text": "Quais riscos e restrições limitam mudanças?",
+          "answer": "",
+          "status": "unknown",
+          "custom": false
+        }
+      ],
+      "B09": [
+        {
+          "id": "B09_q1",
+          "text": "Quais hipóteses devem ser validadas e quem aprova?",
+          "answer": "",
+          "status": "unknown",
+          "custom": false
+        }
+      ]
+    },
+    "facts": {
+      "spreadsheet": "yes",
+      "multiChannel": "yes",
+      "crm": "unknown",
+      "classifiableIntake": "yes",
+      "trackingSources": "unknown",
+      "humanRouting": "yes",
+      "repetitiveDocs": "yes"
+    },
+    "people": [
+      {
+        "id": "pe1",
+        "name": "Direção",
+        "role": "Decisão e prioridades",
+        "kind": "pessoa",
+        "reportsTo": "top"
+      },
+      {
+        "id": "pe2",
+        "name": "Coordenação de operações",
+        "role": "Distribui e acompanha pedidos",
+        "kind": "pessoa",
+        "reportsTo": "pe1"
+      },
+      {
+        "id": "pe3",
+        "name": "Atendimento",
+        "role": "Recebe e classifica solicitações",
+        "kind": "equipe",
+        "reportsTo": "pe1"
+      },
+      {
+        "id": "pe4",
+        "name": "Equipe de execução",
+        "role": "Executa o serviço",
+        "kind": "equipe",
+        "reportsTo": "pe2"
+      },
+      {
+        "id": "pe5",
+        "name": "Financeiro",
+        "role": "Emite documentos",
+        "kind": "area",
+        "reportsTo": "unknown"
+      }
+    ],
+    "activities": [
+      {
+        "id": "ac1",
+        "label": "Receber solicitação",
+        "type": "task",
+        "ownerId": "pe3"
+      },
+      {
+        "id": "ac2",
+        "label": "Classificar pedido",
+        "type": "task",
+        "ownerId": "pe3"
+      },
+      {
+        "id": "ac3",
+        "label": "Encaminhar ao responsável",
+        "type": "task",
+        "ownerId": "pe2"
+      },
+      {
+        "id": "ac4",
+        "label": "Pedido completo?",
+        "type": "gateway",
+        "ownerId": "pe2"
+      },
+      {
+        "id": "ac5",
+        "label": "Executar serviço",
+        "type": "task",
+        "ownerId": "pe4"
+      },
+      {
+        "id": "ac6",
+        "label": "Emitir documento de conclusão",
+        "type": "task",
+        "ownerId": "pe5"
+      }
+    ],
+    "scenarios": {
+      "B": {
+        "name": "Cenário B · intervenção",
+        "kind": "intervention",
+        "ops": []
+      },
+      "C": {
+        "name": "Cenário C · alternativa",
+        "kind": "alternative",
+        "ops": []
+      }
+    },
+    "consulting": {
+      "currentStep": 5,
+      "gates": {
+        "G1": "pending",
+        "G2": "pending",
+        "G3": "pending",
+        "G4": "pending",
+        "G5": "pending"
+      }
+    },
+    "portalReview": "pending",
+    "causal": {
+      "variables": [
+        {
+          "id": "v1",
+          "label": "Solicitações na fila",
+          "unit": "pedidos",
+          "status": "hypothesis"
+        },
+        {
+          "id": "v2",
+          "label": "Tempo de resposta",
+          "unit": "horas",
+          "status": "hypothesis"
+        },
+        {
+          "id": "v3",
+          "label": "Retrabalho de classificação",
+          "unit": "",
+          "status": "hypothesis"
+        },
+        {
+          "id": "v4",
+          "label": "Capacidade do atendimento",
+          "unit": "",
+          "status": "unknown"
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "from": "v1",
+          "to": "v2",
+          "polarity": "+",
+          "delay": false,
+          "status": "hypothesis",
+          "note": "Fila maior tende a aumentar o tempo de resposta."
+        },
+        {
+          "id": "l2",
+          "from": "v2",
+          "to": "v3",
+          "polarity": "+",
+          "delay": true,
+          "status": "hypothesis",
+          "note": "Pressa aumenta erros (exemplo)."
+        },
+        {
+          "id": "l3",
+          "from": "v3",
+          "to": "v1",
+          "polarity": "+",
+          "delay": false,
+          "status": "hypothesis",
+          "note": "Retrabalho volta para a fila."
+        },
+        {
+          "id": "l4",
+          "from": "v4",
+          "to": "v2",
+          "polarity": "-",
+          "delay": false,
+          "status": "hypothesis",
+          "note": "Mais capacidade reduz o tempo."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@import "@xyflow/react/dist/style.css";
+
+/* Design tokens — src/data/design-tokens.json (Claude Design handoff LOOP-HD-001). Do not hard-code colors in components. */
+@theme {
+  --color-bg: #f7f7f7;
+  --color-paper: #ffffff;
+  --color-ink: #171717;
+  --color-muted: #696969;
+  --color-stroke: #e4e4e4;
+  --color-soft: #f2f2f2;
+  --color-red: #c93038;
+  --color-red-soft: #fff0f1;
+  --color-blue: #335c9b;
+  --color-blue-soft: #edf3fc;
+  --color-purple: #8055a7;
+  --color-purple-soft: #f4edf9;
+  --color-green: #277b63;
+  --color-green-soft: #eaf5f0;
+  --color-focus: #e8a0a2;
+  --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.035);
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --radius-card: 18px;
+}
+
+@layer base {
+  html { font-size: 14px; }
+  body { margin: 0; background: var(--color-bg); color: var(--color-ink); font-family: var(--font-sans); line-height: 1.4; -webkit-font-smoothing: antialiased; }
+  a { color: var(--color-ink); }
+  a:hover { color: var(--color-red); }
+  :focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+  button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+}
+
+@utility eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-muted); }
+
+.react-flow__attribution { display: none; }
+.react-flow__node { font-family: var(--font-sans); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+@media print {
+  header nav, .no-print { display: none !important; }
+  body { background: #fff; }
+}

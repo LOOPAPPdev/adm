@@ -1,0 +1,26 @@
+{
+  "id": "LOOP-HD-001",
+  "version": "1.0",
+  "source": "Claude Design · LOOP_Claude_Design_Handoff_v1.0/ROUTES_AND_DESIGN_TOKENS.json",
+  "designTokens": {
+    "--bg": "#f7f7f7",
+    "--paper": "#fff",
+    "--ink": "#171717",
+    "--muted": "#696969",
+    "--stroke": "#e4e4e4",
+    "--soft": "#f2f2f2",
+    "--red": "#c93038",
+    "--red-soft": "#fff0f1",
+    "--blue": "#335c9b",
+    "--blue-soft": "#edf3fc",
+    "--purple": "#8055a7",
+    "--purple-soft": "#f4edf9",
+    "--green": "#277b63",
+    "--green-soft": "#eaf5f0",
+    "--shadow": "0 6px 24px rgba(0,0,0,.035)"
+  },
+  "typography": {
+    "fontStack": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+    "basePx": 14
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "id": "LOOP-3X3",
+  "version": "1.0",
+  "phases": [
+    {
+      "id": "A",
+      "title": "Contexto"
+    },
+    {
+      "id": "B",
+      "title": "Operação"
+    },
+    {
+      "id": "C",
+      "title": "Avaliação"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "B01",
+      "phase": "A",
+      "title": "Objetivo e fronteira",
+      "qs": [
+        "Qual é o objetivo principal do projeto?",
+        "O que está dentro e fora da fronteira analisada?"
+      ]
+    },
+    {
+      "id": "B02",
+      "phase": "A",
+      "title": "Pessoas e funções",
+      "qs": [
+        "Quem decide sobre mudanças na operação?"
+      ]
+    },
+    {
+      "id": "B03",
+      "phase": "A",
+      "title": "Ferramentas e canais",
+      "qs": [
+        "Quais ferramentas e canais a operação usa hoje?"
+      ]
+    },
+    {
+      "id": "B04",
+      "phase": "B",
+      "title": "Evento e volume",
+      "qs": [
+        "Qual evento inicia o processo?",
+        "Qual é o volume por período (com unidade)?"
+      ]
+    },
+    {
+      "id": "B05",
+      "phase": "B",
+      "title": "Atividades e transferências",
+      "qs": [
+        "Onde ocorrem as transferências entre responsáveis?"
+      ]
+    },
+    {
+      "id": "B06",
+      "phase": "B",
+      "title": "Decisões e exceções",
+      "qs": [
+        "Quais decisões e exceções interrompem o fluxo?"
+      ]
+    },
+    {
+      "id": "B07",
+      "phase": "C",
+      "title": "Indicadores de base",
+      "qs": [
+        "Quais indicadores são medidos hoje (tempo, custo, qualidade)?"
+      ]
+    },
+    {
+      "id": "B08",
+      "phase": "C",
+      "title": "Riscos e restrições",
+      "qs": [
+        "Quais riscos e restrições limitam mudanças?"
+      ]
+    },
+    {
+      "id": "B09",
+      "phase": "C",
+      "title": "Hipóteses e aprovação",
+      "qs": [
+        "Quais hipóteses devem ser validadas e quem aprova?"
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "key": "spreadsheet",
+      "block": "B03",
+      "label": "Dados operacionais em planilha"
+    },
+    {
+      "key": "multiChannel",
+      "block": "B03",
+      "label": "Múltiplos canais de entrada"
+    },
+    {
+      "key": "crm",
+      "block": "B03",
+      "label": "CRM em uso"
+    },
+    {
+      "key": "classifiableIntake",
+      "block": "B04",
+      "label": "Entradas classificáveis"
+    },
+    {
+      "key": "trackingSources",
+      "block": "B04",
+      "label": "Fontes de acompanhamento com eventos relevantes"
+    },
+    {
+      "key": "humanRouting",
+      "block": "B05",
+      "label": "Encaminhamento feito por pessoa"
+    },
+    {
+      "key": "repetitiveDocs",
+      "block": "B06",
+      "label": "Documentos repetitivos preenchidos manualmente"
+    }
+  ]
+}
