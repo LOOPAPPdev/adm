@@ -1,0 +1,14 @@
+{
+  "name": "@adm/orchestrator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Pipeline DISCOVER → FETCH → VALIDATE → NORMALIZE → DEDUPLICATE → INDEX → PUBLISH do registry ADM",
+  "bin": { "adm-orchestrator": "./src/cli.mjs" },
+  "scripts": {
+    "cli": "node src/cli.mjs",
+    "sync": "node src/cli.mjs sync",
+    "test": "node --test \"test/*.test.mjs\""
+  },
+  "engines": { "node": ">=20" }
+}

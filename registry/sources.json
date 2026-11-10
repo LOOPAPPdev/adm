@@ -1,0 +1,80 @@
+{
+  "$comment": "Inventário de fontes. 'adapter' liga a fonte a um módulo em apps/orchestrator/src/adapters. Fontes sem adapter são documentadas com a limitação encontrada.",
+  "sources": [
+    {
+      "id": "anthropics-skills",
+      "name": "anthropics/skills",
+      "url": "https://github.com/anthropics/skills",
+      "adapter": "anthropic-skills",
+      "method": "git shallow clone; descoberta por skills/*/SKILL.md",
+      "types": ["skill"],
+      "official": true,
+      "enabled": true
+    },
+    {
+      "id": "claude-plugins-official",
+      "name": "anthropics/claude-plugins-official",
+      "url": "https://github.com/anthropics/claude-plugins-official",
+      "adapter": "claude-plugins-official",
+      "method": "git shallow clone; .claude-plugin/marketplace.json + plugin.json dos plugins locais",
+      "types": ["plugin"],
+      "official": true,
+      "enabled": true
+    },
+    {
+      "id": "mcp-reference-servers",
+      "name": "modelcontextprotocol/servers",
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "adapter": "mcp-reference-servers",
+      "method": "git shallow clone; seção 'Reference Servers' do README + src/*/package.json|pyproject.toml",
+      "types": ["mcp-server"],
+      "official": true,
+      "enabled": true
+    },
+    {
+      "id": "docs-sub-agents",
+      "name": "Claude Code docs: sub-agents",
+      "url": "https://code.claude.com/docs/en/sub-agents",
+      "adapter": null,
+      "method": "documentação (HTTP 200). Define o formato de agents; não lista componentes.",
+      "limitation": "Sem catálogo de agents. Agents oficiais chegam empacotados em plugins (agents/*.md) e aparecem em 'provides'.",
+      "enabled": false
+    },
+    {
+      "id": "docs-plugin-marketplaces",
+      "name": "Claude Code docs: plugin marketplaces",
+      "url": "https://code.claude.com/docs/en/plugin-marketplaces",
+      "adapter": null,
+      "method": "documentação (HTTP 200). Define o schema de marketplace.json usado pelo adapter claude-plugins-official.",
+      "limitation": "Referência de formato apenas.",
+      "enabled": false
+    },
+    {
+      "id": "claude-ai-directory",
+      "name": "claude.ai/directory",
+      "url": "https://claude.ai/directory",
+      "adapter": null,
+      "method": "HTTP 403 em acesso automatizado.",
+      "limitation": "Restrito: sem API pública documentada. Não contornado. Conteúdo equivalente vem de claude-plugins-official.",
+      "enabled": false
+    },
+    {
+      "id": "claude-com-marketplace",
+      "name": "claude.com/marketplace",
+      "url": "https://claude.com/marketplace",
+      "adapter": null,
+      "method": "HTTP 200, página de marketing renderizada (sem manifesto/API pública).",
+      "limitation": "Sem endpoint estruturado. Não raspado.",
+      "enabled": false
+    },
+    {
+      "id": "community-deferred",
+      "name": "skills.sh · awesome-claude-code · glama.ai/mcp",
+      "url": "https://skills.sh",
+      "adapter": null,
+      "method": "Fora do escopo desta fase (somente Anthropic Directory).",
+      "limitation": "Planejado para fase posterior; basta registrar um novo adapter.",
+      "enabled": false
+    }
+  ]
+}
