@@ -1,0 +1,501 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "default": 1,
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "status": {
+      "default": "draft",
+      "type": "string"
+    },
+    "archived": {
+      "default": false,
+      "type": "boolean"
+    },
+    "isDemo": {
+      "default": false,
+      "type": "boolean"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    },
+    "discovery": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "text": {
+              "type": "string"
+            },
+            "answer": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "unknown",
+                "informed",
+                "hypothesis",
+                "restricted",
+                "confirmed"
+              ]
+            },
+            "custom": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "id",
+            "text",
+            "answer",
+            "status"
+          ]
+        }
+      }
+    },
+    "facts": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "enum": [
+          "yes",
+          "no",
+          "unknown"
+        ]
+      }
+    },
+    "people": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "kind": {
+            "default": "pessoa",
+            "type": "string",
+            "enum": [
+              "pessoa",
+              "equipe",
+              "area"
+            ]
+          },
+          "reportsTo": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "role",
+          "reportsTo"
+        ]
+      }
+    },
+    "activities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "task",
+              "gateway"
+            ]
+          },
+          "ownerId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "type",
+          "ownerId"
+        ]
+      }
+    },
+    "scenarios": {
+      "type": "object",
+      "properties": {
+        "B": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "kind": {
+              "type": "string",
+              "enum": [
+                "intervention",
+                "alternative"
+              ]
+            },
+            "ops": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "type": "string",
+                        "const": "add"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "afterId": {
+                        "type": "string"
+                      },
+                      "label": {
+                        "type": "string"
+                      },
+                      "ownerId": {
+                        "type": "string"
+                      },
+                      "ruleId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "id",
+                      "afterId",
+                      "label",
+                      "ownerId"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "type": "string",
+                        "const": "reassign"
+                      },
+                      "nodeId": {
+                        "type": "string"
+                      },
+                      "ownerId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "nodeId",
+                      "ownerId"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "type": "string",
+                        "const": "remove"
+                      },
+                      "nodeId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "nodeId"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "name",
+            "kind",
+            "ops"
+          ]
+        },
+        "C": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "kind": {
+              "type": "string",
+              "enum": [
+                "intervention",
+                "alternative"
+              ]
+            },
+            "ops": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "type": "string",
+                        "const": "add"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "afterId": {
+                        "type": "string"
+                      },
+                      "label": {
+                        "type": "string"
+                      },
+                      "ownerId": {
+                        "type": "string"
+                      },
+                      "ruleId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "id",
+                      "afterId",
+                      "label",
+                      "ownerId"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "type": "string",
+                        "const": "reassign"
+                      },
+                      "nodeId": {
+                        "type": "string"
+                      },
+                      "ownerId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "nodeId",
+                      "ownerId"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "type": "string",
+                        "const": "remove"
+                      },
+                      "nodeId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "nodeId"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "name",
+            "kind",
+            "ops"
+          ]
+        }
+      },
+      "required": [
+        "B",
+        "C"
+      ]
+    },
+    "consulting": {
+      "type": "object",
+      "properties": {
+        "currentStep": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 24
+        },
+        "gates": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "approved",
+              "rejected"
+            ]
+          }
+        }
+      },
+      "required": [
+        "currentStep",
+        "gates"
+      ]
+    },
+    "portalReview": {
+      "default": "pending",
+      "type": "string",
+      "enum": [
+        "pending",
+        "ok",
+        "adjust"
+      ]
+    },
+    "causal": {
+      "default": {
+        "variables": [],
+        "links": []
+      },
+      "type": "object",
+      "properties": {
+        "variables": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "unit": {
+                "default": "",
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "unknown",
+                  "informed",
+                  "hypothesis",
+                  "restricted",
+                  "confirmed"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "label",
+              "status"
+            ]
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "from": {
+                "type": "string"
+              },
+              "to": {
+                "type": "string"
+              },
+              "polarity": {
+                "type": "string",
+                "enum": [
+                  "+",
+                  "-"
+                ]
+              },
+              "delay": {
+                "default": false,
+                "type": "boolean"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "unknown",
+                  "informed",
+                  "hypothesis",
+                  "restricted",
+                  "confirmed"
+                ]
+              },
+              "note": {
+                "default": "",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "from",
+              "to",
+              "polarity",
+              "status"
+            ]
+          }
+        }
+      },
+      "required": [
+        "variables",
+        "links"
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "discovery",
+    "facts",
+    "people",
+    "activities",
+    "scenarios",
+    "consulting"
+  ]
+}

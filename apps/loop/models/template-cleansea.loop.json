@@ -1,0 +1,289 @@
+{
+  "schema": "loop.project",
+  "schemaVersion": 1,
+  "exportedAt": "2026-01-01T00:00:00.000Z",
+  "notice": "Demonstração local. Dados de exemplo e hipóteses não são dados confirmados do cliente. Simulação visual — não execução real.",
+  "project": {
+    "id": "cleansea-template",
+    "name": "Clean Sea · template de descoberta",
+    "version": 1,
+    "status": "draft",
+    "archived": false,
+    "isDemo": false,
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "discovery": {
+      "B01": [
+        {
+          "id": "B01_q1",
+          "text": "Qual é o objetivo principal do projeto?",
+          "answer": "Recolha de resíduos em operação portuária (interpretação do material fornecido).",
+          "status": "hypothesis",
+          "custom": false
+        },
+        {
+          "id": "B01_q2",
+          "text": "O que está dentro e fora da fronteira analisada?",
+          "answer": "Do primeiro contato do cliente ao encerramento documental.",
+          "status": "hypothesis",
+          "custom": false
+        }
+      ],
+      "B02": [
+        {
+          "id": "B02_q1",
+          "text": "Quem decide sobre mudanças na operação?",
+          "answer": "",
+          "status": "unknown",
+          "custom": false
+        }
+      ],
+      "B03": [
+        {
+          "id": "B03_q1",
+          "text": "Quais ferramentas e canais a operação usa hoje?",
+          "answer": "Planilha, Forms e WhatsApp; MarineTraffic, Praticagem SP e semafórico para navios. CRM não confirmado.",
+          "status": "informed",
+          "custom": false
+        }
+      ],
+      "B04": [
+        {
+          "id": "B04_q1",
+          "text": "Qual evento inicia o processo?",
+          "answer": "Pedido do cliente",
+          "status": "informed",
+          "custom": false
+        },
+        {
+          "id": "B04_q2",
+          "text": "Qual é o volume por período (com unidade)?",
+          "answer": "Cerca de 8 operações por mês; pedidos chegam 4 a 7 dias antes.",
+          "status": "informed",
+          "custom": false
+        }
+      ],
+      "B05": [
+        {
+          "id": "B05_q1",
+          "text": "Onde ocorrem as transferências entre responsáveis?",
+          "answer": "",
+          "status": "unknown",
+          "custom": false
+        }
+      ],
+      "B06": [
+        {
+          "id": "B06_q1",
+          "text": "Quais decisões e exceções interrompem o fluxo?",
+          "answer": "Clima pode atrasar navios e concentrar operações; despacho depende da confirmação de chegada. Documentos D2/D3/D4 preenchidos manualmente.",
+          "status": "informed",
+          "custom": false
+        }
+      ],
+      "B07": [
+        {
+          "id": "B07_q1",
+          "text": "Quais indicadores são medidos hoje (tempo, custo, qualidade)?",
+          "answer": "",
+          "status": "unknown",
+          "custom": false
+        }
+      ],
+      "B08": [
+        {
+          "id": "B08_q1",
+          "text": "Quais riscos e restrições limitam mudanças?",
+          "answer": "Atraso meteorológico; sobreposição de operações; dependência do WhatsApp.",
+          "status": "informed",
+          "custom": false
+        }
+      ],
+      "B09": [
+        {
+          "id": "B09_q1",
+          "text": "Quais hipóteses devem ser validadas e quem aprova?",
+          "answer": "Triagem de solicitações (hipótese). Validação do cliente pendente.",
+          "status": "hypothesis",
+          "custom": false
+        }
+      ]
+    },
+    "facts": {
+      "spreadsheet": "yes",
+      "multiChannel": "yes",
+      "crm": "unknown",
+      "classifiableIntake": "unknown",
+      "trackingSources": "yes",
+      "humanRouting": "unknown",
+      "repetitiveDocs": "yes"
+    },
+    "people": [
+      {
+        "id": "cs1",
+        "name": "Comercial",
+        "role": "Fecha o pedido com o cliente",
+        "kind": "area",
+        "reportsTo": "unknown"
+      },
+      {
+        "id": "cs2",
+        "name": "Comunicação",
+        "role": "Registro e avisos",
+        "kind": "pessoa",
+        "reportsTo": "unknown"
+      },
+      {
+        "id": "cs3",
+        "name": "Logística / coordenação",
+        "role": "Despacha equipe e encerra",
+        "kind": "pessoa",
+        "reportsTo": "unknown"
+      },
+      {
+        "id": "cs4",
+        "name": "Operação / documentação",
+        "role": "Confirma chegada, executa e documenta",
+        "kind": "equipe",
+        "reportsTo": "unknown"
+      },
+      {
+        "id": "cs5",
+        "name": "Motoristas",
+        "role": "Transporte",
+        "kind": "equipe",
+        "reportsTo": "cs3"
+      }
+    ],
+    "activities": [
+      {
+        "id": "p01",
+        "label": "Cliente solicita",
+        "type": "task",
+        "ownerId": "cs1"
+      },
+      {
+        "id": "p02",
+        "label": "Comercial fecha",
+        "type": "task",
+        "ownerId": "cs1"
+      },
+      {
+        "id": "p03",
+        "label": "Registro e aviso",
+        "type": "task",
+        "ownerId": "cs2"
+      },
+      {
+        "id": "p04",
+        "label": "Monitorar navio",
+        "type": "task",
+        "ownerId": ""
+      },
+      {
+        "id": "p05",
+        "label": "Chegada confirmada?",
+        "type": "gateway",
+        "ownerId": "cs4"
+      },
+      {
+        "id": "p06",
+        "label": "Despachar equipe",
+        "type": "task",
+        "ownerId": "cs3"
+      },
+      {
+        "id": "p07",
+        "label": "Executar operação",
+        "type": "task",
+        "ownerId": "cs4"
+      },
+      {
+        "id": "p08",
+        "label": "Documentar e encerrar",
+        "type": "task",
+        "ownerId": "cs3"
+      }
+    ],
+    "scenarios": {
+      "B": {
+        "name": "Cenário B · intervenção",
+        "kind": "intervention",
+        "ops": []
+      },
+      "C": {
+        "name": "Cenário C · alternativa",
+        "kind": "alternative",
+        "ops": []
+      }
+    },
+    "consulting": {
+      "currentStep": 1,
+      "gates": {
+        "G1": "pending",
+        "G2": "pending",
+        "G3": "pending",
+        "G4": "pending",
+        "G5": "pending"
+      }
+    },
+    "portalReview": "pending",
+    "causal": {
+      "variables": [
+        {
+          "id": "c1",
+          "label": "Atrasos meteorológicos",
+          "unit": "",
+          "status": "informed"
+        },
+        {
+          "id": "c2",
+          "label": "Operações simultâneas",
+          "unit": "operações",
+          "status": "informed"
+        },
+        {
+          "id": "c3",
+          "label": "Carga da equipe",
+          "unit": "",
+          "status": "hypothesis"
+        },
+        {
+          "id": "c4",
+          "label": "Erros de documentação",
+          "unit": "",
+          "status": "hypothesis"
+        }
+      ],
+      "links": [
+        {
+          "id": "k1",
+          "from": "c1",
+          "to": "c2",
+          "polarity": "+",
+          "delay": true,
+          "status": "informed",
+          "note": "Material operacional: atrasos concentram operações."
+        },
+        {
+          "id": "k2",
+          "from": "c2",
+          "to": "c3",
+          "polarity": "+",
+          "delay": false,
+          "status": "hypothesis",
+          "note": ""
+        },
+        {
+          "id": "k3",
+          "from": "c3",
+          "to": "c4",
+          "polarity": "+",
+          "delay": false,
+          "status": "hypothesis",
+          "note": "D2/D3/D4 manuais."
+        }
+      ]
+    }
+  }
+}

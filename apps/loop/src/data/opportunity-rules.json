@@ -1,0 +1,78 @@
+{
+  "id": "LOOP-RULES",
+  "version": "1.0",
+  "engine": "Correspondência determinística de fatos. Não é DMN completo. Não usa IA.",
+  "guardrails": [
+    "Nunca inferir CRM do uso de planilhas ou WhatsApp.",
+    "Nunca converter candidato em benefício comprovado.",
+    "Sem tempo e custo medidos, não calcular ROI.",
+    "Distinguir fluxo animado de execução BPMN e de simulação System Dynamics.",
+    "Falta de dado produz não informado, nunca valor padrão silencioso."
+  ],
+  "rules": [
+    {
+      "id": "R-TRIAGE",
+      "title": "Triagem automatizada",
+      "needs": [
+        "classifiableIntake",
+        "humanRouting"
+      ],
+      "gaps": [
+        "Critérios de classificação documentados",
+        "Controle humano para exceções"
+      ],
+      "step": "Triagem automatizada (hipótese)",
+      "at": "start"
+    },
+    {
+      "id": "R-UNIFY",
+      "title": "Consolidação de registros",
+      "needs": [
+        "spreadsheet",
+        "multiChannel"
+      ],
+      "gaps": [
+        "Inventário de campos por canal"
+      ],
+      "step": "Consolidar registros (hipótese)",
+      "at": "start"
+    },
+    {
+      "id": "R-ALERT",
+      "title": "Alertas de acompanhamento",
+      "needs": [
+        "trackingSources"
+      ],
+      "gaps": [
+        "Verificar APIs e licenças das fontes"
+      ],
+      "step": "Emitir alerta (hipótese)",
+      "at": "end"
+    },
+    {
+      "id": "R-DOCS",
+      "title": "Pré-preenchimento de documentos",
+      "needs": [
+        "repetitiveDocs"
+      ],
+      "gaps": [
+        "Modelos dos documentos",
+        "Etapa de revisão humana definida"
+      ],
+      "step": "Pré-preencher documento — revisão humana (hipótese)",
+      "at": "end"
+    },
+    {
+      "id": "R-CRM",
+      "title": "Integração com CRM existente",
+      "needs": [
+        "crm"
+      ],
+      "gaps": [
+        "Nome do sistema e forma de acesso"
+      ],
+      "step": "Sincronizar com CRM (hipótese)",
+      "at": "end"
+    }
+  ]
+}
