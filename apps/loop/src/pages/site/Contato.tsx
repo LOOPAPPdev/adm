@@ -45,8 +45,8 @@ export function Contato() {
           {contacts.length === 0 ? <Empty>Nenhum rascunho salvo.</Empty> : (
             <ul className="m-0 list-none space-y-2 p-0">
               {contacts.map(c => (
-                <li key={c.id} className="rounded-xl border border-stroke p-3">
-                  <div className="flex items-start justify-between gap-2"><div className="min-w-0"><b className="text-[13px]">{c.nome}</b> <span className="text-xs text-muted">{c.email}</span></div>
+                <li key={c.id} className="rounded-ds-lg border border-ds-line p-3">
+                  <div className="flex items-start justify-between gap-2"><div className="min-w-0"><b className="text-[13px]">{c.nome}</b> <span className="text-xs text-ds-muted">{c.email}</span></div>
                     <Button size="icon" variant="ghost" aria-label={`Excluir rascunho de ${c.nome}`} onClick={() => removeContact(c.id)}><Trash2 size={15} /></Button></div>
                   <Muted className="mt-1 line-clamp-3 text-xs">{c.msg}</Muted>
                 </li>

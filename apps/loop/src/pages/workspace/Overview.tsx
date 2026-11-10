@@ -31,20 +31,20 @@ export function Overview() {
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
       <Card>
         <Eyebrow>Contexto · B01</Eyebrow>
-        <h1 className="mb-1 mt-1.5 text-[clamp(24px,3.4vw,32px)] font-extrabold tracking-[-0.04em]">{p.name}</h1>
+        <h1 className="mb-1 mt-1.5 text-[clamp(24px,3.4vw,32px)] font-semibold tracking-[-0.04em]">{p.name}</h1>
         <Muted className="text-sm">{p.discovery.B01[0].answer.trim() || 'Objetivo não informado. Preencha B01 na Descoberta 3×3.'}</Muted>
         <Eyebrow className="mb-2 mt-5">Módulos</Eyebrow>
         <div className="grid gap-2.5 sm:grid-cols-2 xl:grid-cols-4">
           {modules.map(([t, s, st]) => (
-            <Link key={t} to={base + s} className="group block rounded-xl border border-stroke bg-paper p-3.5 no-underline hover:border-line-strong"><CardTitle className="text-[13.5px] group-hover:text-red">{t}</CardTitle><Muted className="mt-2 text-xs">{st}</Muted></Link>
+            <Link key={t} to={base + s} className="group block rounded-ds-lg border border-ds-line bg-ds-surface p-3.5 no-underline hover:border-ds-line-strong"><CardTitle className="text-[13.5px] group-hover:text-ds-accent">{t}</CardTitle><Muted className="mt-2 text-xs">{st}</Muted></Link>
           ))}
         </div>
       </Card>
       <Card className="h-fit">
         <Eyebrow className="mb-2">Estado da informação</Eyebrow>
         <EvidenceCounts items={qs} />
-        <div className="mt-4 border-t border-soft pt-3"><Eyebrow>Próxima atividade da consultoria</Eyebrow><p className="m-0 mt-1 text-[13px]"><b className="text-red">{nx.no}</b> {nx.title}</p></div>
-        <div className="mt-3 border-t border-soft pt-3"><Eyebrow>Próximo gate</Eyebrow><p className="m-0 mt-1 text-[13px]">{nx.gate}</p></div>
+        <div className="mt-4 border-t border-ds-line pt-3"><Eyebrow>Próxima atividade da consultoria</Eyebrow><p className="m-0 mt-1 text-[13px]"><b className="text-ds-accent">{nx.no}</b> {nx.title}</p></div>
+        <div className="mt-3 border-t border-ds-line pt-3"><Eyebrow>Próximo gate</Eyebrow><p className="m-0 mt-1 text-[13px]">{nx.gate}</p></div>
         <div className="mt-4 flex flex-wrap gap-2"><Button size="sm" onClick={() => exportProject(p, notify)}><Download size={14} /> Exportar JSON</Button><ButtonLink size="sm" to={`/portal/${p.id}`}><ExternalLink size={14} /> Preview do portal</ButtonLink></div>
       </Card>
     </div>

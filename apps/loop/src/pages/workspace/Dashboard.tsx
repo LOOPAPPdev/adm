@@ -16,16 +16,16 @@ export function Dashboard() {
       <PageHeader eyebrow="Workspace do consultor" title="Painel" lead="Acesso direto em modo demo. Não há autenticação nesta versão." actions={<ButtonLink to="/app/projetos" variant="primary">Projetos</ButtonLink>} />
       <dl className="mb-4 grid grid-cols-3 gap-3">
         {[[act.length, 'Projetos ativos'], [pend, 'Gates pendentes'], [projects.length - act.length, 'Arquivados']].map(([v, l]) => (
-          <Card key={l} className="p-4"><dd className="m-0 text-[26px] font-extrabold">{String(v).padStart(2, '0')}</dd><dt className="eyebrow mt-1">{l}</dt></Card>
+          <Card key={l} className="p-4"><dd className="m-0 text-[26px] font-semibold">{String(v).padStart(2, '0')}</dd><dt className="eyebrow mt-1">{l}</dt></Card>
         ))}
       </dl>
       <Card>
         <Eyebrow className="mb-3">Atualizados recentemente</Eyebrow>
         {!rows.length ? <Empty>Nenhum projeto ativo. <Link to="/app/projetos">Criar projeto</Link>.</Empty> : (
-          <ul className="m-0 list-none divide-y divide-soft p-0">
+          <ul className="m-0 list-none divide-y divide-ds-line p-0">
             {rows.map(p => { const n = nextInfo(p); return (
               <li key={p.id} className="flex flex-wrap items-center justify-between gap-2 py-3">
-                <div className="min-w-0"><Link to={`/app/projetos/${p.id}`} className="text-[14px] font-bold">{p.name}</Link><Muted className="mt-0.5 text-xs"><b className="text-red">{n.no}</b> · {n.title} · {n.gate}</Muted></div>
+                <div className="min-w-0"><Link to={`/app/projetos/${p.id}`} className="text-[14px] font-semibold">{p.name}</Link><Muted className="mt-0.5 text-xs"><b className="text-ds-accent">{n.no}</b> · {n.title} · {n.gate}</Muted></div>
                 <Badge tone={p.isDemo ? 'purple' : 'neutral'}>{p.isDemo ? 'Dados de exemplo' : 'Rascunho local'}</Badge>
               </li>); })}
           </ul>

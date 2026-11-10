@@ -35,14 +35,14 @@ export function Portal() {
           {BPM.phases.map(ph => {
             const done = ph.steps.every(n => n < cur), now = !done && ph.steps.some(n => n <= cur);
             return (
-              <li key={ph.id} className={cn('rounded-xl border p-2.5', done ? 'border-green-line bg-green-soft' : now ? 'border-red bg-red-soft' : 'border-stroke bg-paper')}>
-                <span className="eyebrow">{ph.tag}</span><span className="mt-0.5 block text-[12px] font-bold leading-tight">{ph.title}</span>
-                <span className={cn('mt-1 block text-[10.5px] font-bold', done ? 'text-green' : now ? 'text-red' : 'text-muted')}>{done ? 'concluída' : now ? 'em andamento' : 'próxima'}</span>
+              <li key={ph.id} className={cn('rounded-ds-lg border p-2.5', done ? 'border-ds-success-line bg-ds-success-soft' : now ? 'border-ds-accent bg-ds-accent-soft' : 'border-ds-line bg-ds-surface')}>
+                <span className="eyebrow">{ph.tag}</span><span className="mt-0.5 block text-[12px] font-semibold leading-tight">{ph.title}</span>
+                <span className={cn('mt-1 block text-[10.5px] font-semibold', done ? 'text-ds-success' : now ? 'text-ds-accent' : 'text-ds-muted')}>{done ? 'concluída' : now ? 'em andamento' : 'próxima'}</span>
               </li>
             );
           })}
         </ol>
-        <Muted className="mt-3 text-xs">Próxima atividade: <b className="text-ink">{nx.no} · {nx.title}</b> · {nx.gate}</Muted>
+        <Muted className="mt-3 text-xs">Próxima atividade: <b className="text-ds-text">{nx.no} · {nx.title}</b> · {nx.gate}</Muted>
       </Card>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_360px]">
         <Card className="p-4">

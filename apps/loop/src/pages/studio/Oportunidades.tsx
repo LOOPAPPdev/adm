@@ -27,17 +27,17 @@ export function Oportunidades() {
             <Card key={o.id} className="flex flex-col p-4" data-testid={`rule-${o.id}`}>
               <div className="flex items-start justify-between gap-2"><Eyebrow>{o.id} · v{o.version}</Eyebrow><Badge tone={LOOK[o.state][1]} data-testid={`rule-state-${o.id}`}>{LOOK[o.state][0]}</Badge></div>
               <CardTitle className="mt-1.5">{o.title}</CardTitle>
-              <ul className="mb-0 mt-2 list-none space-y-0.5 p-0 text-[12.5px]">{o.facts.map(f => <li key={f.key}>{f.label}: <b className={f.value === 'yes' ? 'text-green' : f.value === 'no' ? 'text-red' : 'text-muted'}>{TRI_LABEL[f.value]}</b></li>)}</ul>
+              <ul className="mb-0 mt-2 list-none space-y-0.5 p-0 text-[12.5px]">{o.facts.map(f => <li key={f.key}>{f.label}: <b className={f.value === 'yes' ? 'text-ds-success' : f.value === 'no' ? 'text-ds-accent' : 'text-ds-muted'}>{TRI_LABEL[f.value]}</b></li>)}</ul>
               <Muted className="mt-2 text-xs">{o.state === 'nomatch' ? 'A regra não corresponde aos fatos declarados.' : 'Lacunas: ' + o.gaps.join('; ') + '.'}</Muted>
               <div className="mt-auto pt-3">
                 {o.state === 'candidate' && !inB && <Button size="sm" variant="primary" onClick={() => addToB(o)}>Adicionar ao cenário B</Button>}
-                {inB && <Link to={`/app/projetos/${p.id}/cenarios`} className="text-xs font-bold">No cenário B → ver cenários</Link>}
+                {inB && <Link to={`/app/projetos/${p.id}/cenarios`} className="text-xs font-semibold">No cenário B → ver cenários</Link>}
               </div>
             </Card>
           );
         })}
       </div>
-      <Card className="mt-4"><Eyebrow>Salvaguardas das regras</Eyebrow><ul className="mb-0 mt-2 pl-5 text-[13px] text-muted">{GUARDRAILS.map(g => <li key={g}>{g}</li>)}</ul></Card>
+      <Card className="mt-4"><Eyebrow>Salvaguardas das regras</Eyebrow><ul className="mb-0 mt-2 pl-5 text-[13px] text-ds-muted">{GUARDRAILS.map(g => <li key={g}>{g}</li>)}</ul></Card>
     </>
   );
 }

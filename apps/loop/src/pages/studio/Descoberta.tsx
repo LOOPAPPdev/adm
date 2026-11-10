@@ -74,7 +74,7 @@ function DiscoveryEditor() {
     <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,560px)_minmax(0,1fr)]">
       <div>
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-          <div><Eyebrow>Descoberta · 3 fases × 3 blocos</Eyebrow><p className="m-0 mt-0.5 text-[13px] text-muted" data-testid="discovery-progress">{qs.filter(q => q.answer.trim()).length} de {qs.length} respostas · {gl.length} lacunas</p></div>
+          <div><Eyebrow>Descoberta · 3 fases × 3 blocos</Eyebrow><p className="m-0 mt-0.5 text-[13px] text-ds-muted" data-testid="discovery-progress">{qs.filter(q => q.answer.trim()).length} de {qs.length} respostas · {gl.length} lacunas</p></div>
           <Button size="sm" variant="ghost" onClick={() => setOpen(!open)} aria-expanded={open}>{open ? 'Recolher perguntas' : 'Mostrar perguntas'}</Button>
         </div>
         <Segmented label="Fases da descoberta" className="mb-3" value={phase} onChange={setPhase} options={PHASES3.map(f => ({ value: f.id, label: `Fase ${f.id} · ${f.title}` }))} />
@@ -82,10 +82,10 @@ function DiscoveryEditor() {
           <form noValidate onSubmit={e => e.preventDefault()} aria-label="Formulário de descoberta 3×3" className="space-y-3">
             {BLOCKS.map(b => (
               <Card key={b.id} className={phase === b.phase ? 'p-4' : 'hidden'}>
-                <div className="mb-3 flex items-baseline gap-2"><span className="rounded-md bg-soft px-1.5 py-0.5 text-[11px] font-extrabold text-muted">{b.id}</span><CardTitle>{b.title}</CardTitle></div>
+                <div className="mb-3 flex items-baseline gap-2"><span className="rounded-md bg-ds-fill px-1.5 py-0.5 text-[11px] font-semibold text-ds-muted">{b.id}</span><CardTitle>{b.title}</CardTitle></div>
                 <Questions block={b.id} control={control} register={register} errors={errors} trigger={trigger} />
                 {FACTS.filter(f => f.block === b.id).length > 0 && (
-                  <div className="mt-3 grid gap-2 border-t border-soft pt-3 sm:grid-cols-2">
+                  <div className="mt-3 grid gap-2 border-t border-ds-line pt-3 sm:grid-cols-2">
                     {FACTS.filter(f => f.block === b.id).map(f => (
                       <div key={f.key}><Label htmlFor={`fact-${f.key}`} className="font-semibold">{f.label}</Label>
                         <Select id={`fact-${f.key}`} className="h-9" {...register(`facts.${f.key}`)}>{(['unknown', 'yes', 'no'] as const).map(v => <option key={v} value={v}>{TRI_LABEL[v]}</option>)}</Select></div>
@@ -127,7 +127,7 @@ function Questions({ block, control, register, errors, trigger }: EdProps & { bl
         const eff = v.answer?.trim() ? v.status : 'unknown';
         const id = `${block}-${i}`;
         return (
-          <div key={f.id} className="rounded-xl border border-soft p-3" data-testid={`q-${id}`}>
+          <div key={f.id} className="rounded-ds-lg border border-ds-line p-3" data-testid={`q-${id}`}>
             {f.custom
               ? <><Label htmlFor={`${id}-t`}>Pergunta personalizada</Label><Input id={`${id}-t`} className="mb-2 h-9" aria-invalid={!!err?.text} {...register(`discovery.${block}.${i}.text`)} /><FieldError msg={err?.text?.message} /></>
               : <Label htmlFor={`${id}-a`} className="text-[13px]">{f.text}</Label>}
@@ -152,12 +152,12 @@ function PeopleEditor({ control, register, errors }: EdProps) {
   const { fields, append, remove } = useFieldArray({ control, name: 'people' });
   const people = useWatch({ control, name: 'people' }) ?? [];
   return (
-    <div className="mt-3 border-t border-soft pt-3">
+    <div className="mt-3 border-t border-ds-line pt-3">
       <div className="mb-2 flex items-center justify-between"><Eyebrow>Organograma · nós</Eyebrow><Button size="sm" onClick={() => append({ id: uid('pe'), name: '', role: '', kind: 'pessoa', reportsTo: 'unknown' })}><Plus size={14} /> Pessoa / equipe</Button></div>
       {!fields.length && <Muted className="text-xs">Nenhuma pessoa declarada.</Muted>}
       <ul className="m-0 list-none space-y-2 p-0">
         {fields.map((f, i) => (
-          <li key={f.id} className="grid gap-2 rounded-xl border border-soft p-2.5 sm:grid-cols-2" data-testid={`person-${i}`}>
+          <li key={f.id} className="grid gap-2 rounded-ds-lg border border-ds-line p-2.5 sm:grid-cols-2" data-testid={`person-${i}`}>
             <div><Input aria-label={`Nome do nó ${i + 1}`} placeholder="Nome ou função" className="h-9" aria-invalid={!!errors.people?.[i]?.name} {...register(`people.${i}.name`)} /><FieldError msg={errors.people?.[i]?.name?.message} /></div>
             <Input aria-label={`Função do nó ${i + 1}`} placeholder="O que faz" className="h-9" {...register(`people.${i}.role`)} />
             <Select aria-label={`Tipo do nó ${i + 1}`} className="h-9" {...register(`people.${i}.kind`)}><option value="pessoa">pessoa</option><option value="equipe">equipe</option><option value="area">área</option></Select>
@@ -178,12 +178,12 @@ function PeopleEditor({ control, register, errors }: EdProps) {
 function ActivitiesEditor({ control, register, errors, people }: EdProps & { people: FormValues['people'] }) {
   const { fields, append, remove, move } = useFieldArray({ control, name: 'activities' });
   return (
-    <div className="mt-3 border-t border-soft pt-3">
+    <div className="mt-3 border-t border-ds-line pt-3">
       <div className="mb-2 flex items-center justify-between"><Eyebrow>Fluxo · atividades em ordem</Eyebrow><Button size="sm" onClick={() => append({ id: uid('ac'), label: 'Nova atividade', type: 'task', ownerId: '' })}><Plus size={14} /> Atividade</Button></div>
       {!fields.length && <Muted className="text-xs">Nenhuma atividade declarada.</Muted>}
       <ol className="m-0 list-none space-y-2 p-0">
         {fields.map((f, i) => (
-          <li key={f.id} className="grid gap-2 rounded-xl border border-soft p-2.5 sm:grid-cols-[1fr_120px]" data-testid={`activity-${i}`}>
+          <li key={f.id} className="grid gap-2 rounded-ds-lg border border-ds-line p-2.5 sm:grid-cols-[1fr_120px]" data-testid={`activity-${i}`}>
             <div><Input aria-label={`Atividade ${i + 1}`} className="h-9" aria-invalid={!!errors.activities?.[i]?.label} {...register(`activities.${i}.label`)} /><FieldError msg={errors.activities?.[i]?.label?.message} /></div>
             <Select aria-label={`Tipo da atividade ${i + 1}`} className="h-9" {...register(`activities.${i}.type`)}><option value="task">tarefa</option><option value="gateway">decisão</option></Select>
             <Select aria-label={`Responsável da atividade ${i + 1}`} className="h-9" {...register(`activities.${i}.ownerId`)}>

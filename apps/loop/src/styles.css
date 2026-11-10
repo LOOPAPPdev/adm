@@ -1,62 +1,73 @@
 @import "tailwindcss";
 @import "@xyflow/react/dist/style.css";
-/* The shared design system (design-system/ at the repo root): colour, type and spacing tokens. */
+/* The LOOP interface is the shared design system (design-system/ at the repo root): tokens, base and components.
+   Base and components go into Tailwind's layers so utilities still win. Tailwind names for the DS roles carry
+   a "ds-" prefix so they never overwrite the DS variables themselves. */
 @import "../../../design-system/tokens/colors.css";
 @import "../../../design-system/tokens/typography.css";
 @import "../../../design-system/tokens/spacing.css";
+@import "../../../design-system/tokens/patterns.css";
+@import "../../../design-system/tokens/executar.css";
+@import "../../../design-system/tokens/base.css" layer(base);
+@import "../../../design-system/components/components.css" layer(components);
 
-/* LOOP's Tailwind names, now pointing at the design-system roles (design-system/tokens). Components keep their
-   class names (bg-paper, text-ink, text-red …); only the values come from the shared system. The page
-   background is called "canvas" so it never overwrites the design system's own --color-bg. */
 @theme inline {
-  --color-canvas: var(--color-surface);
-  --color-paper: var(--color-surface-raised);
-  --color-ink: var(--color-text);
-  --color-ink-soft: var(--color-neutral-700);
-  --color-ink-hover: var(--color-neutral-800);
-  --color-muted: var(--color-text-muted);
-  --color-stroke: var(--color-neutral-300);
-  --color-line-strong: var(--color-neutral-400);
-  --color-soft: var(--color-neutral-200);
-  --color-tint: var(--color-surface);
-  /* the accent: LOOP's red becomes the design system's interaction blue */
-  --color-red: var(--color-accent);
-  --color-red-soft: var(--color-accent-100);
-  --color-red-line: var(--color-accent-200);
-  --color-red-deep: var(--color-accent-800);
-  --color-blue: var(--color-accent-700);
-  --color-blue-soft: var(--color-accent-100);
-  --color-blue-line: var(--color-accent-200);
-  --color-purple: var(--brain-violet);
-  --color-purple-soft: color-mix(in srgb, var(--brain-violet) 9%, var(--color-white));
-  --color-purple-line: color-mix(in srgb, var(--brain-violet) 22%, var(--color-white));
-  --color-purple-deep: color-mix(in srgb, var(--brain-violet) 70%, var(--color-black));
-  --color-green: var(--color-success);
-  --color-green-soft: color-mix(in srgb, var(--color-success) 9%, var(--color-white));
-  --color-green-line: color-mix(in srgb, var(--color-success) 24%, var(--color-white));
-  --color-green-hover: color-mix(in srgb, var(--color-success) 15%, var(--color-white));
-  --color-green-deep: color-mix(in srgb, var(--color-success) 75%, var(--color-black));
-  --color-alert: var(--color-danger);
-  --color-alert-soft: color-mix(in srgb, var(--color-danger) 8%, var(--color-white));
-  --color-alert-line: color-mix(in srgb, var(--color-danger) 22%, var(--color-white));
-  --color-focus: var(--color-accent-300);
-  --shadow-card: var(--shadow-sm);
+  --color-ds-bg: var(--color-bg);
+  --color-ds-surface: var(--color-surface);
+  --color-ds-raised: var(--color-surface-raised);
+  --color-ds-fill: var(--color-neutral-200);
+  --color-ds-text: var(--color-text);
+  --color-ds-text-soft: var(--color-neutral-700);
+  --color-ds-muted: var(--color-text-muted);
+  --color-ds-line: var(--color-divider);
+  --color-ds-line-strong: var(--color-neutral-400);
+  --color-ds-accent: var(--color-accent);
+  --color-ds-on-accent: var(--color-on-accent);
+  --color-ds-accent-soft: var(--color-accent-100);
+  --color-ds-accent-line: var(--color-accent-200);
+  --color-ds-accent-strong: var(--color-accent-800);
+  --color-ds-link: var(--color-link);
+  --color-ds-success: var(--color-success);
+  --color-ds-success-soft: color-mix(in srgb, var(--color-success) 10%, var(--color-bg));
+  --color-ds-success-line: color-mix(in srgb, var(--color-success) 26%, var(--color-bg));
+  --color-ds-warning: var(--color-warning);
+  --color-ds-danger: var(--color-danger);
+  --color-ds-danger-soft: color-mix(in srgb, var(--color-danger) 8%, var(--color-bg));
+  --color-ds-danger-line: color-mix(in srgb, var(--color-danger) 24%, var(--color-bg));
+  --color-ds-violet: var(--brain-violet);
+  --color-ds-violet-soft: color-mix(in srgb, var(--brain-violet) 9%, var(--color-bg));
+  --color-ds-violet-line: color-mix(in srgb, var(--brain-violet) 24%, var(--color-bg));
+  --color-ds-violet-strong: color-mix(in srgb, var(--brain-violet) 72%, var(--color-black));
   --font-sans: var(--font-body);
   --font-mono: var(--font-mono);
-  --radius-card: var(--radius-lg);
+  --radius-ds-sm: var(--radius-sm);
+  --radius-ds-md: var(--radius-md);
+  --radius-ds-lg: var(--radius-lg);
+  --radius-ds-xl: var(--radius-xl);
+  --radius-ds-pill: var(--radius-pill);
+  --text-ds-micro: var(--text-micro);
+  --text-ds-caption: var(--text-caption);
+  --text-ds-body: var(--text-body);
+  --text-ds-card: var(--text-card);
+  --text-ds-subtitle: var(--text-subtitle);
+  --text-ds-title: var(--text-title);
+  --text-ds-hero: var(--text-hero);
 }
 
 @layer base {
-  html { font-size: 14px; }
-  body { margin: 0; background: var(--color-canvas); color: var(--color-ink); font-family: var(--font-sans); line-height: 1.4; -webkit-font-smoothing: antialiased; }
-  a { color: var(--color-ink); }
-  a:hover { color: var(--color-red); }
-  :focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
-  button { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  button { cursor: pointer; font: inherit; }
   button:disabled { cursor: not-allowed; }
 }
 
-@utility eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-muted); }
+/* System metadata (kickers, IDs, counts): IBM Plex Mono, as in the design system */
+@utility eyebrow { font-family: var(--font-mono); font-size: var(--text-micro); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-muted); }
+/* The segmented control as tabs (buttons and links instead of radio inputs) */
+@layer components {
+  .seg-opt { border: 0; background: transparent; font-family: inherit; text-decoration: none; white-space: nowrap; }
+  .seg-opt[aria-selected="true"], .seg-opt[aria-current="page"], .seg-opt.is-on { background: var(--color-surface-raised); color: var(--color-text); box-shadow: var(--shadow-sm); }
+  .nav a.is-on { color: var(--color-text); }
+}
 
 .react-flow__attribution { display: none; }
 .react-flow__node { font-family: var(--font-sans); }

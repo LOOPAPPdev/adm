@@ -55,15 +55,15 @@ export function Projetos() {
             <Button size="sm" variant="ghost" onClick={resetDemo}><RotateCcw size={14} /> Restaurar exemplo</Button>
           </div>
           {!list.length ? <Empty>{arch ? 'Nenhum projeto arquivado.' : 'Nenhum projeto encontrado.'}</Empty> : (
-            <ul className="m-0 list-none divide-y divide-soft p-0" aria-label="Lista de projetos">
+            <ul className="m-0 list-none divide-y divide-ds-line p-0" aria-label="Lista de projetos">
               {list.map(p => (
                 <li key={p.id} className="flex flex-wrap items-center justify-between gap-3 py-3">
-                  <div className="min-w-0 flex-1">
+                  <div className="min-w-0 flex-1 basis-64">
                     {renaming?.id === p.id ? (
                       <form className="flex gap-2" onSubmit={e => { e.preventDefault(); if (renaming.v.trim()) update(p.id, c => { c.name = renaming.v.trim(); }, 'Projeto renomeado.'); setRenaming(null); }}>
                         <Input autoFocus aria-label="Novo nome" value={renaming.v} onChange={e => setRenaming({ id: p.id, v: e.target.value })} className="h-9" /><Button size="sm" type="submit" variant="primary">Salvar</Button>
                       </form>
-                    ) : <Link to={`/app/projetos/${p.id}`} className="text-[14px] font-bold">{p.name}</Link>}
+                    ) : <Link to={`/app/projetos/${p.id}`} className="text-[14px] font-semibold">{p.name}</Link>}
                     <Muted className="mt-0.5 text-xs">{p.isDemo && <Badge tone="purple" className="mr-1.5">Exemplo</Badge>}{p.activities.length} atividades · {p.people.length} nós · v{p.version} · atualizado {new Date(p.updatedAt).toLocaleString('pt-BR')}</Muted>
                   </div>
                   <div className="flex flex-wrap gap-1">

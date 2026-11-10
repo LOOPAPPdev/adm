@@ -20,7 +20,7 @@ export function Solucoes() {
       </div>
       <div className="grid gap-3 md:grid-cols-2">
         <Card><Eyebrow>Disponível nesta versão</Eyebrow><ul className="mb-0 mt-3 space-y-1.5 pl-5 text-[13px]">{NOW.map(x => <li key={x}>{x}</li>)}</ul></Card>
-        <Card><Eyebrow>Requer backend ou dados do cliente</Eyebrow><ul className="mb-0 mt-3 space-y-1.5 pl-5 text-[13px] text-muted">{LATER.map(x => <li key={x}>{x}</li>)}</ul></Card>
+        <Card><Eyebrow>Requer backend ou dados do cliente</Eyebrow><ul className="mb-0 mt-3 space-y-1.5 pl-5 text-[13px] text-ds-muted">{LATER.map(x => <li key={x}>{x}</li>)}</ul></Card>
       </div>
       <Notice className="mt-4">Um diagrama não produz sozinho uma previsão válida. Ganhos numéricos só são apresentados quando há baseline medido, fórmula e unidade definidos.</Notice>
     </>

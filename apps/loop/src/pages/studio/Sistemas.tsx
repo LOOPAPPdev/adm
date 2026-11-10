@@ -37,7 +37,7 @@ export function Sistemas() {
           <Eyebrow className="mb-2 mt-4">Laços de realimentação ({loops.length})</Eyebrow>
           {!loops.length ? <Muted>Nenhum laço fechado.</Muted> : (
             <ul className="m-0 list-none space-y-1.5 p-0" data-testid="loops">
-              {loops.map(l => <li key={l.id} className="text-[13px]"><Badge tone={l.kind === 'R' ? 'green' : 'blue'} className="mr-1.5">{l.kind === 'R' ? 'R · reforço' : 'B · equilíbrio'}</Badge>{l.nodes.map(name).join(' → ')} → {name(l.nodes[0])} <span className="text-xs text-muted">· evidência mais fraca: {STATUS_LABEL[l.weakest]}</span></li>)}
+              {loops.map(l => <li key={l.id} className="text-[13px]"><Badge tone={l.kind === 'R' ? 'green' : 'blue'} className="mr-1.5">{l.kind === 'R' ? 'R · reforço' : 'B · equilíbrio'}</Badge>{l.nodes.map(name).join(' → ')} → {name(l.nodes[0])} <span className="text-xs text-ds-muted">· evidência mais fraca: {STATUS_LABEL[l.weakest]}</span></li>)}
             </ul>
           )}
         </Card>
@@ -60,7 +60,7 @@ export function Sistemas() {
             {blocked && <Notice tone="red" className="mb-2">{blocked}</Notice>}
             <ul className="m-0 list-none space-y-2 p-0">
               {links.map((l, i) => (
-                <li key={l.id} className="space-y-1.5 rounded-lg border border-soft p-2" data-testid={`link-${i}`}>
+                <li key={l.id} className="space-y-1.5 rounded-ds-md border border-ds-line p-2" data-testid={`link-${i}`}>
                   <div className="grid grid-cols-[1fr_56px_1fr] gap-1.5">
                     <Select aria-label={`Origem da relação ${i + 1}`} className="h-8 text-xs" value={l.from} onChange={e => setLink(i, { from: e.target.value })}>{variables.map(v => <option key={v.id} value={v.id}>{v.label}</option>)}</Select>
                     <Select aria-label={`Polaridade da relação ${i + 1}`} className="h-8 px-2 text-xs" value={l.polarity} onChange={e => setLink(i, { polarity: e.target.value as '+' | '-' })}><option value="+">+</option><option value="-">−</option></Select>

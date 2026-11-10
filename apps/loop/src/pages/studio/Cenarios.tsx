@@ -44,8 +44,8 @@ export function Cenarios() {
                 {applied.map(a => {
                   const added = a.change === 'added', removed = a.change === 'removed', base = p.activities.find(x => x.id === a.id);
                   return (
-                    <li key={a.id} className="flex flex-wrap items-center gap-2 rounded-lg border border-soft px-2.5 py-1.5" data-testid={`scn-step-${a.id}`}>
-                      <span className={cn('min-w-[160px] flex-1 text-[13px] font-semibold', removed && 'text-muted line-through')}>{a.label}{added && <Badge tone="green" className="ml-1.5">novo</Badge>}</span>
+                    <li key={a.id} className="flex flex-wrap items-center gap-2 rounded-ds-md border border-ds-line px-2.5 py-1.5" data-testid={`scn-step-${a.id}`}>
+                      <span className={cn('min-w-[160px] flex-1 text-[13px] font-semibold', removed && 'text-ds-muted line-through')}>{a.label}{added && <Badge tone="green" className="ml-1.5">novo</Badge>}</span>
                       <Select aria-label={`Responsável de ${a.label} no cenário ${key}`} className="h-8 w-auto max-w-[220px] text-xs" disabled={removed}
                         value={a.ownerId === 'auto' || p.people.some(y => y.id === a.ownerId) ? a.ownerId : ''}
                         onChange={e => { const v = e.target.value; setOps(o => {
@@ -63,7 +63,7 @@ export function Cenarios() {
                   );
                 })}
               </ul>
-              <form className="mt-3 grid gap-2 rounded-xl border border-dashed border-line-strong p-3 sm:grid-cols-[1fr_1fr_1fr_auto] sm:items-end" aria-label="Adicionar etapa ao cenário"
+              <form className="mt-3 grid gap-2 rounded-ds-lg border border-dashed border-ds-line-strong p-3 sm:grid-cols-[1fr_1fr_1fr_auto] sm:items-end" aria-label="Adicionar etapa ao cenário"
                 onSubmit={e => { e.preventDefault(); const label = add.label.trim(); if (!label) return; setOps(o => { o.push({ op: 'add', id: uid('op'), afterId: add.after, label, ownerId: add.owner }); }); setAdd({ ...add, label: '' }); notify(`Etapa adicionada ao cenário ${key}.`); }}>
                 <div><Label htmlFor="add-label">Nova etapa</Label><Input id="add-label" className="h-9" value={add.label} onChange={e => setAdd({ ...add, label: e.target.value })} placeholder="Ex.: Validar pedido" /></div>
                 <div><Label htmlFor="add-after">Depois de</Label><Select id="add-after" className="h-9" value={add.after} onChange={e => setAdd({ ...add, after: e.target.value })}><option value="start">Início</option>{applied.filter(a => a.change !== 'removed').map(a => <option key={a.id} value={a.id}>{a.label}</option>)}</Select></div>
