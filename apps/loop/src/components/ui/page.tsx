@@ -16,7 +16,7 @@ export function PageHeader({ eyebrow, title, lead, actions, size = 'md' }: { eye
 
 export const Notice = ({ children, tone = 'neutral', className }: { children: ReactNode; tone?: 'neutral' | 'red' | 'purple' | 'green'; className?: string }) => (
   <div role="note" className={cn('rounded-xl border px-4 py-3 text-[13px] leading-relaxed',
-    tone === 'red' ? 'border-[#f4d8da] bg-red-soft text-[#8f2228]' : tone === 'purple' ? 'border-[#e2d3ee] bg-purple-soft text-[#5c3a7c]' : tone === 'green' ? 'border-[#cfe6dc] bg-green-soft text-[#1d5c4a]' : 'border-stroke bg-soft text-[#444]', className)}>{children}</div>
+    tone === 'red' ? 'border-red-line bg-red-soft text-red-deep' : tone === 'purple' ? 'border-purple-line bg-purple-soft text-purple-deep' : tone === 'green' ? 'border-green-line bg-green-soft text-green-deep' : 'border-stroke bg-soft text-ink-soft', className)}>{children}</div>
 );
 
-export const Empty = ({ children }: { children: ReactNode }) => <div className="rounded-xl border border-dashed border-[#c9c9c9] bg-paper px-5 py-8 text-center text-[13px] text-muted">{children}</div>;
+export const Empty = ({ children }: { children: ReactNode }) => <div className="rounded-xl border border-dashed border-line-strong bg-paper px-5 py-8 text-center text-[13px] text-muted">{children}</div>;

@@ -41,7 +41,7 @@ export function Home() {
       </Card>
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         {AREAS.map(([e, t, d, to]) => (
-          <Link key={to} to={to} className="group block no-underline"><Card className="h-full p-4 transition-colors group-hover:border-[#c9c9c9]"><Eyebrow>{e}</Eyebrow><CardTitle className="mt-1.5 group-hover:text-red">{t}</CardTitle><Muted className="mt-1">{d}</Muted></Card></Link>
+          <Link key={to} to={to} className="group block no-underline"><Card className="h-full p-4 transition-colors group-hover:border-line-strong"><Eyebrow>{e}</Eyebrow><CardTitle className="mt-1.5 group-hover:text-red">{t}</CardTitle><Muted className="mt-1">{d}</Muted></Card></Link>
         ))}
       </div>
     </>

@@ -75,7 +75,7 @@ export function BpmMap({ project }: { project?: Project }) {
                       return (
                         <li key={n}>
                           <button onClick={() => open(n)} aria-pressed={n === sel} aria-label={`Atividade ${n}: ${x.title}`}
-                            className={cn('h-full w-full rounded-xl border bg-paper p-3 text-left transition-shadow', n === sel ? 'border-red shadow-[0_0_0_3px_#c9303815]' : 'border-[#e3e3e3] hover:border-[#c9c9c9]')}>
+                            className={cn('h-full w-full rounded-xl border bg-paper p-3 text-left transition-shadow', n === sel ? 'border-red shadow-[0_0_0_3px_#c9303815]' : 'border-soft hover:border-line-strong')}>
                             <div className="mb-1 flex items-center justify-between gap-2"><span className="text-[11px] font-extrabold text-muted">{String(n).padStart(2, '0')}</span>
                               {editable && <span className={cn('text-[10.5px] font-bold', n < cur ? 'text-green' : n === cur ? 'text-red' : 'text-transparent')}>{n < cur ? '✓ aceita' : n === cur ? '● atual' : '·'}</span>}</div>
                             <span className="block text-[13px] font-bold leading-snug">{x.title}</span>
@@ -122,7 +122,7 @@ export function BpmMap({ project }: { project?: Project }) {
                   {BPM.phases.map(ph => (
                     <td key={ph.id} className="border-l border-soft p-2 align-top">
                       {ph.steps.map(n => BPM.steps[n - 1]).filter(x => x.owner === k).map(x => (
-                        <button key={x.n} onClick={() => open(x.n)} className="mb-1.5 block w-full rounded-lg border border-stroke bg-soft px-2 py-1.5 text-left text-[11.5px] font-semibold hover:border-[#c9c9c9]">{String(x.n).padStart(2, '0')} · {x.title}</button>
+                        <button key={x.n} onClick={() => open(x.n)} className="mb-1.5 block w-full rounded-lg border border-stroke bg-soft px-2 py-1.5 text-left text-[11.5px] font-semibold hover:border-line-strong">{String(x.n).padStart(2, '0')} · {x.title}</button>
                       ))}
                     </td>
                   ))}

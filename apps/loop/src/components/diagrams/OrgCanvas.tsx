@@ -12,7 +12,7 @@ const hidden = '!h-1 !w-1 !min-w-0 !border-0 !bg-transparent';
 const OrgNode = memo(({ data }: NodeProps<Node<OrgData>>) => (
   <div className={cn('flex h-[64px] w-[168px] flex-col justify-center bg-paper px-3 shadow-sm',
     data.kind === 'equipe' ? 'rounded-[22px]' : data.kind === 'area' ? 'rounded-[4px]' : 'rounded-[11px]',
-    data.selected ? 'border-2 border-red bg-red-soft' : data.pending ? 'border-[1.5px] border-dashed border-[#9a9a9a]' : 'border-[1.5px] border-[#d9d9d9]')}>
+    data.selected ? 'border-2 border-red bg-red-soft' : data.pending ? 'border-[1.5px] border-dashed border-line-strong' : 'border-[1.5px] border-stroke')}>
     <Handle type="target" position={Position.Top} className={hidden} />
     <span className={cn('text-[9px] font-extrabold tracking-[0.08em]', data.pending ? 'text-red' : 'text-muted')}>{data.kind.toUpperCase()}{data.pending ? ' · A CONFIRMAR' : ''}</span>
     <span className="truncate text-[12px] font-bold text-ink">{data.name || '(sem nome)'}</span>
@@ -55,7 +55,7 @@ export function OrgCanvas({ people, selectedId, onPick, height = 440, ariaLabel 
       return { id: p.id, type: 'org', position, draggable: false, ariaLabel: `${p.name}, ${p.role}`, data: { name: p.name, role: p.role, kind: p.kind, pending, selected: p.id === selectedId } };
     });
     if (loose.length) ns.push({ id: 'pending-label', position: { x: 0, y: treeBottom + 40 }, data: { label: 'Reporte a confirmar' }, type: 'default', selectable: false, draggable: false, style: { border: 0, background: 'transparent', width: 240, padding: 0, fontSize: 11, fontWeight: 700, color: 'var(--color-muted)', textAlign: 'left', boxShadow: 'none' } });
-    const es: Edge[] = s.edges.filter(e => placedIds.has(e.from)).map((e, i) => ({ id: 'o' + i, source: e.from, target: e.to, type: 'smoothstep', style: { stroke: '#bdbdbd', strokeWidth: 1.6 } }));
+    const es: Edge[] = s.edges.filter(e => placedIds.has(e.from)).map((e, i) => ({ id: 'o' + i, source: e.from, target: e.to, type: 'smoothstep', style: { stroke: 'var(--color-line-strong)', strokeWidth: 1.6 } }));
     return { nodes: ns, edges: es };
   }, [people, placedIds, pos, s.edges, selectedId]);
 
@@ -64,7 +64,7 @@ export function OrgCanvas({ people, selectedId, onPick, height = 440, ariaLabel 
       <ReactFlow key={pos.size} nodes={nodes} edges={edges} nodeTypes={nodeTypes} fitView fitViewOptions={{ padding: 0.12 }} minZoom={0.15} maxZoom={1.6}
         nodesDraggable={false} nodesConnectable={false} zoomOnScroll={false} preventScrolling={false}
         onNodeClick={(_, n) => { if (onPick && n.type === 'org') onPick(n.id); }} proOptions={{ hideAttribution: true }}>
-        <Background gap={24} color="#eeeeee" />
+        <Background gap={24} color="var(--color-soft)" />
         <Controls showInteractive={false} className="no-print" />
       </ReactFlow>
     </div>

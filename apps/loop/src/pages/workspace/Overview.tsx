@@ -36,7 +36,7 @@ export function Overview() {
         <Eyebrow className="mb-2 mt-5">Módulos</Eyebrow>
         <div className="grid gap-2.5 sm:grid-cols-2 xl:grid-cols-4">
           {modules.map(([t, s, st]) => (
-            <Link key={t} to={base + s} className="group block rounded-xl border border-stroke bg-paper p-3.5 no-underline hover:border-[#c9c9c9]"><CardTitle className="text-[13.5px] group-hover:text-red">{t}</CardTitle><Muted className="mt-2 text-xs">{st}</Muted></Link>
+            <Link key={t} to={base + s} className="group block rounded-xl border border-stroke bg-paper p-3.5 no-underline hover:border-line-strong"><CardTitle className="text-[13.5px] group-hover:text-red">{t}</CardTitle><Muted className="mt-2 text-xs">{st}</Muted></Link>
           ))}
         </div>
       </Card>
