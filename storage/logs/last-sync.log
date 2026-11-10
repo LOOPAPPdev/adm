@@ -1,9 +1,0 @@
-2026-11-10T11:42:03.493Z [anthropics-skills] DISCOVER/FETCH
-2026-11-10T11:42:04.224Z [anthropics-skills] 19 itens descobertos @ 2c5958ecac
-2026-11-10T11:42:04.224Z [claude-plugins-official] DISCOVER/FETCH
-2026-11-10T11:42:04.854Z [claude-plugins-official] 317 itens descobertos @ dceb15d508
-2026-11-10T11:42:04.856Z [claude-plugins-official] 5 duplicado(s) mesclado(s)
-2026-11-10T11:42:04.856Z [mcp-reference-servers] DISCOVER/FETCH
-2026-11-10T11:42:05.310Z [mcp-reference-servers] 20 itens descobertos @ 36380287ed
-2026-11-10T11:42:05.332Z INDEX sem mudanças (idempotente)
-2026-11-10T11:42:05.335Z PUBLISH → apps/web/src/data/registry.json
