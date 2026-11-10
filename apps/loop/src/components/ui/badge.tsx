@@ -8,11 +8,11 @@ export const badgeVariants = cva('inline-flex items-center gap-1 rounded-full px
   variants: {
     tone: {
       neutral: 'border border-stroke bg-soft text-ink',
-      dashed: 'border border-dashed border-[#b5b5b5] bg-paper text-muted',
-      red: 'border border-[#f4d8da] bg-red-soft text-red',
-      blue: 'border border-[#d5e1f3] bg-blue-soft text-blue',
-      purple: 'border border-[#e2d3ee] bg-purple-soft text-purple',
-      green: 'border border-[#cfe6dc] bg-green-soft text-green'
+      dashed: 'border border-dashed border-line-strong bg-paper text-muted',
+      red: 'border border-red-line bg-red-soft text-red',
+      blue: 'border border-blue-line bg-blue-soft text-blue',
+      purple: 'border border-purple-line bg-purple-soft text-purple',
+      green: 'border border-green-line bg-green-soft text-green'
     }
   },
   defaultVariants: { tone: 'neutral' }

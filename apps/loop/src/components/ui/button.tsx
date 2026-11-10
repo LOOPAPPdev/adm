@@ -8,11 +8,11 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-ink text-white hover:bg-[#2b2b2b] hover:text-white',
-        outline: 'border border-stroke bg-paper text-ink hover:border-[#c9c9c9] hover:text-ink',
+        primary: 'bg-ink text-white hover:bg-ink-hover hover:text-white',
+        outline: 'border border-stroke bg-paper text-ink hover:border-line-strong hover:text-ink',
         ghost: 'bg-transparent text-ink hover:bg-soft hover:text-ink',
-        danger: 'border border-[#f4d8da] bg-red-soft text-red hover:bg-[#ffe3e5] hover:text-red',
-        success: 'border border-[#cfe6dc] bg-green-soft text-green hover:bg-[#dcefe6] hover:text-green'
+        danger: 'border border-alert-line bg-alert-soft text-alert hover:bg-alert-line hover:text-alert',
+        success: 'border border-green-line bg-green-soft text-green hover:bg-green-hover hover:text-green'
       },
       size: { sm: 'h-8 px-3 text-xs', md: 'h-10 px-4 text-[13px]', lg: 'h-11 px-5 text-sm', icon: 'h-9 w-9' }
     },

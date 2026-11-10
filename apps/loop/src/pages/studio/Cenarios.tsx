@@ -63,7 +63,7 @@ export function Cenarios() {
                   );
                 })}
               </ul>
-              <form className="mt-3 grid gap-2 rounded-xl border border-dashed border-[#c9c9c9] p-3 sm:grid-cols-[1fr_1fr_1fr_auto] sm:items-end" aria-label="Adicionar etapa ao cenário"
+              <form className="mt-3 grid gap-2 rounded-xl border border-dashed border-line-strong p-3 sm:grid-cols-[1fr_1fr_1fr_auto] sm:items-end" aria-label="Adicionar etapa ao cenário"
                 onSubmit={e => { e.preventDefault(); const label = add.label.trim(); if (!label) return; setOps(o => { o.push({ op: 'add', id: uid('op'), afterId: add.after, label, ownerId: add.owner }); }); setAdd({ ...add, label: '' }); notify(`Etapa adicionada ao cenário ${key}.`); }}>
                 <div><Label htmlFor="add-label">Nova etapa</Label><Input id="add-label" className="h-9" value={add.label} onChange={e => setAdd({ ...add, label: e.target.value })} placeholder="Ex.: Validar pedido" /></div>
                 <div><Label htmlFor="add-after">Depois de</Label><Select id="add-after" className="h-9" value={add.after} onChange={e => setAdd({ ...add, after: e.target.value })}><option value="start">Início</option>{applied.filter(a => a.change !== 'removed').map(a => <option key={a.id} value={a.id}>{a.label}</option>)}</Select></div>

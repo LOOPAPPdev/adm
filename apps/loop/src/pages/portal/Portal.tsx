@@ -35,7 +35,7 @@ export function Portal() {
           {BPM.phases.map(ph => {
             const done = ph.steps.every(n => n < cur), now = !done && ph.steps.some(n => n <= cur);
             return (
-              <li key={ph.id} className={cn('rounded-xl border p-2.5', done ? 'border-[#cfe6dc] bg-green-soft' : now ? 'border-red bg-red-soft' : 'border-stroke bg-paper')}>
+              <li key={ph.id} className={cn('rounded-xl border p-2.5', done ? 'border-green-line bg-green-soft' : now ? 'border-red bg-red-soft' : 'border-stroke bg-paper')}>
                 <span className="eyebrow">{ph.tag}</span><span className="mt-0.5 block text-[12px] font-bold leading-tight">{ph.title}</span>
                 <span className={cn('mt-1 block text-[10.5px] font-bold', done ? 'text-green' : now ? 'text-red' : 'text-muted')}>{done ? 'concluída' : now ? 'em andamento' : 'próxima'}</span>
               </li>

@@ -1,7 +1,7 @@
 import { forwardRef, type InputHTMLAttributes, type LabelHTMLAttributes, type SelectHTMLAttributes, type TextareaHTMLAttributes } from 'react';
 import { cn } from '@/lib/cn';
 
-const base = 'w-full rounded-[10px] border border-stroke bg-paper px-3 text-[13px] text-ink placeholder:text-[#9a9a9a] focus:border-[#bdbdbd] focus:outline-none aria-[invalid=true]:border-red';
+const base = 'w-full rounded-[10px] border border-stroke bg-paper px-3 text-[13px] text-ink placeholder:text-line-strong focus:border-line-strong focus:outline-none aria-[invalid=true]:border-red';
 
 export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(({ className, ...p }, ref) => <input ref={ref} className={cn(base, 'h-10', className)} {...p} />);
 Input.displayName = 'Input';

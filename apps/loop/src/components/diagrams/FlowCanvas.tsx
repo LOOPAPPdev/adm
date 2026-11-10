@@ -11,7 +11,7 @@ const hidden = '!h-1 !w-1 !min-w-0 !border-0 !bg-transparent';
 
 const FlowNode = memo(({ data }: NodeProps<Node<FlowData>>) => {
   const { kind, active, selected, change } = data;
-  const ring = active ? 'border-2 border-red bg-red-soft' : selected ? 'border-2 border-ink' : change === 'added' ? 'border-[1.5px] border-green' : change === 'reassigned' ? 'border-[1.5px] border-purple' : kind === 'task' ? 'border-[1.5px] border-[#d9d9d9]' : 'border-[1.5px] border-ink';
+  const ring = active ? 'border-2 border-red bg-red-soft' : selected ? 'border-2 border-ink' : change === 'added' ? 'border-[1.5px] border-green' : change === 'reassigned' ? 'border-[1.5px] border-purple' : kind === 'task' ? 'border-[1.5px] border-stroke' : 'border-[1.5px] border-ink';
   const pulse = active && <motion.span aria-hidden className="pointer-events-none absolute inset-[-6px] rounded-[inherit] border-2 border-red" initial={{ opacity: 0.6, scale: 0.96 }} animate={{ opacity: 0, scale: 1.12 }} transition={{ duration: 1, repeat: Infinity }} />;
   if (kind === 'task') {
     return (
@@ -42,7 +42,7 @@ const FlowNode = memo(({ data }: NodeProps<Node<FlowData>>) => {
 FlowNode.displayName = 'FlowNode';
 
 const LaneNode = memo(({ data }: NodeProps<Node<LaneData>>) => (
-  <div className={cn('h-full border-b border-stroke', data.auto ? 'bg-purple-soft/70' : data.even ? 'bg-paper' : 'bg-[#fafafa]')} style={{ width: data.width }}>
+  <div className={cn('h-full border-b border-stroke', data.auto ? 'bg-purple-soft/70' : data.even ? 'bg-paper' : 'bg-tint')} style={{ width: data.width }}>
     <span className="absolute left-3 top-1/2 max-w-[150px] -translate-y-1/2 text-[11px] font-bold uppercase leading-tight tracking-[0.04em] text-muted">{data.label}</span>
   </div>
 ));
@@ -76,7 +76,7 @@ export function FlowCanvas({ layout, activeIdx = -1, selectedId, onPick, height,
     });
     const es: Edge[] = layout.nodes.slice(1).map((n, i) => {
       const lit = activeIdx >= 0 && i + 1 <= activeIdx;
-      return { id: `e${i}`, source: layout.nodes[i].id, target: n.id, type: 'smoothstep', animated: i + 1 === activeIdx, style: { stroke: lit ? 'var(--color-red)' : '#bdbdbd', strokeWidth: 2 }, markerEnd: { type: 'arrowclosed', color: lit ? '#c93038' : '#bdbdbd', width: 16, height: 16 } } as Edge;
+      return { id: `e${i}`, source: layout.nodes[i].id, target: n.id, type: 'smoothstep', animated: i + 1 === activeIdx, style: { stroke: lit ? 'var(--color-red)' : 'var(--color-line-strong)', strokeWidth: 2 }, markerEnd: { type: 'arrowclosed', color: lit ? 'var(--color-red)' : 'var(--color-line-strong)', width: 16, height: 16 } } as Edge;
     });
     return { nodes: [...lanes, ...ns], edges: es };
   }, [layout, activeIdx, selectedId]);
@@ -86,7 +86,7 @@ export function FlowCanvas({ layout, activeIdx = -1, selectedId, onPick, height,
       <ReactFlow key={h} nodes={nodes} edges={edges} nodeTypes={nodeTypes} fitView fitViewOptions={{ padding: 0.08 }} minZoom={0.15} maxZoom={1.6}
         nodesDraggable={false} nodesConnectable={false} elementsSelectable={!!onPick} panOnScroll={false} zoomOnScroll={false} preventScrolling={false}
         onNodeClick={(_, n) => { if (onPick && n.type === 'flow') onPick(n.id); }} proOptions={{ hideAttribution: true }}>
-        <Background gap={24} color="#eeeeee" />
+        <Background gap={24} color="var(--color-soft)" />
         <Controls showInteractive={false} className="no-print" />
       </ReactFlow>
     </div>

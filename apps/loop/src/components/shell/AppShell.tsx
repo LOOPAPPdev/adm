@@ -31,17 +31,17 @@ export function AppShell() {
       <a href="#conteudo" className="sr-only focus:not-sr-only">Ir para o conteúdo</a>
       <header className="mb-3.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2.5 border-b border-stroke pb-4">
         <Link to="/" className="text-sm font-extrabold tracking-[0.1em] text-ink no-underline">LOOP <b className="text-red">/</b> {area.word}</Link>
-        <nav aria-label="Principal" className="-mx-1 flex max-w-full gap-1 overflow-x-auto rounded-xl bg-[#ededed] p-1">
+        <nav aria-label="Principal" className="-mx-1 flex max-w-full gap-1 overflow-x-auto rounded-xl bg-soft p-1">
           {NAV.map(n => (
             <NavLink key={n.to} to={n.to} end={n.end}
               className={({ isActive }) => cn('whitespace-nowrap rounded-[9px] px-3 py-1.5 text-xs font-semibold no-underline',
-                isActive || (n.to === '/app/projetos' && /^\/(app\/projetos\/|portal\/)/.test(pathname)) ? 'bg-paper text-ink shadow-[0_1px_5px_#0001]' : 'text-[#555] hover:text-ink')}>{n.label}</NavLink>
+                isActive || (n.to === '/app/projetos' && /^\/(app\/projetos\/|portal\/)/.test(pathname)) ? 'bg-paper text-ink shadow-[0_1px_5px_#0001]' : 'text-ink-soft hover:text-ink')}>{n.label}</NavLink>
           ))}
         </nav>
         <span className="hidden text-[11px] font-semibold tracking-[0.07em] text-muted lg:inline">{area.stamp}</span>
       </header>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-x-3.5 gap-y-1 text-xs text-muted">
-        <span><b className="text-[#8f2228]">MODO DEMO</b> · dados só neste navegador · sem backend, sem autenticação, sem envio de mensagens, sem IA em execução</span>
+        <span><b className="text-red-deep">MODO DEMO</b> · dados só neste navegador · sem backend, sem autenticação, sem envio de mensagens, sem IA em execução</span>
         <span aria-live="polite">{saveError ? 'Falha ao salvar no armazenamento local.' : savedAt ? `Salvo localmente às ${savedAt}${repo?.kind === 'memory' ? ' (memória da aba)' : ''}` : 'Alterações são salvas automaticamente neste navegador.'}</span>
       </div>
       <AnimatePresence mode="wait">

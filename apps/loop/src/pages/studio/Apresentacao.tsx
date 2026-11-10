@@ -40,13 +40,13 @@ export function Apresentacao() {
       </div>
       <ol className="m-0 grid list-none gap-3 p-0 sm:grid-cols-2 xl:grid-cols-3">
         {SLIDES.map(([l, e, t], i) => (
-          <li key={l}><button onClick={() => open(i)} className="h-full w-full rounded-[var(--radius-card)] border border-stroke bg-paper p-4 text-left shadow-card hover:border-[#c9c9c9]">
+          <li key={l}><button onClick={() => open(i)} className="h-full w-full rounded-[var(--radius-card)] border border-stroke bg-paper p-4 text-left shadow-card hover:border-line-strong">
             <Eyebrow>{String(i + 1).padStart(2, '0')} · {l}</Eyebrow><CardTitle className="mt-1.5">{e}</CardTitle><Muted className="mt-1">{t}</Muted></button></li>
         ))}
       </ol>
       <AnimatePresence>
         {on && (
-          <motion.div role="dialog" aria-modal="true" aria-label={`Apresentação: ${SLIDES[slide][1]}`} className="fixed inset-0 z-40 flex flex-col bg-bg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.div role="dialog" aria-modal="true" aria-label={`Apresentação: ${SLIDES[slide][1]}`} className="fixed inset-0 z-40 flex flex-col bg-canvas" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-stroke bg-paper px-5 py-3">
               <div className="min-w-0"><Eyebrow>{SLIDES[slide][1]} · {p.name}</Eyebrow><h2 className="m-0 truncate text-[clamp(18px,2.6vw,28px)] font-extrabold tracking-tight">{SLIDES[slide][2]}</h2></div>
               <div className="flex items-center gap-2">
