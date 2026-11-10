@@ -1,0 +1,102 @@
+/* Risco Cognitivo — color tokens. Light (white canvas) is the default; dark is data-theme="dark".
+   Derived from the Nocturne Apple-edition system (Programaex/Design) with the brand brain palette added. */
+:root, [data-theme="light"] {
+  color-scheme: light;
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  /* Neutral ramp — Apple greys, 100 light → 900 dark */
+  --color-neutral-100: #f5f5f7;
+  --color-neutral-200: #e8e8ed;
+  --color-neutral-300: #d2d2d7;
+  --color-neutral-400: #a1a1a6;
+  --color-neutral-500: #86868b;
+  --color-neutral-600: #6e6e73;
+  --color-neutral-700: #424245;
+  --color-neutral-800: #333336;
+  --color-neutral-900: #1d1d1f;
+
+  /* Accent ramp — the interaction blue */
+  --color-accent-100: #eff7ff;
+  --color-accent-200: #cfe6ff;
+  --color-accent-300: #94c8ff;
+  --color-accent-400: #2997ff;
+  --color-accent-500: #1784f1;
+  --color-accent-600: #0071e3;
+  --color-accent-700: #0066cc;
+  --color-accent-800: #003a77;
+  --color-accent-900: #001d3d;
+
+  /* Brand brain palette — sampled from assets/logo/brain-mark.png.
+     Illustration / anatomy-region coding ONLY; never for UI actions or text. */
+  --brain-blue: #429fe8;     /* frontal lobe lobe-shape */
+  --brain-pink: #f08de7;     /* parietal/occipital lobe-shape */
+  --brain-yellow: #f8d800;   /* temporal lobe-shape */
+  --brain-green: #488600;    /* blue × yellow overlap */
+  --brain-violet: #4054e9;   /* blue × pink overlap */
+  --brain-orange: #f58200;   /* pink × yellow overlap */
+
+  /* Roles — LIGHT (default) */
+  --color-bg: #ffffff;
+  --color-surface: #f5f5f7;
+  --color-surface-raised: #ffffff;
+  --color-text: #1d1d1f;
+  --color-text-muted: #6e6e73;
+  --color-accent: #0071e3;
+  --color-on-accent: #ffffff;
+  --color-link: #0066cc;
+  --color-divider: color-mix(in srgb, var(--color-text) 16%, transparent);
+  --color-scrim: color-mix(in srgb, #000000 40%, transparent);
+
+  --color-success: #248a3d;
+  --color-warning: #b25000;
+  --color-danger: #d70015;
+
+  /* Inverse band — on light it is the black scene */
+  --color-section: #000000;
+  --color-section-glow: #1d1d1f;
+  --color-section-ghost: #424245;
+  --color-on-section: #f5f5f7;
+
+  --tag-accent-bg: var(--color-accent-100);
+  --tag-accent-fg: var(--color-accent-700);
+  --tag-neutral-bg: var(--color-neutral-200);
+  --tag-neutral-fg: var(--color-neutral-900);
+  --image-blend: multiply; /* @kind other */
+
+  /* Semantic aliases */
+  --text-body-color: var(--color-text);
+  --text-secondary: var(--color-text-muted);
+  --surface-page: var(--color-bg);
+  --surface-card: var(--color-surface);
+  --surface-elevated: var(--color-surface-raised);
+  --action-primary: var(--color-accent);
+  --action-primary-hover: var(--color-accent-700);
+  --action-primary-press: var(--color-accent-800);
+  --focus-ring: var(--color-accent);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #000000;
+  --color-surface: #1d1d1f;
+  --color-surface-raised: #333336;
+  --color-text: #f5f5f7;
+  --color-text-muted: #a1a1a6;
+  --color-link: #2997ff;
+  --color-divider: color-mix(in srgb, var(--color-text) 24%, transparent);
+  --color-scrim: color-mix(in srgb, #000000 60%, transparent);
+  --color-success: #30d158;
+  --color-warning: #ff9f0a;
+  --color-danger: #ff453a;
+  --color-section: #f5f5f7;
+  --color-section-glow: #ffffff;
+  --color-section-ghost: #d2d2d7;
+  --color-on-section: #1d1d1f;
+  --tag-accent-bg: var(--color-accent-800);
+  --tag-accent-fg: var(--color-accent-100);
+  --tag-neutral-bg: var(--color-neutral-800);
+  --tag-neutral-fg: var(--color-neutral-100);
+  --image-blend: lighten; /* @kind other */
+}
+[data-theme] { background: var(--color-bg); color: var(--color-text); }

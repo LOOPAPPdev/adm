@@ -14,6 +14,7 @@ storage/
   reports/        import-report.md (contagens e itens não verificados)  ← versionado
   checkouts/      clones rasos das fontes                               ← ignorado pelo Git
   mirrors/        espelhos de código sob demanda                        ← ignorado pelo Git
+design-system/   tokens, componentes e padrões compartilhados (fonte única de estilo de todos os apps)
 docs/
   adicionar-fonte.md   como adicionar fontes e tipos
   diagrama-cld/        documentos do Diagrama CLD

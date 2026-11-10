@@ -41,13 +41,13 @@ function useSaved() {
 	return { saved, toggle, storageError };
 }
 
-const badge = "inline-flex items-center rounded-full border px-2 py-0.5 text-xs";
+const badge = "inline-flex items-center rounded-ds-pill border px-2 py-0.5 font-mono text-[11px]";
 const statusStyle: Record<Status, string> = {
-	verified: "border-emerald-600 text-emerald-700 dark:text-emerald-400",
-	available: "border-sky-600 text-sky-700 dark:text-sky-400",
-	external: "border-zinc-500 text-zinc-600 dark:text-zinc-400",
-	restricted: "border-amber-600 text-amber-700 dark:text-amber-400",
-	error: "border-red-600 text-red-700 dark:text-red-400",
+	verified: "border-ds-success text-ds-success",
+	available: "border-ds-accent text-ds-link",
+	external: "border-ds-line text-ds-muted text-ds-muted",
+	restricted: "border-ds-warning text-ds-warning",
+	error: "border-ds-danger text-ds-danger",
 };
 const statusLabel: Record<Status, string> = {
 	verified: "verificado",
@@ -111,24 +111,25 @@ export function Directory({ resources, sources, generatedAt }: { resources: Reso
 	const counts = (t: Tab) => (t === "all" ? resources.length : t === "sources" ? sources.length : t === "installed" ? saved.length : resources.filter((r) => r.type === t).length);
 
 	const toggleCompare = (id: string) => setCompare((c) => (c.includes(id) ? c.filter((x) => x !== id) : c.length >= 3 ? c : [...c, id]));
-	const selects = "rounded-md border border-zinc-300 bg-transparent px-2 py-1.5 text-sm dark:border-zinc-700";
+	const selects = "rounded-ds-md border border-ds-line bg-ds-bg px-3 py-2 text-sm text-ds-text focus-visible:outline-2 focus-visible:outline-ds-accent";
 
 	return (
 		<div className="mx-auto max-w-6xl px-4 py-6">
 			<header className="mb-4">
-				<h1 className="text-2xl font-semibold">ADM · Diretório de Skills, Plugins e MCP Servers</h1>
-				<p className="text-sm text-zinc-600 dark:text-zinc-400">
+				<p className="mb-1 font-mono text-xs uppercase tracking-[0.08em] text-ds-muted">Loop App · ADM</p>
+				<h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Diretório de Skills, Plugins e MCP Servers</h1>
+				<p className="text-sm text-ds-muted">
 					{resources.length} recursos do Anthropic Directory · índice gerado em {new Date(generatedAt).toLocaleString("pt-BR")}. Nenhum item é instalado ou executado por esta página.
 				</p>
 			</header>
 
-			<nav aria-label="Tipos de recurso" className="mb-4 flex gap-1 overflow-x-auto border-b border-zinc-200 dark:border-zinc-800">
+			<nav aria-label="Tipos de recurso" className="mb-4 flex gap-1 overflow-x-auto border-b border-ds-line">
 				{TABS.map((t) => (
 					<button
 						key={t.id}
 						onClick={() => setTab(t.id)}
 						aria-current={tab === t.id ? "page" : undefined}
-						className={`whitespace-nowrap px-3 py-2 text-sm ${tab === t.id ? "border-b-2 border-foreground font-semibold" : "text-zinc-600 dark:text-zinc-400"}`}
+						className={`whitespace-nowrap px-3 py-2 text-sm ${tab === t.id ? "border-b-2 border-ds-accent font-semibold text-ds-text" : "text-ds-muted"}`}
 					>
 						{t.label} <span className="text-xs opacity-70">{counts(t.id)}</span>
 					</button>
@@ -166,34 +167,34 @@ export function Directory({ resources, sources, generatedAt }: { resources: Reso
 						</select>
 					</div>
 
-					{storageError && <p role="alert" className="mb-2 text-sm text-amber-700">Armazenamento local indisponível: itens salvos não serão persistidos.</p>}
+					{storageError && <p role="alert" className="mb-2 text-sm text-ds-warning">Armazenamento local indisponível: itens salvos não serão persistidos.</p>}
 					<div className="mb-2 flex items-center justify-between text-sm" aria-live="polite">
 						<span>{filtered.length} resultado(s)</span>
-						{compare.length > 1 && <button onClick={() => setShowCompare(true)} className="rounded-md border px-3 py-1">Comparar ({compare.length})</button>}
+						{compare.length > 1 && <button onClick={() => setShowCompare(true)} className="rounded-ds-pill border border-ds-line px-4 py-1.5">Comparar ({compare.length})</button>}
 					</div>
 
 					{view.length === 0 ? (
-						<p className="rounded-md border border-dashed p-8 text-center text-zinc-600 dark:text-zinc-400">
+						<p className="rounded-ds-lg border border-dashed border-ds-line p-8 text-center text-ds-muted">
 							{tab === "installed" ? "Nada salvo ainda. Use “Salvar” em um recurso." : "Nenhum recurso corresponde aos filtros."}
 						</p>
 					) : (
 						<ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
 							{view.map((r) => (
-								<li key={r.id} className="flex flex-col rounded-lg border border-zinc-200 p-3 dark:border-zinc-800">
+								<li key={r.id} className="flex min-w-0 flex-col rounded-ds-lg border border-ds-line bg-ds-raised p-4 [overflow-wrap:anywhere]">
 									<button onClick={() => setOpen(r)} className="text-left">
-										<h2 className="font-semibold">{r.displayName ?? r.name}</h2>
+										<h2 className="text-[17px] leading-snug font-semibold">{r.displayName ?? r.name}</h2>
 									</button>
-									<p className="mt-1 line-clamp-3 flex-1 text-sm text-zinc-600 dark:text-zinc-400">{r.description}</p>
+									<p className="mt-1 line-clamp-3 flex-1 text-sm text-ds-muted">{r.description}</p>
 									<div className="mt-2 flex flex-wrap gap-1">
-										<span className={`${badge} border-zinc-400`}>{r.type}</span>
+										<span className={`${badge} border-ds-line text-ds-muted`}>{r.type}</span>
 										<span className={`${badge} ${statusStyle[r.status]}`}>{statusLabel[r.status]}</span>
-										<span className={`${badge} border-zinc-400`}>{r.official ? "oficial" : "terceiro"}</span>
-										{r.license && <span className={`${badge} border-zinc-400`}>{r.license}</span>}
+										<span className={`${badge} border-ds-line text-ds-muted`}>{r.official ? "oficial" : "terceiro"}</span>
+										{r.license && <span className={`${badge} border-ds-line text-ds-muted`}>{r.license}</span>}
 									</div>
-									<p className="mt-2 text-xs text-zinc-500">{r.author} · {r.provider} · verificado {r.lastSynced?.slice(0, 10)}</p>
+									<p className="mt-2 text-xs text-ds-muted">{r.author} · {r.provider} · verificado {r.lastSynced?.slice(0, 10)}</p>
 									<div className="mt-2 flex gap-2 text-sm">
-										<button onClick={() => setOpen(r)} className="underline">Detalhes</button>
-										<button onClick={() => toggle(r.id)} aria-pressed={saved.includes(r.id)} className="underline">{saved.includes(r.id) ? "Salvo ✓" : "Salvar"}</button>
+										<button onClick={() => setOpen(r)} className="text-ds-link hover:underline">Detalhes</button>
+										<button onClick={() => toggle(r.id)} aria-pressed={saved.includes(r.id)} className="text-ds-link hover:underline">{saved.includes(r.id) ? "Salvo ✓" : "Salvar"}</button>
 										<label className="ml-auto flex items-center gap-1">
 											<input type="checkbox" checked={compare.includes(r.id)} onChange={() => toggleCompare(r.id)} /> comparar
 										</label>
@@ -204,9 +205,9 @@ export function Directory({ resources, sources, generatedAt }: { resources: Reso
 					)}
 
 					<div className="mt-4 flex items-center justify-center gap-3 text-sm">
-						<button disabled={page <= 1} onClick={() => setPage(page - 1)} className="rounded-md border px-3 py-1 disabled:opacity-40">Anterior</button>
+						<button disabled={page <= 1} onClick={() => setPage(page - 1)} className="rounded-ds-pill border border-ds-line px-4 py-1.5 disabled:opacity-40">Anterior</button>
 						<span>Página {page} de {pages}</span>
-						<button disabled={page >= pages} onClick={() => setPage(page + 1)} className="rounded-md border px-3 py-1 disabled:opacity-40">Próxima</button>
+						<button disabled={page >= pages} onClick={() => setPage(page + 1)} className="rounded-ds-pill border border-ds-line px-4 py-1.5 disabled:opacity-40">Próxima</button>
 					</div>
 				</>
 			)}
@@ -225,10 +226,10 @@ function Modal({ title, onClose, children }: { title: string; onClose: () => voi
 	}, [onClose]);
 	return (
 		<div className="fixed inset-0 z-10 flex items-end justify-center bg-black/50 sm:items-center" onClick={onClose}>
-			<div role="dialog" aria-modal="true" aria-label={title} onClick={(e) => e.stopPropagation()} className="max-h-[90vh] w-full max-w-3xl overflow-auto rounded-t-xl bg-background p-5 sm:rounded-xl">
+			<div role="dialog" aria-modal="true" aria-label={title} onClick={(e) => e.stopPropagation()} className="max-h-[90vh] w-full max-w-3xl overflow-auto rounded-t-[var(--radius-xl)] bg-ds-raised p-6 sm:rounded-[var(--radius-xl)]">
 				<div className="mb-3 flex items-start justify-between gap-4">
 					<h2 className="text-xl font-semibold">{title}</h2>
-					<button autoFocus onClick={onClose} aria-label="Fechar" className="rounded-md border px-2 py-1">✕</button>
+					<button autoFocus onClick={onClose} aria-label="Fechar" className="rounded-ds-pill border border-ds-line px-3 py-1">✕</button>
 				</div>
 				{children}
 			</div>
@@ -247,11 +248,11 @@ function Details({ r, onClose }: { r: Resource; onClose: () => void }) {
 			setCopied(false);
 		}
 	};
-	const row = (k: string, v: React.ReactNode) => v ? <div className="grid grid-cols-[9rem_1fr] gap-2 py-1 text-sm"><dt className="text-zinc-500">{k}</dt><dd className="break-words">{v}</dd></div> : null;
+	const row = (k: string, v: React.ReactNode) => v ? <div className="grid grid-cols-[9rem_1fr] gap-2 py-1 text-sm"><dt className="text-ds-muted">{k}</dt><dd className="break-words">{v}</dd></div> : null;
 	return (
 		<Modal title={r.name} onClose={onClose}>
 			<p className="mb-3 text-sm">{r.description}</p>
-			<dl className="divide-y divide-zinc-200 dark:divide-zinc-800">
+			<dl className="divide-y divide-ds-line">
 				{row("Tipo / status", `${r.type} · ${statusLabel[r.status]}${r.statusReason ? ` — ${r.statusReason}` : ""}`)}
 				{row("Autor", `${r.author} (${r.official ? "oficial" : "terceiro"})`)}
 				{row("Fonte", r.provider)}
@@ -266,27 +267,27 @@ function Details({ r, onClose }: { r: Resource; onClose: () => void }) {
 				{row("Removido em", r.missingSince)}
 			</dl>
 
-			<section className={`mt-4 rounded-md border p-3 text-sm ${r.security.risk === "high" ? "border-red-600" : r.security.risk === "medium" ? "border-amber-600" : "border-emerald-600"}`}>
+			<section className={`mt-4 rounded-ds-md border p-3 text-sm ${r.security.risk === "high" ? "border-ds-danger" : r.security.risk === "medium" ? "border-ds-warning" : "border-ds-success"}`}>
 				<h3 className="font-semibold">Segurança · risco {r.security.risk}{r.security.requiresApproval ? " · exige aprovação explícita" : ""}</h3>
 				<ul className="list-disc pl-5">{r.security.notes.map((n) => <li key={n}>{n}</li>)}</ul>
-				<p className="mt-1 text-xs text-zinc-500">Heurística estática sobre a listagem de arquivos; o código de terceiros não foi executado nem auditado.</p>
+				<p className="mt-1 text-xs text-ds-muted">Heurística estática sobre a listagem de arquivos; o código de terceiros não foi executado nem auditado.</p>
 			</section>
 
 			{r.installation && (
 				<section className="mt-4">
 					<h3 className="mb-1 font-semibold">Instalação (manual)</h3>
-					<pre className="overflow-x-auto rounded-md bg-zinc-100 p-2 text-xs dark:bg-zinc-900">{r.installation}</pre>
-					<button onClick={copy} className="mt-1 rounded-md border px-3 py-1 text-sm">{copied ? "Copiado ✓" : "Copiar comando"}</button>
-					<span className="ml-2 text-xs text-zinc-500">Revise permissões e dependências acima antes de executar.</span>
+					<pre className="overflow-x-auto rounded-ds-md bg-ds-surface p-2 font-mono text-xs">{r.installation}</pre>
+					<button onClick={copy} className="mt-1 rounded-ds-pill border border-ds-line px-4 py-1.5 text-sm">{copied ? "Copiado ✓" : "Copiar comando"}</button>
+					<span className="ml-2 text-xs text-ds-muted">Revise permissões e dependências acima antes de executar.</span>
 				</section>
 			)}
 
 			<div className="mt-4 flex flex-wrap gap-3 text-sm">
-				<a className="underline" href={r.sourceUrl} target="_blank" rel="noreferrer noopener">Ver fonte original ↗</a>
-				{r.repositoryUrl && <a className="underline" href={r.repositoryUrl} target="_blank" rel="noreferrer noopener">Repositório ↗</a>}
-				<button onClick={() => setManifest(!manifest)} className="underline">{manifest ? "Ocultar" : "Pré-visualizar"} manifesto</button>
+				<a className="text-ds-link hover:underline" href={r.sourceUrl} target="_blank" rel="noreferrer noopener">Ver fonte original ↗</a>
+				{r.repositoryUrl && <a className="text-ds-link hover:underline" href={r.repositoryUrl} target="_blank" rel="noreferrer noopener">Repositório ↗</a>}
+				<button onClick={() => setManifest(!manifest)} className="text-ds-link hover:underline">{manifest ? "Ocultar" : "Pré-visualizar"} manifesto</button>
 			</div>
-			{manifest && <pre className="mt-2 max-h-72 overflow-auto rounded-md bg-zinc-100 p-2 text-xs dark:bg-zinc-900">{JSON.stringify({ manifestPath: r.manifestPath, provenance: r.provenance, licensing: r.licensing, aliases: r.aliases }, null, 2)}</pre>}
+			{manifest && <pre className="mt-2 max-h-72 overflow-auto rounded-ds-md bg-ds-surface p-2 font-mono text-xs">{JSON.stringify({ manifestPath: r.manifestPath, provenance: r.provenance, licensing: r.licensing, aliases: r.aliases }, null, 2)}</pre>}
 		</Modal>
 	);
 }
@@ -303,7 +304,7 @@ function Compare({ items, onClose }: { items: Resource[]; onClose: () => void })
 			<div className="overflow-x-auto">
 				<table className="w-full text-left text-sm">
 					<thead><tr><th scope="col" />{items.map((r) => <th key={r.id} scope="col" className="p-2">{r.name}</th>)}</tr></thead>
-					<tbody>{rows.map(([k, f]) => <tr key={k} className="border-t border-zinc-200 dark:border-zinc-800"><th scope="row" className="p-2 text-zinc-500">{k}</th>{items.map((r) => <td key={r.id} className="p-2">{f(r)}</td>)}</tr>)}</tbody>
+					<tbody>{rows.map(([k, f]) => <tr key={k} className="border-t border-ds-line"><th scope="row" className="p-2 text-ds-muted">{k}</th>{items.map((r) => <td key={r.id} className="p-2">{f(r)}</td>)}</tr>)}</tbody>
 				</table>
 			</div>
 		</Modal>
@@ -316,13 +317,13 @@ function SourcesView({ sources, resources }: { sources: Source[]; resources: Res
 			{sources.map((s) => {
 				const n = resources.filter((r) => r.provider === s.id).length;
 				return (
-					<li key={s.id} className="rounded-lg border border-zinc-200 p-3 dark:border-zinc-800">
+					<li key={s.id} className="rounded-ds-lg border border-ds-line bg-ds-raised p-4">
 						<div className="flex flex-wrap items-center gap-2">
-							<a href={s.url} target="_blank" rel="noreferrer noopener" className="font-semibold underline">{s.name} ↗</a>
-							<span className={`${badge} ${s.adapter ? "border-emerald-600" : "border-zinc-500"}`}>{s.adapter ? `${n} recursos indexados` : "sem adapter"}</span>
+							<a href={s.url} target="_blank" rel="noreferrer noopener" className="font-semibold text-ds-link hover:underline">{s.name} ↗</a>
+							<span className={`${badge} ${s.adapter ? "border-ds-success" : "border-ds-line text-ds-muted"}`}>{s.adapter ? `${n} recursos indexados` : "sem adapter"}</span>
 						</div>
-						<p className="text-sm text-zinc-600 dark:text-zinc-400">{s.method}</p>
-						{s.limitation && <p className="text-sm text-amber-700 dark:text-amber-400">Limitação: {s.limitation}</p>}
+						<p className="text-sm text-ds-muted">{s.method}</p>
+						{s.limitation && <p className="text-sm text-ds-warning">Limitação: {s.limitation}</p>}
 					</li>
 				);
 			})}
