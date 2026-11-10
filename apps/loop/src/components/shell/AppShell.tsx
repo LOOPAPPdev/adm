@@ -27,36 +27,35 @@ export function AppShell() {
   useEffect(() => { document.title = `LOOP · ${area.word.charAt(0) + area.word.slice(1).toLowerCase()}`; }, [area.word]);
 
   return (
-    <div className="mx-auto max-w-[1550px] px-4 pb-14 pt-5 sm:px-6">
+    <div className="min-h-screen bg-ds-bg">
       <a href="#conteudo" className="sr-only focus:not-sr-only">Ir para o conteúdo</a>
-      <header className="mb-3.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2.5 border-b border-stroke pb-4">
-        <Link to="/" className="text-sm font-extrabold tracking-[0.1em] text-ink no-underline">LOOP <b className="text-red">/</b> {area.word}</Link>
-        <nav aria-label="Principal" className="-mx-1 flex max-w-full gap-1 overflow-x-auto rounded-xl bg-soft p-1">
-          {NAV.map(n => (
-            <NavLink key={n.to} to={n.to} end={n.end}
-              className={({ isActive }) => cn('whitespace-nowrap rounded-[9px] px-3 py-1.5 text-xs font-semibold no-underline',
-                isActive || (n.to === '/app/projetos' && /^\/(app\/projetos\/|portal\/)/.test(pathname)) ? 'bg-paper text-ink shadow-[0_1px_5px_#0001]' : 'text-ink-soft hover:text-ink')}>{n.label}</NavLink>
-          ))}
-        </nav>
-        <span className="hidden text-[11px] font-semibold tracking-[0.07em] text-muted lg:inline">{area.stamp}</span>
+      {/* Design-system navigation bar (.nav): sticky, translucent, hairline divider */}
+      <header className="nav gap-4 overflow-x-auto px-4 sm:px-6">
+        <Link to="/" className="nav-brand shrink-0 no-underline">LOOP <span className="text-ds-muted">· {area.word.charAt(0) + area.word.slice(1).toLowerCase()}</span></Link>
+        {NAV.map(n => (
+          <NavLink key={n.to} to={n.to} end={n.end}
+            className={({ isActive }) => cn('shrink-0', (isActive || (n.to === '/app/projetos' && /^\/(app\/projetos\/|portal\/)/.test(pathname))) && 'is-on')}>{n.label}</NavLink>
+        ))}
       </header>
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-x-3.5 gap-y-1 text-xs text-muted">
-        <span><b className="text-red-deep">MODO DEMO</b> · dados só neste navegador · sem backend, sem autenticação, sem envio de mensagens, sem IA em execução</span>
-        <span aria-live="polite">{saveError ? 'Falha ao salvar no armazenamento local.' : savedAt ? `Salvo localmente às ${savedAt}${repo?.kind === 'memory' ? ' (memória da aba)' : ''}` : 'Alterações são salvas automaticamente neste navegador.'}</span>
+      <div className="mx-auto max-w-[1200px] px-4 pb-16 pt-6 sm:px-6">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-ds-micro text-ds-muted">
+          <span><span className="eyebrow text-ds-accent">Modo demo</span> · dados só neste navegador · sem backend, sem autenticação, sem envio de mensagens, sem IA em execução</span>
+          <span aria-live="polite">{saveError ? 'Falha ao salvar no armazenamento local.' : savedAt ? `Salvo localmente às ${savedAt}${repo?.kind === 'memory' ? ' (memória da aba)' : ''}` : 'Alterações são salvas automaticamente neste navegador.'}</span>
+        </div>
+        <AnimatePresence mode="wait">
+          <motion.main id="conteudo" key={pathname.split('/').slice(0, 4).join('/')} initial={reduce ? false : { opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={reduce ? undefined : { opacity: 0 }} transition={{ duration: 0.18 }}>
+            <Outlet />
+          </motion.main>
+        </AnimatePresence>
+        <footer className="mt-16 flex flex-wrap justify-between gap-3 border-t border-ds-line pt-6 text-ds-micro text-ds-muted">
+          <span>LOOP · protótipo de front-end · estados e aprovações são locais e demonstrativos. <span className="eyebrow">{area.stamp}</span></span>
+          <span className="flex gap-4"><Link to="/verificacao">Verificações</Link><Link to="/configuracoes">Configurações</Link><Link to="/contato">Contato</Link></span>
+        </footer>
       </div>
-      <AnimatePresence mode="wait">
-        <motion.main id="conteudo" key={pathname.split('/').slice(0, 4).join('/')} initial={reduce ? false : { opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={reduce ? undefined : { opacity: 0 }} transition={{ duration: 0.18 }}>
-          <Outlet />
-        </motion.main>
-      </AnimatePresence>
-      <footer className="mt-10 flex flex-wrap justify-between gap-3 border-t border-stroke pt-5 text-xs text-muted">
-        <span>LOOP · protótipo de front-end · estados e aprovações são locais e demonstrativos.</span>
-        <span className="flex gap-3"><Link to="/verificacao">Verificações</Link><Link to="/configuracoes">Configurações</Link><Link to="/contato">Contato</Link></span>
-      </footer>
       <AnimatePresence>
         {toast && (
           <motion.div role="status" aria-live="polite" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }}
-            className="fixed bottom-5 left-1/2 z-50 max-w-[92vw] -translate-x-1/2 rounded-xl bg-ink px-4 py-2.5 text-[13px] font-semibold text-white shadow-lg">{toast}</motion.div>
+            className="fixed bottom-6 left-1/2 z-50 max-w-[92vw] -translate-x-1/2 rounded-ds-pill bg-ds-text px-5 py-2.5 text-ds-caption text-ds-bg elev-lg">{toast}</motion.div>
         )}
       </AnimatePresence>
     </div>

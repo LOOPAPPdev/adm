@@ -75,32 +75,32 @@ export function BpmMap({ project }: { project?: Project }) {
                       return (
                         <li key={n}>
                           <button onClick={() => open(n)} aria-pressed={n === sel} aria-label={`Atividade ${n}: ${x.title}`}
-                            className={cn('h-full w-full rounded-xl border bg-paper p-3 text-left transition-shadow', n === sel ? 'border-red shadow-[0_0_0_3px_#c9303815]' : 'border-soft hover:border-line-strong')}>
-                            <div className="mb-1 flex items-center justify-between gap-2"><span className="text-[11px] font-extrabold text-muted">{String(n).padStart(2, '0')}</span>
-                              {editable && <span className={cn('text-[10.5px] font-bold', n < cur ? 'text-green' : n === cur ? 'text-red' : 'text-transparent')}>{n < cur ? '✓ aceita' : n === cur ? '● atual' : '·'}</span>}</div>
-                            <span className="block text-[13px] font-bold leading-snug">{x.title}</span>
-                            <span className="mt-0.5 block text-[11.5px] text-muted">{x.caption}</span>
+                            className={cn('h-full w-full rounded-ds-lg border bg-ds-surface p-3 text-left transition-shadow', n === sel ? 'border-ds-accent' : 'border-ds-line hover:border-ds-line-strong')}>
+                            <div className="mb-1 flex items-center justify-between gap-2"><span className="text-[11px] font-semibold text-ds-muted">{String(n).padStart(2, '0')}</span>
+                              {editable && <span className={cn('text-[10.5px] font-semibold', n < cur ? 'text-ds-success' : n === cur ? 'text-ds-accent' : 'text-transparent')}>{n < cur ? '✓ aceita' : n === cur ? '● atual' : '·'}</span>}</div>
+                            <span className="block text-[13px] font-semibold leading-snug">{x.title}</span>
+                            <span className="mt-0.5 block text-[11.5px] text-ds-muted">{x.caption}</span>
                             <Badge tone={OWNER_TONE[x.owner]} className="mt-2">{o.label}</Badge>
                           </button>
                         </li>
                       );
                     })}
                   </ol>
-                  <p className="m-0 mt-3 text-xs text-muted"><b className="text-ink">Saída:</b> {ph.output}</p>
+                  <p className="m-0 mt-3 text-xs text-ds-muted"><b className="text-ds-text">Saída:</b> {ph.output}</p>
                 </Card>
               );
             })}
           </div>
           <Card className="h-fit p-5 lg:sticky lg:top-4" aria-live="polite">
             <Eyebrow>PASSO {String(st.n).padStart(2, '0')} · FASE {sph.id}</Eyebrow>
-            <h2 className="mb-1 mt-1.5 text-xl font-extrabold tracking-tight">{st.title}</h2>
+            <h2 className="mb-1 mt-1.5 text-xl font-semibold tracking-tight">{st.title}</h2>
             <Muted>{st.desc}</Muted>
             <dl className="mt-4 space-y-2.5">
               {[['Responsável principal', BPM.owners[st.owner].label], ['Entradas', st.input], ['Processamento / ação', st.action], ['Saída / artefato', st.output], ['Gate de aceite', st.accept], ['Potencial de automação / agentes', st.automation]].map(([l, v]) => (
-                <div key={l} className="border-t border-soft pt-2"><dt className="eyebrow">{l}</dt><dd className="m-0 mt-0.5 text-[13px] leading-relaxed">{v}</dd></div>
+                <div key={l} className="border-t border-ds-line pt-2"><dt className="eyebrow">{l}</dt><dd className="m-0 mt-0.5 text-[13px] leading-relaxed">{v}</dd></div>
               ))}
             </dl>
-            {editable && <p className="mt-3 text-xs font-semibold text-muted">{sel < cur ? 'Aceita localmente.' : sel === cur ? 'Atividade atual do projeto.' : `Futura — atividade atual: ${cur}.`}</p>}
+            {editable && <p className="mt-3 text-xs font-semibold text-ds-muted">{sel < cur ? 'Aceita localmente.' : sel === cur ? 'Atividade atual do projeto.' : `Futura — atividade atual: ${cur}.`}</p>}
             {block && <Notice tone="red" className="mt-3"><b>Bloqueado.</b> {block.reason}{block.evidence && <><br />{block.evidence}</>}</Notice>}
             <div className="mt-4 flex flex-wrap gap-2">
               <Button size="sm" onClick={() => open(sel - 1)} disabled={sel === 1}><ChevronLeft size={14} /> Anterior</Button>
@@ -114,15 +114,15 @@ export function BpmMap({ project }: { project?: Project }) {
       {tab === 'raias' && (
         <Card className="overflow-x-auto p-0">
           <table className="w-full min-w-[980px] border-collapse text-left text-[12px]">
-            <thead><tr><th className="sticky left-0 bg-paper p-3 eyebrow">Raia</th>{BPM.phases.map(p => <th key={p.id} className="border-l border-soft p-3 align-bottom"><span className="eyebrow">{p.tag}</span><span className="block text-[12px] font-bold normal-case">{p.title}</span></th>)}</tr></thead>
+            <thead><tr><th className="sticky left-0 bg-ds-surface p-3 eyebrow">Raia</th>{BPM.phases.map(p => <th key={p.id} className="border-l border-ds-line p-3 align-bottom"><span className="eyebrow">{p.tag}</span><span className="block text-[12px] font-semibold normal-case">{p.title}</span></th>)}</tr></thead>
             <tbody>
               {(Object.keys(BPM.owners) as (keyof typeof BPM.owners)[]).map(k => (
-                <tr key={k} className="border-t border-stroke">
-                  <th scope="row" className="sticky left-0 bg-paper p-3 text-[12px] font-bold">{BPM.owners[k].lane}</th>
+                <tr key={k} className="border-t border-ds-line">
+                  <th scope="row" className="sticky left-0 bg-ds-surface p-3 text-[12px] font-semibold">{BPM.owners[k].lane}</th>
                   {BPM.phases.map(ph => (
-                    <td key={ph.id} className="border-l border-soft p-2 align-top">
+                    <td key={ph.id} className="border-l border-ds-line p-2 align-top">
                       {ph.steps.map(n => BPM.steps[n - 1]).filter(x => x.owner === k).map(x => (
-                        <button key={x.n} onClick={() => open(x.n)} className="mb-1.5 block w-full rounded-lg border border-stroke bg-soft px-2 py-1.5 text-left text-[11.5px] font-semibold hover:border-line-strong">{String(x.n).padStart(2, '0')} · {x.title}</button>
+                        <button key={x.n} onClick={() => open(x.n)} className="mb-1.5 block w-full rounded-ds-md border border-ds-line bg-ds-fill px-2 py-1.5 text-left text-[11.5px] font-semibold hover:border-ds-line-strong">{String(x.n).padStart(2, '0')} · {x.title}</button>
                       ))}
                     </td>
                   ))}
@@ -141,8 +141,8 @@ export function BpmMap({ project }: { project?: Project }) {
               <Card key={g.id} className="p-4" data-testid={`gate-${g.id}`}>
                 <div className="flex items-start justify-between gap-2"><Eyebrow>{g.id} · após a atividade {g.after}</Eyebrow><Badge tone={GATE_LOOK[gs][1] as Tone}>{GATE_LOOK[gs][0]}</Badge></div>
                 <CardTitle className="mt-1.5">{g.title}</CardTitle>
-                <p className="mb-1 mt-2 text-[12.5px]"><b className="text-green">Sim:</b> {g.yes}</p>
-                <p className="m-0 text-[12.5px]"><b className="text-red">Não:</b> {g.no}</p>
+                <p className="mb-1 mt-2 text-[12.5px]"><b className="text-ds-success">Sim:</b> {g.yes}</p>
+                <p className="m-0 text-[12.5px]"><b className="text-ds-accent">Não:</b> {g.no}</p>
                 <Muted className="mt-2 text-xs">Evidência: {g.evidence}</Muted>
                 {editable && (
                   <div className="mt-3 flex flex-wrap gap-1.5">
@@ -160,8 +160,8 @@ export function BpmMap({ project }: { project?: Project }) {
       {tab === 'saidas' && (
         <Card className="overflow-x-auto p-0">
           <table className="w-full min-w-[640px] border-collapse text-left text-[13px]">
-            <thead><tr className="border-b border-stroke"><th className="p-3 eyebrow">Fase</th><th className="p-3 eyebrow">Entregável</th><th className="p-3 eyebrow">Condição de saída</th></tr></thead>
-            <tbody>{BPM.phases.map(p => <tr key={p.id} className="border-b border-soft"><td className="p-3 font-bold">{p.tag}</td><td className="p-3">{p.output}</td><td className="p-3 text-muted">{p.condition}</td></tr>)}</tbody>
+            <thead><tr className="border-b border-ds-line"><th className="p-3 eyebrow">Fase</th><th className="p-3 eyebrow">Entregável</th><th className="p-3 eyebrow">Condição de saída</th></tr></thead>
+            <tbody>{BPM.phases.map(p => <tr key={p.id} className="border-b border-ds-line"><td className="p-3 font-semibold">{p.tag}</td><td className="p-3">{p.output}</td><td className="p-3 text-ds-muted">{p.condition}</td></tr>)}</tbody>
           </table>
         </Card>
       )}

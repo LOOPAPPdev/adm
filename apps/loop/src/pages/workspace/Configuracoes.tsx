@@ -29,7 +29,7 @@ export function Configuracoes() {
         <Card>
           <Eyebrow>Contratos de API (futuros)</Eyebrow>
           <Muted className="mt-2">A interface usa a porta ProjectRepository. Trocar o adaptador local pelo HttpProjectRepository não exige mudar as telas.</Muted>
-          <ul className="mb-0 mt-3 space-y-1 pl-0 font-mono text-[11.5px]" style={{ listStyle: 'none' }}>{Object.entries(API_CONTRACT).map(([k, v]) => <li key={k}><span className="text-muted">{k}:</span> {v}</li>)}</ul>
+          <ul className="mb-0 mt-3 space-y-1 pl-0 font-mono text-[11.5px]" style={{ listStyle: 'none' }}>{Object.entries(API_CONTRACT).map(([k, v]) => <li key={k}><span className="text-ds-muted">{k}:</span> {v}</li>)}</ul>
         </Card>
       </div>
     </>

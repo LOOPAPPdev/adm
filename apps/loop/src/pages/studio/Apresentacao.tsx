@@ -35,22 +35,22 @@ export function Apresentacao() {
   return (
     <>
       <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
-        <div><Eyebrow>Modo apresentação · {p.isDemo ? 'dados de exemplo' : 'rascunho local com estados de evidência'}</Eyebrow><h1 className="m-0 mt-1 text-[26px] font-extrabold tracking-tight">Roteiro da reunião com o cliente</h1><Muted>Seis etapas. Use as setas do teclado; Esc fecha.</Muted></div>
+        <div><Eyebrow>Modo apresentação · {p.isDemo ? 'dados de exemplo' : 'rascunho local com estados de evidência'}</Eyebrow><h1 className="m-0 mt-1 text-[26px] font-semibold tracking-tight">Roteiro da reunião com o cliente</h1><Muted>Seis etapas. Use as setas do teclado; Esc fecha.</Muted></div>
         <Button variant="primary" onClick={() => open(0)}><Maximize2 size={15} /> Iniciar apresentação</Button>
       </div>
       <ol className="m-0 grid list-none gap-3 p-0 sm:grid-cols-2 xl:grid-cols-3">
         {SLIDES.map(([l, e, t], i) => (
-          <li key={l}><button onClick={() => open(i)} className="h-full w-full rounded-[var(--radius-card)] border border-stroke bg-paper p-4 text-left shadow-card hover:border-line-strong">
+          <li key={l}><button onClick={() => open(i)} className="h-full w-full rounded-[var(--radius-card)] border border-ds-line bg-ds-surface p-4 text-left hover:border-ds-line-strong">
             <Eyebrow>{String(i + 1).padStart(2, '0')} · {l}</Eyebrow><CardTitle className="mt-1.5">{e}</CardTitle><Muted className="mt-1">{t}</Muted></button></li>
         ))}
       </ol>
       <AnimatePresence>
         {on && (
-          <motion.div role="dialog" aria-modal="true" aria-label={`Apresentação: ${SLIDES[slide][1]}`} className="fixed inset-0 z-40 flex flex-col bg-canvas" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-stroke bg-paper px-5 py-3">
-              <div className="min-w-0"><Eyebrow>{SLIDES[slide][1]} · {p.name}</Eyebrow><h2 className="m-0 truncate text-[clamp(18px,2.6vw,28px)] font-extrabold tracking-tight">{SLIDES[slide][2]}</h2></div>
+          <motion.div role="dialog" aria-modal="true" aria-label={`Apresentação: ${SLIDES[slide][1]}`} className="fixed inset-0 z-40 flex flex-col bg-ds-bg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ds-line bg-ds-surface px-5 py-3">
+              <div className="min-w-0"><Eyebrow>{SLIDES[slide][1]} · {p.name}</Eyebrow><h2 className="m-0 truncate text-[clamp(18px,2.6vw,28px)] font-semibold tracking-tight">{SLIDES[slide][2]}</h2></div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-muted" aria-live="polite">{slide + 1} / {SLIDES.length}</span>
+                <span className="text-xs font-semibold text-ds-muted" aria-live="polite">{slide + 1} / {SLIDES.length}</span>
                 <Button size="icon" onClick={() => go(slide - 1)} disabled={slide === 0} aria-label="Etapa anterior"><ChevronLeft size={16} /></Button>
                 <Button size="icon" onClick={() => go(slide + 1)} disabled={slide === SLIDES.length - 1} aria-label="Próxima etapa"><ChevronRight size={16} /></Button>
                 <Button size="icon" onClick={close} aria-label="Fechar apresentação"><X size={16} /></Button>
@@ -63,8 +63,8 @@ export function Apresentacao() {
                 </motion.div>
               </AnimatePresence>
             </div>
-            <nav aria-label="Etapas da apresentação" className="flex justify-center gap-1.5 border-t border-stroke bg-paper p-3">
-              {SLIDES.map(([l], i) => <button key={l} onClick={() => go(i)} aria-current={i === slide} className={i === slide ? 'rounded-full bg-ink px-3 py-1 text-xs font-bold text-white' : 'rounded-full px-3 py-1 text-xs font-semibold text-muted hover:text-ink'}>{l}</button>)}
+            <nav aria-label="Etapas da apresentação" className="flex justify-center gap-1.5 border-t border-ds-line bg-ds-surface p-3">
+              {SLIDES.map(([l], i) => <button key={l} onClick={() => go(i)} aria-current={i === slide} className={i === slide ? 'rounded-ds-pill bg-ds-text px-3 py-1 text-xs font-semibold text-white' : 'rounded-ds-pill px-3 py-1 text-xs font-semibold text-ds-muted hover:text-ds-text'}>{l}</button>)}
             </nav>
           </motion.div>
         )}
@@ -98,7 +98,7 @@ function Slide({ i }: { i: number }) {
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_380px]">
       <Card><Eyebrow className="mb-2">Lacunas ({gl.length})</Eyebrow><ul className="mb-0 mt-0 space-y-1 pl-5 text-[14px]">{gl.slice(0, 14).map(g => <li key={g}>{g}</li>)}</ul>{gl.length > 14 && <Muted className="mt-2">+ {gl.length - 14} lacunas.</Muted>}</Card>
-      <Card><Eyebrow>Próxima atividade</Eyebrow><p className="m-0 mt-1 text-lg"><b className="text-red">{nx.no}</b> {nx.title}</p><Eyebrow className="mt-4">Próximo gate</Eyebrow><p className="m-0 mt-1">{nx.gate}</p></Card>
+      <Card><Eyebrow>Próxima atividade</Eyebrow><p className="m-0 mt-1 text-lg"><b className="text-ds-accent">{nx.no}</b> {nx.title}</p><Eyebrow className="mt-4">Próximo gate</Eyebrow><p className="m-0 mt-1">{nx.gate}</p></Card>
     </div>
   );
 }

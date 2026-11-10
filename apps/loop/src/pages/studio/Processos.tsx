@@ -47,7 +47,7 @@ export function Processos() {
         {!n ? <Muted>Clique numa etapa do fluxo para ver entrada, saída e responsável.</Muted> : (
           <>
             <Eyebrow>{n.type === 'task' ? 'Tarefa' : n.type === 'gateway' ? 'Decisão' : n.type === 'start' ? 'Evento de início (B04)' : 'Evento de fim'}</Eyebrow>
-            <h2 className="mb-3 mt-1 text-lg font-extrabold">{n.label}</h2>
+            <h2 className="mb-3 mt-1 text-lg font-semibold">{n.label}</h2>
             {act && (
               <div className="mb-3 grid gap-2">
                 <div><Label htmlFor="sel-label">Nome</Label><Input id="sel-label" value={act.label} onChange={e => { const v = e.target.value; update(p.id, c => { c.activities[ai].label = v; }); }} /></div>
@@ -59,7 +59,7 @@ export function Processos() {
             )}
             <dl className="space-y-2.5">
               {[['Entrada (derivada da sequência)', i > 0 ? layout.nodes[i - 1].label : '—'], ['Saída (derivada da sequência)', i < layout.nodes.length - 1 ? layout.nodes[i + 1].label : '—'], ['Responsável', act ? ownerName(p.people, act.ownerId) : '—']].map(([l, v]) => (
-                <div key={l} className="border-t border-soft pt-2"><dt className="eyebrow">{l}</dt><dd className="m-0 mt-0.5 text-[13px]">{v}</dd></div>
+                <div key={l} className="border-t border-ds-line pt-2"><dt className="eyebrow">{l}</dt><dd className="m-0 mt-0.5 text-[13px]">{v}</dd></div>
               ))}
             </dl>
           </>

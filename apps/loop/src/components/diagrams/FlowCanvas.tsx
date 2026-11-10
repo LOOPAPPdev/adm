@@ -11,15 +11,15 @@ const hidden = '!h-1 !w-1 !min-w-0 !border-0 !bg-transparent';
 
 const FlowNode = memo(({ data }: NodeProps<Node<FlowData>>) => {
   const { kind, active, selected, change } = data;
-  const ring = active ? 'border-2 border-red bg-red-soft' : selected ? 'border-2 border-ink' : change === 'added' ? 'border-[1.5px] border-green' : change === 'reassigned' ? 'border-[1.5px] border-purple' : kind === 'task' ? 'border-[1.5px] border-stroke' : 'border-[1.5px] border-ink';
-  const pulse = active && <motion.span aria-hidden className="pointer-events-none absolute inset-[-6px] rounded-[inherit] border-2 border-red" initial={{ opacity: 0.6, scale: 0.96 }} animate={{ opacity: 0, scale: 1.12 }} transition={{ duration: 1, repeat: Infinity }} />;
+  const ring = active ? 'border-2 border-ds-accent bg-ds-accent-soft' : selected ? 'border-2 border-ds-text' : change === 'added' ? 'border-[1.5px] border-ds-success' : change === 'reassigned' ? 'border-[1.5px] border-ds-violet' : kind === 'task' ? 'border-[1.5px] border-ds-line' : 'border-[1.5px] border-ds-text';
+  const pulse = active && <motion.span aria-hidden className="pointer-events-none absolute inset-[-6px] rounded-[inherit] border-2 border-ds-accent" initial={{ opacity: 0.6, scale: 0.96 }} animate={{ opacity: 0, scale: 1.12 }} transition={{ duration: 1, repeat: Infinity }} />;
   if (kind === 'task') {
     return (
-      <div className={cn('relative flex h-[60px] w-[132px] flex-col justify-center rounded-[11px] px-2.5 shadow-sm', ring, !active && (data.auto ? 'bg-purple-soft' : 'bg-paper'))} title={`${data.label} — ${data.owner}`}>
+      <div className={cn('relative flex h-[60px] w-[132px] flex-col justify-center rounded-[11px] px-2.5 shadow-sm', ring, !active && (data.auto ? 'bg-ds-violet-soft' : 'bg-ds-surface'))} title={`${data.label} — ${data.owner}`}>
         <Handle type="target" position={Position.Left} className={hidden} />
-        {change && <span className={cn('absolute -top-2 left-2 rounded-full bg-paper px-1.5 text-[9px] font-extrabold tracking-wider', change === 'added' ? 'text-green' : 'text-purple')}>{change === 'added' ? 'NOVO' : 'REATRIBUÍDO'}</span>}
-        <span className="line-clamp-2 text-[11.5px] font-bold leading-tight text-ink">{data.label}</span>
-        <span className="mt-0.5 truncate text-[10px] text-muted">{data.owner}</span>
+        {change && <span className={cn('absolute -top-2 left-2 rounded-ds-pill bg-ds-surface px-1.5 text-[9px] font-semibold tracking-wider', change === 'added' ? 'text-ds-success' : 'text-ds-violet')}>{change === 'added' ? 'NOVO' : 'REATRIBUÍDO'}</span>}
+        <span className="line-clamp-2 text-[11.5px] font-semibold leading-tight text-ds-text">{data.label}</span>
+        <span className="mt-0.5 truncate text-[10px] text-ds-muted">{data.owner}</span>
         {pulse}
         <Handle type="source" position={Position.Right} className={hidden} />
       </div>
@@ -30,20 +30,20 @@ const FlowNode = memo(({ data }: NodeProps<Node<FlowData>>) => {
     <div className="relative flex flex-col items-center" style={{ width: 120 }}>
       <div className="relative" style={{ width: size, height: size }}>
         <Handle type="target" position={Position.Left} className={hidden} style={{ left: 0 }} />
-        <div className={cn('absolute inset-0 bg-paper', ring, kind === 'gateway' ? 'rotate-45 scale-[.74] rounded-[4px]' : 'rounded-full', kind === 'end' && !active && 'border-4', active && 'bg-red-soft')} />
-        {kind === 'gateway' && <span className="absolute inset-0 flex items-center justify-center text-[15px] font-bold text-ink">×</span>}
+        <div className={cn('absolute inset-0 bg-ds-surface', ring, kind === 'gateway' ? 'rotate-45 scale-[.74] rounded-[4px]' : 'rounded-ds-pill', kind === 'end' && !active && 'border-4', active && 'bg-ds-accent-soft')} />
+        {kind === 'gateway' && <span className="absolute inset-0 flex items-center justify-center text-[15px] font-semibold text-ds-text">×</span>}
         {pulse}
         <Handle type="source" position={Position.Right} className={hidden} style={{ right: 0 }} />
       </div>
-      <span className="mt-1 max-w-[120px] text-center text-[10.5px] font-semibold leading-tight text-ink">{data.label}</span>
+      <span className="mt-1 max-w-[120px] text-center text-[10.5px] font-semibold leading-tight text-ds-text">{data.label}</span>
     </div>
   );
 });
 FlowNode.displayName = 'FlowNode';
 
 const LaneNode = memo(({ data }: NodeProps<Node<LaneData>>) => (
-  <div className={cn('h-full border-b border-stroke', data.auto ? 'bg-purple-soft/70' : data.even ? 'bg-paper' : 'bg-tint')} style={{ width: data.width }}>
-    <span className="absolute left-3 top-1/2 max-w-[150px] -translate-y-1/2 text-[11px] font-bold uppercase leading-tight tracking-[0.04em] text-muted">{data.label}</span>
+  <div className={cn('h-full border-b border-ds-line', data.auto ? 'bg-ds-violet-soft/70' : data.even ? 'bg-ds-surface' : 'bg-ds-surface')} style={{ width: data.width }}>
+    <span className="absolute left-3 top-1/2 max-w-[150px] -translate-y-1/2 text-[11px] font-semibold uppercase leading-tight tracking-[0.04em] text-ds-muted">{data.label}</span>
   </div>
 ));
 LaneNode.displayName = 'LaneNode';
@@ -76,17 +76,17 @@ export function FlowCanvas({ layout, activeIdx = -1, selectedId, onPick, height,
     });
     const es: Edge[] = layout.nodes.slice(1).map((n, i) => {
       const lit = activeIdx >= 0 && i + 1 <= activeIdx;
-      return { id: `e${i}`, source: layout.nodes[i].id, target: n.id, type: 'smoothstep', animated: i + 1 === activeIdx, style: { stroke: lit ? 'var(--color-red)' : 'var(--color-line-strong)', strokeWidth: 2 }, markerEnd: { type: 'arrowclosed', color: lit ? 'var(--color-red)' : 'var(--color-line-strong)', width: 16, height: 16 } } as Edge;
+      return { id: `e${i}`, source: layout.nodes[i].id, target: n.id, type: 'smoothstep', animated: i + 1 === activeIdx, style: { stroke: lit ? 'var(--color-accent)' : 'var(--color-neutral-400)', strokeWidth: 2 }, markerEnd: { type: 'arrowclosed', color: lit ? 'var(--color-accent)' : 'var(--color-neutral-400)', width: 16, height: 16 } } as Edge;
     });
     return { nodes: [...lanes, ...ns], edges: es };
   }, [layout, activeIdx, selectedId]);
 
   return (
-    <div ref={box} role="figure" aria-label={ariaLabel} className="w-full overflow-hidden rounded-xl border border-stroke bg-paper" style={{ height: h }}>
+    <div ref={box} role="figure" aria-label={ariaLabel} className="w-full overflow-hidden rounded-ds-lg border border-ds-line bg-ds-surface" style={{ height: h }}>
       <ReactFlow key={h} nodes={nodes} edges={edges} nodeTypes={nodeTypes} fitView fitViewOptions={{ padding: 0.08 }} minZoom={0.15} maxZoom={1.6}
         nodesDraggable={false} nodesConnectable={false} elementsSelectable={!!onPick} panOnScroll={false} zoomOnScroll={false} preventScrolling={false}
         onNodeClick={(_, n) => { if (onPick && n.type === 'flow') onPick(n.id); }} proOptions={{ hideAttribution: true }}>
-        <Background gap={24} color="var(--color-soft)" />
+        <Background gap={24} color="var(--color-neutral-200)" />
         <Controls showInteractive={false} className="no-print" />
       </ReactFlow>
     </div>

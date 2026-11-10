@@ -23,16 +23,16 @@ export function Entregaveis() {
         </>} />
       <Card className="overflow-x-auto p-0">
         <table className="w-full min-w-[720px] border-collapse text-left text-[13px]">
-          <thead><tr className="border-b border-stroke"><th className="p-3 eyebrow">Fase</th><th className="p-3 eyebrow">Entregável</th><th className="p-3 eyebrow">Gate</th><th className="p-3 eyebrow">Estado</th></tr></thead>
+          <thead><tr className="border-b border-ds-line"><th className="p-3 eyebrow">Fase</th><th className="p-3 eyebrow">Entregável</th><th className="p-3 eyebrow">Gate</th><th className="p-3 eyebrow">Estado</th></tr></thead>
           <tbody>
             {BPM.phases.map(ph => {
               const done = ph.steps.every(n => n < cur), started = ph.steps.some(n => n <= cur);
               const g = ph.gate ? p.consulting.gates[ph.gate] : undefined;
               return (
-                <tr key={ph.id} className="border-b border-soft">
-                  <td className="p-3"><b>{ph.tag}</b><span className="block text-xs text-muted">{ph.title}</span></td>
+                <tr key={ph.id} className="border-b border-ds-line">
+                  <td className="p-3"><b>{ph.tag}</b><span className="block text-xs text-ds-muted">{ph.title}</span></td>
                   <td className="p-3">{ph.output}</td>
-                  <td className="p-3">{ph.gate ? <Badge tone={g === 'approved' ? 'green' : g === 'rejected' ? 'red' : 'neutral'}>{ph.gate} · {g === 'approved' ? 'aprovado' : g === 'rejected' ? 'não aprovado' : 'pendente'}</Badge> : <span className="text-muted">—</span>}</td>
+                  <td className="p-3">{ph.gate ? <Badge tone={g === 'approved' ? 'green' : g === 'rejected' ? 'red' : 'neutral'}>{ph.gate} · {g === 'approved' ? 'aprovado' : g === 'rejected' ? 'não aprovado' : 'pendente'}</Badge> : <span className="text-ds-muted">—</span>}</td>
                   <td className="p-3"><Badge tone={done ? 'green' : started ? 'blue' : 'dashed'}>{done ? 'Concluída' : started ? 'Em andamento' : 'Não iniciada'}</Badge></td>
                 </tr>
               );

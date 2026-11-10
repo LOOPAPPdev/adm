@@ -17,8 +17,8 @@ export function BpmnView({ xml, height = 420 }: { xml: string; height?: number }
   }, [xml]);
   return (
     <div>
-      <div ref={ref} role="figure" aria-label="Diagrama BPMN 2.0 (somente leitura)" className="w-full overflow-hidden rounded-xl border border-stroke bg-paper" style={{ height }} />
-      {err && <p role="alert" className="mt-2 text-xs text-red">Falha ao renderizar BPMN: {err}</p>}
+      <div ref={ref} role="figure" aria-label="Diagrama BPMN 2.0 (somente leitura)" className="w-full overflow-hidden rounded-ds-lg border border-ds-line bg-ds-surface" style={{ height }} />
+      {err && <p role="alert" className="mt-2 text-xs text-ds-accent">Falha ao renderizar BPMN: {err}</p>}
     </div>
   );
 }

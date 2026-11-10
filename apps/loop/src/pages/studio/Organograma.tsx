@@ -23,12 +23,12 @@ export function Organograma() {
         {!sp ? <Muted>Selecione um nó para ver função, reporte e atividades associadas.</Muted> : (
           <>
             <Eyebrow>{sp.kind === 'area' ? 'área' : sp.kind}</Eyebrow>
-            <h2 className="mb-3 mt-1 text-lg font-extrabold">{sp.name || '(sem nome)'}</h2>
+            <h2 className="mb-3 mt-1 text-lg font-semibold">{sp.name || '(sem nome)'}</h2>
             <dl className="space-y-2.5">
               {[['Função', sp.role || 'não informada'], ['Reporta a', sp.reportsTo === 'top' ? 'Topo da estrutura' : boss ? boss.name : 'a confirmar'],
                 ['Atividades associadas (B05)', p.activities.filter(a => a.ownerId === sp.id).map(a => a.label).join(' · ') || 'Nenhuma atividade declarada para este nó.'],
                 ['Subordinados diretos', p.people.filter(x => x.reportsTo === sp.id).map(x => x.name).join(' · ') || 'nenhum declarado']].map(([l, v]) => (
-                <div key={l} className="border-t border-soft pt-2"><dt className="eyebrow">{l}</dt><dd className="m-0 mt-0.5 text-[13px]">{v}</dd></div>
+                <div key={l} className="border-t border-ds-line pt-2"><dt className="eyebrow">{l}</dt><dd className="m-0 mt-0.5 text-[13px]">{v}</dd></div>
               ))}
             </dl>
           </>

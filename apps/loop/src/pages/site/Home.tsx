@@ -26,22 +26,22 @@ export function Home() {
           actions={<><ButtonLink to="/demonstracao" variant="primary" size="lg">Ver demonstração</ButtonLink><ButtonLink to="/metodo" size="lg">Conhecer o método</ButtonLink><ButtonLink to="/contato" size="lg">Contato</ButtonLink></>} />
         <dl className="m-0 grid grid-cols-3 gap-2">
           {[[BPM.steps.length, 'Atividades'], [BPM.phases.length, 'Fases'], [BPM.gates.length, 'Gates']].map(([v, l]) => (
-            <Card key={l} className="min-w-[88px] p-3.5"><dd className="m-0 text-[22px] font-extrabold">{String(v).padStart(2, '0')}</dd><dt className="eyebrow mt-1 text-[10px]">{l}</dt></Card>
+            <Card key={l} className="min-w-[88px] p-3.5"><dd className="m-0 text-[22px] font-semibold">{String(v).padStart(2, '0')}</dd><dt className="eyebrow mt-1 text-[10px]">{l}</dt></Card>
           ))}
         </dl>
       </div>
       <Card className="mb-4">
         <Eyebrow>Como funciona</Eyebrow>
-        <h2 className="mb-4 mt-1 text-lg font-bold">Um modelo, quatro projeções</h2>
+        <h2 className="mb-4 mt-1 text-lg font-semibold">Um modelo, quatro projeções</h2>
         <ol className="m-0 grid list-none gap-3 p-0 sm:grid-cols-2 lg:grid-cols-4">
           {HOW.map(([n, t, d]) => (
-            <li key={n} className="rounded-xl border border-stroke border-t-2 border-t-red p-3.5"><Eyebrow>{n}</Eyebrow><CardTitle className="mt-1.5 text-[14px]">{t}</CardTitle><Muted className="mt-1 text-xs">{d}</Muted></li>
+            <li key={n} className="rounded-ds-lg border border-ds-line border-t-2 border-t-red p-3.5"><Eyebrow>{n}</Eyebrow><CardTitle className="mt-1.5 text-[14px]">{t}</CardTitle><Muted className="mt-1 text-xs">{d}</Muted></li>
           ))}
         </ol>
       </Card>
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         {AREAS.map(([e, t, d, to]) => (
-          <Link key={to} to={to} className="group block no-underline"><Card className="h-full p-4 transition-colors group-hover:border-line-strong"><Eyebrow>{e}</Eyebrow><CardTitle className="mt-1.5 group-hover:text-red">{t}</CardTitle><Muted className="mt-1">{d}</Muted></Card></Link>
+          <Link key={to} to={to} className="group block no-underline"><Card className="h-full p-4 transition-colors group-hover:border-ds-line-strong"><Eyebrow>{e}</Eyebrow><CardTitle className="mt-1.5 group-hover:text-ds-accent">{t}</CardTitle><Muted className="mt-1">{d}</Muted></Card></Link>
         ))}
       </div>
     </>
