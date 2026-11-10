@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/design-system-1a9a97b3-bb61-48b5-a87b-a875df63c762/_ds_bundle.css">
+<link rel="stylesheet" href="_ds/design-system-1a9a97b3-bb61-48b5-a87b-a875df63c762/styles.css">
+<script src="_ds/design-system-1a9a97b3-bb61-48b5-a87b-a875df63c762/_ds_bundle.js"></script>
+<script src="cld-data.js"></script>
+<style>html,body{margin:0;height:100%;background:var(--color-bg)}a{color:var(--color-link)}a:hover{color:var(--color-text)}</style>
+</helmet>
+<div ref="{{ rootRef }}" style="height:100dvh;display:flex;flex-direction:column;font-family:var(--font-body);color:var(--color-text);overflow:hidden">
+  <div style="{{ barStyle }}">
+    <div style="display:flex;flex-direction:column;margin-right:8px;min-width:0">
+      <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-muted)">CLD · v2 · {{ modeName }}</div>
+      <div style="font-size:17px;font-weight:600;line-height:1.3;text-wrap:balance">Riscos cognitivos: problema, compensação e solução</div>
+    </div>
+    <div style="{{ rowStyle }}">
+    <div role="tablist" aria-label="Modo" style="display:flex;padding:3px;gap:2px;border-radius:12px;background:var(--color-surface);flex-shrink:0">
+      <sc-for list="{{ modes }}" as="m" hint-placeholder-count="3">
+        <button role="tab" aria-selected="{{ m.active }}" onClick="{{ m.onClick }}" style="{{ m.style }}">{{ m.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:6px;align-items:center;flex-shrink:0">
+      <span style="font-size:12px;color:var(--color-text-muted)">Camadas</span>
+      <sc-for list="{{ layerToggles }}" as="t" hint-placeholder-count="3">
+        <button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:6px;align-items:center;flex-shrink:0">
+      <span style="font-size:12px;color:var(--color-text-muted)">Loops</span>
+      <sc-for list="{{ loopChips }}" as="l" hint-placeholder-count="5">
+        <button onClick="{{ l.onClick }}" title="{{ l.name }}" style="{{ l.style }}">{{ l.label }}</button>
+      </sc-for>
+    </div>
+    <div style="{{ actStyle }}">
+      <button onClick="{{ startTour }}" style="{{ tourBtnStyle }}">Tour guiado</button>
+      <sc-if value="{{ editMode }}">
+        <sc-if value="{{ mobile }}">
+          <button onClick="{{ toggleMove }}" style="{{ moveStyle }}">{{ moveLabel }}</button>
+        </sc-if>
+        <button onClick="{{ addRed }}" style="{{ actBtn }}">+ Problema</button>
+        <button onClick="{{ addBlue }}" style="{{ actBtn }}">+ Compensação</button>
+        <button onClick="{{ addGreen }}" style="{{ actBtn }}">+ Solução</button>
+        <button onClick="{{ exportJson }}" style="{{ ghostBtn }}">Salvar arquivo</button>
+        <button onClick="{{ importJson }}" style="{{ ghostBtn }}">Abrir arquivo</button>
+        <button onClick="{{ reset }}" style="{{ ghostBtn }}">Voltar ao original</button>
+        <span aria-live="polite" style="font-size:12px;color:var(--color-text-muted);white-space:nowrap;flex-shrink:0">{{ savedLabel }}</span>
+      </sc-if>
+      <input type="file" accept=".json,application/json" ref="{{ fileRef }}" onChange="{{ onFile }}" style="display:none">
+    </div>
+    </div>
+  </div>
+  <div style="{{ mainStyle }}">
+    <div style="flex:1;overflow:auto;background:var(--color-surface);position:relative">
+      <sc-if value="{{ linking }}">
+        <div style="position:sticky;top:12px;left:12px;z-index:6;display:inline-flex;align-items:center;gap:12px;margin:12px;padding:6px 6px 6px 14px;border-radius:10px;background:var(--color-text);color:var(--color-bg);font-size:14px">
+          <span>{{ linkLabel }}</span>
+          <button onClick="{{ cancelLink }}" style="min-height:36px;padding:0 12px;border-radius:8px;border:none;background:var(--color-bg);color:var(--color-text);font:inherit;font-size:13px;font-weight:600;cursor:pointer">Cancelar</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ tip }}">
+        <div style="position:sticky;top:12px;left:12px;z-index:5;display:inline-flex;align-items:center;gap:10px;margin:12px;max-width:calc(100% - 24px);padding:6px 6px 6px 14px;border-radius:10px;background:var(--color-bg);border:1px solid var(--color-divider);box-shadow:0 4px 14px rgba(0,0,0,.08);font-size:14px">
+          <span>{{ tip }}</span>
+          <button onClick="{{ dismissTip }}" aria-label="Fechar dica" style="min-width:36px;min-height:36px;border:none;background:none;font:inherit;font-size:18px;cursor:pointer;color:var(--color-text-muted)">×</button>
+        </div>
+      </sc-if>
+      <div style="{{ legendStyle }}">
+        <span><strong style="font-weight:700">+</strong> mesmo sentido</span>
+        <span><strong style="font-weight:700;color:#d70015">−</strong> sentido oposto</span>
+        <span><strong style="font-weight:700">‖</strong> atraso</span>
+        <span style="display:flex;gap:4px;align-items:center"><span style="width:10px;height:10px;border-radius:3px;background:#fcebe8;border:1px solid #b5654f"></span>problema</span>
+        <span style="display:flex;gap:4px;align-items:center"><span style="width:10px;height:10px;border-radius:3px;background:#e8f0fb;border:1px solid #5a85c2"></span>compensação</span>
+        <span style="display:flex;gap:4px;align-items:center"><span style="width:10px;height:10px;border-radius:3px;background:#e3f6ee;border:1px solid #4aa383"></span>solução</span>
+      </div>
+      <div ref="{{ canvasRef }}" onPointerDown="{{ onCanvasDown }}" style="{{ canvasStyle }}">
+        <sc-for list="{{ bands }}" as="b" hint-placeholder-count="4">
+          <div style="{{ b.style }}"></div>
+          <div style="{{ b.labelStyle }}">{{ b.label }}</div>
+        </sc-for>
+        {{ edgesSvg }}
+        <sc-for list="{{ nodeViews }}" as="n" hint-placeholder-count="12">
+          <div onPointerDown="{{ n.onDown }}" style="{{ n.style }}">
+            <div style="{{ n.titleStyle }}">{{ n.title }}</div>
+            <div style="{{ n.subStyle }}">{{ n.sub }}</div>
+            <sc-if value="{{ n.effect }}">
+              <div style="{{ n.effectStyle }}">{{ n.effect }}</div>
+            </sc-if>
+            <sc-if value="{{ n.showSrc }}">
+              <div style="position:absolute;right:6px;top:5px;font-family:var(--font-mono);font-size:10px;color:{{ n.subInk }}">{{ n.srcTag }}</div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="{{ panelStyle }}">
+      <sc-if value="{{ mobile }}">
+        <button onClick="{{ toggleSheet }}" style="position:sticky;top:-16px;z-index:3;margin:-16px -18px 0;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:none;border-bottom:1px solid var(--color-divider);background:var(--color-bg);font:inherit;font-size:14px;font-weight:600;color:var(--color-text);cursor:pointer;border-radius:16px 16px 0 0">
+          <span style="width:36px;height:4px;border-radius:2px;background:var(--color-divider)"></span>
+          <span>{{ sheetLabel }}</span>
+        </button>
+      </sc-if>
+      <sc-if value="{{ selNode }}">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--color-text-muted)">NÓ SELECIONADO</div>
+          <button onClick="{{ clearSel }}" aria-label="Fechar" style="width:44px;height:44px;margin:-10px -10px -10px 0;border:none;background:none;border-radius:10px;font:inherit;font-size:24px;line-height:1;cursor:pointer;color:var(--color-text)">×</button>
+        </div>
+        <sc-if value="{{ readMode }}">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:20px;font-weight:600;line-height:1.3">{{ selNode.title }}</div>
+            <div style="color:var(--color-text-muted)">{{ selNode.sub }}</div>
+          </div>
+          <div style="font-size:15px">{{ selNode.note }}</div>
+          <button onClick="{{ askFromSel }}" style="min-height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--color-text);background:var(--color-bg);font:inherit;font-size:14px;font-weight:600;cursor:pointer;color:var(--color-text);text-align:left">E se “{{ selNode.title }}” mudar? Testar →</button>
+        </sc-if>
+        <sc-if value="{{ editMode }}">
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--color-text-muted)">Título
+          <x-import component-from-global-scope="RiscoCognitivoBlog.Input" value="{{ selNode.title }}" onChange="{{ setTitle }}" hint-size="100%,36px"></x-import>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--color-text-muted)">Subtítulo
+          <x-import component-from-global-scope="RiscoCognitivoBlog.Input" value="{{ selNode.sub }}" onChange="{{ setSub }}" hint-size="100%,36px"></x-import>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--color-text-muted)">Explicação
+          <x-import component-from-global-scope="RiscoCognitivoBlog.Textarea" value="{{ selNode.note }}" onChange="{{ setNote }}" rows="6" hint-size="100%,120px"></x-import>
+        </label>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--color-text-muted)">Camada</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <sc-for list="{{ layerOpts }}" as="o" hint-placeholder-count="4">
+              <button onClick="{{ o.onClick }}" style="{{ o.style }}">{{ o.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        </sc-if>
+        <sc-if value="{{ selSources.length }}">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:12px;color:var(--color-text-muted)">Fontes</div>
+            <sc-for list="{{ selSources }}" as="s" hint-placeholder-count="2">
+              <a href="{{ s.url }}" target="_blank" style="font-size:13px">[{{ s.id }}] {{ s.label }}</a>
+            </sc-for>
+          </div>
+        </sc-if>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--color-text-muted)">Ligações</div>
+          <sc-for list="{{ selLinks }}" as="k" hint-placeholder-count="2">
+            <button onClick="{{ k.onClick }}" style="text-align:left;background:none;border:1px solid var(--color-divider);border-radius:8px;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer;color:var(--color-text)">{{ k.label }}</button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ editMode }}">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <x-import component-from-global-scope="RiscoCognitivoBlog.Button" onClick="{{ startLink }}" hint-size="auto,40px">Nova ligação</x-import>
+            <x-import component-from-global-scope="RiscoCognitivoBlog.Button" variant="destructive" onClick="{{ deleteSel }}" hint-size="auto,40px">Apagar nó</x-import>
+          </div>
+        </sc-if>
+      </sc-if>
+      <sc-if value="{{ ask }}">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--color-text-muted)">E SE…?</div>
+          <button onClick="{{ clearSel }}" aria-label="Fechar" style="width:44px;height:44px;margin:-10px -10px -10px 0;border:none;background:none;border-radius:10px;font:inherit;font-size:24px;line-height:1;cursor:pointer;color:var(--color-text)">×</button>
+        </div>
+        <div style="font-size:19px;font-weight:600;line-height:1.35">{{ ask.title }}</div>
+        <sc-if value="{{ ask.pickDir }}">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <button onClick="{{ ask.up }}" style="min-height:52px;border-radius:12px;border:1px solid var(--color-text);background:var(--color-bg);font:inherit;font-size:15px;font-weight:600;cursor:pointer;color:var(--color-text)">↑ Aumentar</button>
+            <button onClick="{{ ask.down }}" style="min-height:52px;border-radius:12px;border:1px solid var(--color-text);background:var(--color-bg);font:inherit;font-size:15px;font-weight:600;cursor:pointer;color:var(--color-text)">↓ Diminuir</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ ask.question }}">
+          <div style="font-size:16px">{{ ask.question }}</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <button onClick="{{ ask.guessUp }}" style="min-height:52px;border-radius:12px;border:1px solid #7a2c1c;background:#fcebe8;font:inherit;font-size:15px;font-weight:600;cursor:pointer;color:#7a2c1c">↑ Aumenta</button>
+            <button onClick="{{ ask.guessDown }}" style="min-height:52px;border-radius:12px;border:1px solid #0f5a43;background:#e3f6ee;font:inherit;font-size:15px;font-weight:600;cursor:pointer;color:#0f5a43">↓ Diminui</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ ask.result }}">
+          <div style="{{ ask.resultStyle }}">{{ ask.result }}</div>
+          <div style="display:flex;flex-direction:column;gap:4px;font-size:14px">
+            <sc-for list="{{ ask.steps }}" as="st" hint-placeholder-count="3">
+              <div style="display:flex;gap:8px"><span style="font-family:var(--font-mono);color:var(--color-text-muted);min-width:22px">{{ st.n }}</span><span>{{ st.text }}</span></div>
+            </sc-for>
+          </div>
+          <button onClick="{{ clearSel }}" style="min-height:44px;border-radius:10px;border:1px solid var(--color-divider);background:var(--color-bg);font:inherit;font-size:14px;font-weight:600;cursor:pointer;color:var(--color-text)">Testar outro nó</button>
+        </sc-if>
+      </sc-if>
+      <sc-if value="{{ selEdge }}">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--color-text-muted)">LIGAÇÃO CAUSAL</div>
+          <button onClick="{{ clearSel }}" aria-label="Fechar" style="width:44px;height:44px;margin:-10px -10px -10px 0;border:none;background:none;border-radius:10px;font:inherit;font-size:24px;line-height:1;cursor:pointer;color:var(--color-text)">×</button>
+        </div>
+        <div style="font-size:17px;font-weight:600;line-height:1.35">{{ selEdge.fromTitle }} → {{ selEdge.toTitle }}</div>
+        <div style="color:var(--color-text-muted)">{{ selEdge.reading }}</div>
+        <sc-if value="{{ editMode }}">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <x-import component-from-global-scope="RiscoCognitivoBlog.Button" variant="outline" onClick="{{ toggleSign }}" hint-size="auto,40px">Trocar sinal ({{ selEdge.sign }})</x-import>
+            <x-import component-from-global-scope="RiscoCognitivoBlog.Button" variant="outline" onClick="{{ toggleDelay }}" hint-size="auto,40px">{{ selEdge.delayLabel }}</x-import>
+            <x-import component-from-global-scope="RiscoCognitivoBlog.Button" variant="destructive" onClick="{{ deleteSel }}" hint-size="auto,40px">Apagar</x-import>
+          </div>
+        </sc-if>
+      </sc-if>
+      <sc-if value="{{ selLoop }}">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--color-text-muted)">LOOP {{ selLoop.id }}</div>
+          <button onClick="{{ clearSel }}" aria-label="Fechar" style="width:44px;height:44px;margin:-10px -10px -10px 0;border:none;background:none;border-radius:10px;font:inherit;font-size:24px;line-height:1;cursor:pointer;color:var(--color-text)">×</button>
+        </div>
+        <div style="font-size:19px;font-weight:600">{{ selLoop.name }}</div>
+        <div>{{ selLoop.text }}</div>
+        <div style="font-family:var(--font-mono);font-size:12.5px;color:var(--color-text-muted)">{{ selLoop.chain }}</div>
+        <div style="{{ selLoop.checkStyle }}">{{ selLoop.check }}</div>
+      </sc-if>
+      <sc-if value="{{ nothingSel }}" hint-placeholder-val="{{ true }}">
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--color-text-muted)">COMO LER</div>
+        <div>O problema (vermelho) é um loop de reforço. O framework 4E (azul) compensa o déficit. Cada elemento verde emerge de uma etapa azul e atua sobre um nó vermelho, fechando loops de balanceamento.</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <button onClick="{{ startTour }}" style="min-height:48px;padding:0 16px;border-radius:12px;border:none;background:var(--color-text);color:var(--color-bg);font:inherit;font-size:15px;font-weight:600;cursor:pointer;text-align:left">Fazer o tour guiado (5 passos) →</button>
+          <button onClick="{{ goAsk }}" style="min-height:48px;padding:0 16px;border-radius:12px;border:1px solid var(--color-text);background:var(--color-bg);color:var(--color-text);font:inherit;font-size:15px;font-weight:600;cursor:pointer;text-align:left">Testar “E se…?” →</button>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--color-text-muted);margin-top:8px">DEFESA DO MODELO</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div><strong style="font-weight:600">1. O loop fecha na lacuna, não no TDAH.</strong> Os pilares não alteram o traço. O TDAH fica fora do limite como parâmetro, e as setas de correção voltam para a lacuna, as falhas e o backlog.</div>
+          <div><strong style="font-weight:600">2. Compensar, não fortalecer as F.E.</strong> Os 4E externalizam planejamento, organização e execução: “mitigar riscos cognitivos para compensar déficits e fortalecer a Execução”.</div>
+          <div><strong style="font-weight:600">3. O paradoxo fica à mostra (R2).</strong> O sistema compensatório depende da função prejudicada; a sobrecarga corrói a adesão à execução. Por isso a solução verde precisa ser de baixa fricção: um mapa visível e uma regra fixa de 3:1.</div>
+          <div><strong style="font-weight:600">4. Condicional à lacuna.</strong> Déficits executivos são “frequentemente associados” ao TDAH, não universais <a href="#" onClick="{{ openSrc6 }}">[6]</a>. Sem lacuna, os loops não se ativam.</div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--color-text-muted);margin-top:8px">FUNDAMENTAÇÃO</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div><strong style="font-weight:600">Luria</strong>: a terceira unidade funcional (lobos frontais) programa, regula e verifica a atividade. Base para Entender e para o ciclo de verificação diária [2].</div>
+          <div><strong style="font-weight:600">Vygotsky</strong>: funções superiores são mediadas por signos externos usados como ferramentas psicológicas. Base para Emitir e para o Mapa-OS [3].</div>
+          <div><strong style="font-weight:600">Barkley</strong>: o TDAH afeta o desempenho, não o conhecimento; a intervenção externaliza informação no ponto de desempenho e cria ambientes protéticos [1].</div>
+          <div><strong style="font-weight:600">PMI (PMBOK 7)</strong>: pensamento sistêmico e avaliação contínua da exposição a riscos estão entre os 12 princípios [4].</div>
+          <div><strong style="font-weight:600">Sterman</strong>: a polaridade do loop vem do número de ligações negativas; ímpar é balanceamento [5]. O editor verifica isso automaticamente.</div>
+        </div>
+        <div style="padding:12px 14px;border-radius:10px;background:var(--color-surface);font-size:13px;color:var(--color-text-muted)">As fontes sustentam os princípios. O framework 4E, a estrutura 3:1 e as polaridades do diagrama são proposições do modelo, a serem testadas com indicadores como tarefas no prazo, retrabalho e frequência de desvios.</div>
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--color-text-muted);margin-top:8px">FONTES</div>
+        <sc-for list="{{ sources }}" as="s" hint-placeholder-count="7">
+          <a href="{{ s.url }}" target="_blank" style="font-size:13px;line-height:1.4">[{{ s.id }}] {{ s.label }}</a>
+        </sc-for>
+      </sc-if>
+    </div>
+  </div>
+  <sc-if value="{{ tour }}">
+    <div role="dialog" aria-label="Tour guiado" style="{{ tour.style }}">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--color-text-muted)">PASSO {{ tour.n }} DE {{ tour.total }}</div>
+        <button onClick="{{ endTour }}" style="min-height:44px;padding:0 6px;border:none;background:none;font:inherit;font-size:13px;color:var(--color-text-muted);cursor:pointer">Pular tour</button>
+      </div>
+      <div style="display:flex;gap:4px">
+        <sc-for list="{{ tour.dots }}" as="d" hint-placeholder-count="5">
+          <span style="{{ d.style }}"></span>
+        </sc-for>
+      </div>
+      <div style="font-size:18px;font-weight:600;line-height:1.3">{{ tour.title }}</div>
+      <div style="font-size:15px;line-height:1.5">{{ tour.text }}</div>
+      <div style="display:flex;gap:8px;justify-content:flex-end">
+        <sc-if value="{{ tour.hasPrev }}">
+          <button onClick="{{ tourPrev }}" style="min-height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--color-divider);background:var(--color-bg);font:inherit;font-size:14px;font-weight:600;cursor:pointer;color:var(--color-text)">Anterior</button>
+        </sc-if>
+        <button onClick="{{ tourNext }}" style="min-height:44px;padding:0 18px;border-radius:10px;border:none;background:var(--color-text);color:var(--color-bg);font:inherit;font-size:14px;font-weight:600;cursor:pointer">{{ tour.nextLabel }}</button>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ toast }}">
+    <div role="status" style="{{ toastStyle }}">
+      <span>{{ toast.msg }}</span>
+      <button onClick="{{ undo }}" style="min-height:40px;padding:0 14px;border-radius:8px;border:none;background:var(--color-bg);color:var(--color-text);font:inherit;font-size:14px;font-weight:700;cursor:pointer">Desfazer</button>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;edgeStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;curva&quot;,&quot;reta&quot;],&quot;default&quot;:&quot;curva&quot;,&quot;tsType&quot;:&quot;'curva'|'reta'&quot;,&quot;section&quot;:&quot;Diagrama&quot;},&quot;showBands&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Diagrama&quot;},&quot;showSourceTags&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Diagrama&quot;}}">
+const KEY = 'cld-3camadas-v1';
+const DESK = { W: 220, H: 76, CW: 1420, CH: 780 }, MOB = { W: 160, H: 76, CW: 360, CH: 1500 };
+const MPOS = { falhas: [10, 70], backlog: [190, 210], lacuna: [10, 350], tdah: [10, 490], demanda: [190, 490], entender: [100, 660], estruturar: [100, 780], emitir: [100, 900], executar: [100, 1020], mapa: [10, 1170], r31: [190, 1280], ciclo: [10, 1390] };
+const MY0 = { red: 70, exo: 490, blue: 700, green: 1200 };
+const D = () => window.CLD_DATA || { layers: {}, nodes: [], edges: [], loops: [], sources: [] };
+const fresh = () => { const d = JSON.parse(JSON.stringify(D())); d.edges = d.edges.map((e, i) => ({ id: 'e' + i, ...e })); return { nodes: d.nodes, edges: d.edges, loops: d.loops }; };
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    let saved = null; try { saved = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
+    this.state = { ...(saved && saved.nodes ? saved : fresh()), sel: null, loop: null, hidden: {}, linking: false, mobile: window.innerWidth < 760, move: false, sheet: false };
+    this.canvasRef = React.createRef(); this.fileRef = React.createRef(); this.rootRef = React.createRef();
+  }
+  dim() { return this.state.mobile ? MOB : DESK; }
+  pos(n) { if (!this.state.mobile) return [n.x, n.y]; if (n.mx != null) return [n.mx, n.my]; return MPOS[n.id] || [100, MY0[n.layer] || 100]; }
+  select(sel) { this.setState(s => ({ sel, linking: false, sheet: s.mobile ? true : s.sheet })); }
+  componentDidMount() {
+    if (!this.state.nodes.length) { const t = setInterval(() => { if (window.CLD_DATA) { clearInterval(t); this.setState(fresh()); } }, 100); }
+    this.ro = new ResizeObserver(() => { const m = (this.rootRef.current ? this.rootRef.current.clientWidth : window.innerWidth) < 760; if (m !== this.state.mobile) this.setState({ mobile: m }); });
+    if (this.rootRef.current) this.ro.observe(this.rootRef.current);
+    this.mv = e => { const d = this.drag; if (!d) return; const { W, H, CW, CH } = this.dim(); const x = Math.max(0, Math.min(CW - W, e.clientX - d.ox)), y = Math.max(0, Math.min(CH - H, e.clientY - d.oy)); const m = this.state.mobile; this.setState(s => ({ nodes: s.nodes.map(n => n.id === d.id ? (m ? { ...n, mx: x, my: y } : { ...n, x, y }) : n) })); };
+    this.up = e => { if (this.drag) { this.drag = null; this.save(); } const t = this.tap; this.tap = null; if (t && Math.hypot(e.clientX - t.x, e.clientY - t.y) < 8) this.select({ t: 'n', id: t.id }); };
+    this.key = e => { if (e.key === 'Escape') this.setState({ linking: false }); };
+    window.addEventListener('pointermove', this.mv); window.addEventListener('pointerup', this.up); window.addEventListener('keydown', this.key);
+  }
+  componentWillUnmount() { if (this.ro) this.ro.disconnect(); window.removeEventListener('pointermove', this.mv); window.removeEventListener('pointerup', this.up); window.removeEventListener('keydown', this.key); }
+  save() { setTimeout(() => { const { nodes, edges, loops } = this.state; try { localStorage.setItem(KEY, JSON.stringify({ nodes, edges, loops })); } catch (e) {} }, 0); }
+  upd(fn) { this.setState(fn, () => this.save()); }
+  node(id) { return this.state.nodes.find(n => n.id === id); }
+  loopInfo(l) {
+    const es = []; let missing = false;
+    for (let i = 0; i < l.path.length; i++) { const a = l.path[i], b = l.path[(i + 1) % l.path.length]; const e = this.state.edges.find(x => x.from === a && x.to === b); if (e) es.push(e); else missing = true; }
+    const neg = es.filter(e => e.sign === '-').length; const type = neg % 2 ? 'B' : 'R';
+    return { es, missing, neg, type, ok: !missing && type === l.id[0] };
+  }
+  addNode(layer, x) { const id = 'n' + Date.now(), my = (MY0[layer] || 100) + 60 + Math.random() * 40; this.upd(s => ({ nodes: [...s.nodes, { id, layer, x, y: 360 + Math.random() * 60, mx: 100, my, title: 'Novo elemento', sub: 'descrição', note: '', src: [] }], sel: { t: 'n', id }, loop: null, sheet: s.mobile ? true : s.sheet })); }
+  edgesSvg(vis, hl) {
+    const h = React.createElement, straight = (this.props.edgeStyle ?? 'curva') === 'reta', { W, H, CW, CH } = this.dim(), mob = this.state.mobile;
+    const els = [h('defs', { key: 'd' }, ['#6b6b66', '#1d1d1f'].map((c, i) => h('marker', { key: i, id: 'ar' + i, viewBox: '0 0 10 10', refX: 9, refY: 5, markerWidth: 8, markerHeight: 8, orient: 'auto-start-reverse' }, h('path', { d: 'M0 0L10 5L0 10z', fill: c }))))];
+    this.state.edges.forEach(e => {
+      const A = vis[e.from], B = vis[e.to]; if (!A || !B) return;
+      const [Ax, Ay] = this.pos(A), [Bx, By] = this.pos(B);
+      const ax = Ax + W / 2, ay = Ay + H / 2, bx = Bx + W / 2, by = By + H / 2, dx = bx - ax, dy = by - ay, L = Math.hypot(dx, dy) || 1;
+      const k = Math.min((W / 2 + 6) / Math.abs(dx || 1e-6), (H / 2 + 6) / Math.abs(dy || 1e-6));
+      const sx = ax + dx * k, sy = ay + dy * k, ex = bx - dx * k, ey = by - dy * k, px = -dy / L, py = dx / L, bend = straight ? 0 : 28;
+      const cx = (sx + ex) / 2 + px * bend, cy = (sy + ey) / 2 + py * bend, mx = .25 * sx + .5 * cx + .25 * ex, my = .25 * sy + .5 * cy + .25 * ey;
+      const sel = this.state.sel && this.state.sel.t === 'e' && this.state.sel.id === e.id, on = !hl || hl.has(e.id), dark = sel || (hl && on);
+      const col = dark ? '#1d1d1f' : '#6b6b66', ux = dx / L, uy = dy / L, d = 'M' + sx + ' ' + sy + 'Q' + cx + ' ' + cy + ' ' + ex + ' ' + ey;
+      const pick = ev => { ev.stopPropagation(); this.select({ t: 'e', id: e.id }); };
+      els.push(h('g', { key: e.id, opacity: on ? 1 : .13, style: { cursor: 'pointer', pointerEvents: 'auto' }, onPointerDown: pick },
+        h('path', { d, fill: 'none', stroke: 'transparent', strokeWidth: mob ? 26 : 16 }),
+        h('path', { d, fill: 'none', stroke: col, strokeWidth: dark ? 3 : 2, markerEnd: 'url(#ar' + (dark ? 1 : 0) + ')' }),
+        e.delay ? h('path', { d: ['M', mx - ux * 4 + px * 9, my - uy * 4 + py * 9, 'L', mx - ux * 4 - px * 9, my - uy * 4 - py * 9, 'M', mx + ux * 4 + px * 9, my + uy * 4 + py * 9, 'L', mx + ux * 4 - px * 9, my + uy * 4 - py * 9].join(' '), stroke: col, strokeWidth: 2.5 }) : null,
+        h('circle', { cx: mx + px * 16, cy: my + py * 16, r: 10, fill: '#fff', stroke: e.sign === '-' ? '#d70015' : col, strokeWidth: 1.2 }),
+        h('text', { x: mx + px * 16, y: my + py * 16 + 4.5, textAnchor: 'middle', fontSize: 14, fontWeight: 700, fill: e.sign === '-' ? '#d70015' : col }, e.sign === '-' ? '−' : '+')));
+    });
+    return h('svg', { width: CW, height: CH, style: { position: 'absolute', left: 0, top: 0, pointerEvents: 'none', overflow: 'visible' } }, els);
+  }
+  renderVals() {
+    const { nodes, edges, loops, sel, loop, hidden, linking, mobile, move, sheet } = this.state, LY = D().layers, srcs = D().sources, { W, H, CW, CH } = this.dim();
+    const layerOf = n => n.layer === 'exo' ? 'red' : n.layer;
+    const vis = {}; nodes.forEach(n => { if (!hidden[layerOf(n)]) vis[n.id] = n; });
+    const lp = loop && loops.find(l => l.id === loop), li = lp && this.loopInfo(lp);
+    const hl = li ? new Set(li.es.map(e => e.id)) : null, hlN = lp ? new Set(lp.path) : null;
+    const showSrc = this.props.showSourceTags ?? false;
+    const nodeViews = nodes.filter(n => vis[n.id]).map(n => {
+      const c = LY[n.layer] || LY.red || {}, isSel = sel && sel.t === 'n' && sel.id === n.id, [px, py] = this.pos(n), dragOn = !mobile || move;
+      return { ...n, ink: c.ink, subInk: c.sub,
+        titleStyle: { fontSize: mobile ? 13.5 : 15, fontWeight: 600, lineHeight: 1.25, color: c.ink },
+        subStyle: { fontSize: mobile ? 11.5 : 12.5, lineHeight: 1.3, marginTop: 3, color: c.sub }, showSrc: showSrc && n.src && n.src.length, srcTag: (n.src || []).map(s => '[' + s + ']').join(''),
+        style: { position: 'absolute', left: px, top: py, width: W, height: H, boxSizing: 'border-box', padding: mobile ? '10px 11px' : '12px 14px', borderRadius: 10, background: c.bg, border: (isSel ? 2 : 1) + 'px solid ' + (isSel ? c.ink : c.stroke), boxShadow: isSel ? '0 6px 20px rgba(0,0,0,.12)' : (mobile && move ? '0 2px 0 ' + c.stroke : 'none'), cursor: linking ? 'crosshair' : (dragOn ? 'grab' : 'pointer'), userSelect: 'none', WebkitUserSelect: 'none', touchAction: dragOn || linking ? 'none' : 'pan-x pan-y', overflow: 'hidden', opacity: hlN && !hlN.has(n.id) ? .28 : 1, zIndex: 2 },
+        onDown: e => { e.stopPropagation();
+          if (linking && sel && sel.t === 'n' && sel.id !== n.id) { const id = 'e' + Date.now(); this.upd(s => ({ edges: [...s.edges, { id, from: sel.id, to: n.id, sign: '+' }], linking: false, sel: { t: 'e', id } })); return; }
+          if (!dragOn) { this.tap = { id: n.id, x: e.clientX, y: e.clientY }; return; }
+          this.drag = { id: n.id, ox: e.clientX - px, oy: e.clientY - py }; this.select({ t: 'n', id: n.id }); } };
+    });
+    const chip = (active, c) => ({ font: 'inherit', fontSize: mobile ? 13.5 : 12.5, fontWeight: 600, padding: mobile ? '0 14px' : '5px 10px', minHeight: mobile ? 40 : 0, flexShrink: 0, whiteSpace: 'nowrap', borderRadius: 999, cursor: 'pointer', border: '1px solid ' + c, background: active ? c : 'transparent', color: active ? '#fff' : c });
+    const layerToggles = [['red', 'Problema', '#b5654f'], ['blue', 'Compensação', '#5a85c2'], ['green', 'Solução', '#4aa383']].map(([k, label, c]) => ({ label, style: chip(!hidden[k], c), onClick: () => this.setState(s => ({ hidden: { ...s.hidden, [k]: !s.hidden[k] } })) }));
+    const loopChips = loops.map(l => ({ id: l.id, name: l.name, style: chip(loop === l.id, l.id[0] === 'R' ? '#7a2c1c' : '#0f5a43'), onClick: () => this.setState(s => s.loop === l.id ? { loop: null, sel: null } : { loop: l.id, sel: { t: 'l', id: l.id }, sheet: s.mobile ? true : s.sheet }) }));
+    const bd = (x, y, w, hh, c, a, label, lc) => ({ label, style: { position: 'absolute', left: x, top: y, width: w, height: hh, borderRadius: 18, background: a ? c.replace('A', '.07') : 'transparent', border: a ? '1px dashed ' + c.replace('A', '.45') : 'none' }, labelStyle: { position: 'absolute', left: x + 18, top: y + 16, fontFamily: 'var(--font-mono)', fontSize: mobile ? 11 : 12, letterSpacing: '.06em', color: lc } });
+    const sb = this.props.showBands ?? true, R = 'rgba(181,101,79,A)', B = 'rgba(90,133,194,A)', G = 'rgba(74,163,131,A)';
+    const bands = mobile
+      ? [bd(4, 16, 352, 572, R, sb, '01 · PROBLEMA', '#7a2c1c'), bd(4, 600, 352, 508, B, sb, '02 · COMPENSAÇÃO · 4E', '#1d3f73'), bd(4, 1120, 352, 364, G, sb, '03 · SOLUÇÃO EMERGENTE', '#0f5a43'), { label: 'Fora do limite (exógenos)', style: { display: 'none' }, labelStyle: { position: 'absolute', left: 14, top: 462, fontSize: 12, color: 'var(--color-text-muted)' } }]
+      : [bd(16, 16, 480, 748, R, sb, '01 · PROBLEMA', '#7a2c1c'), bd(520, 16, 420, 748, B, sb, '02 · COMPENSAÇÃO · FRAMEWORK 4E', '#1d3f73'), bd(964, 16, 440, 748, G, sb, '03 · SOLUÇÃO EMERGENTE', '#0f5a43'), { label: 'Fora do limite (exógenos)', style: { display: 'none' }, labelStyle: { position: 'absolute', left: 36, top: 620, fontSize: 12, color: 'var(--color-text-muted)' } }];
+    const layout = {
+      mobile, bands,
+      barStyle: mobile ? { display: 'flex', flexDirection: 'column', gap: 10, padding: '12px 14px 10px', borderBottom: '1px solid var(--color-divider)' } : { display: 'flex', alignItems: 'center', gap: 16, padding: '14px 20px', borderBottom: '1px solid var(--color-divider)' },
+      rowStyle: mobile ? { display: 'flex', flexWrap: 'nowrap', overflowX: 'auto', gap: 14, alignItems: 'center', margin: '0 -14px', padding: '2px 14px', WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none' } : { display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'center', flex: 1, minWidth: 0 },
+      actStyle: mobile ? { display: 'flex', gap: 6, flexShrink: 0, alignItems: 'center' } : { display: 'flex', gap: 6, marginLeft: 'auto', flexWrap: 'wrap' },
+      mainStyle: mobile ? { flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 } : { flex: 1, display: 'flex', minHeight: 0 },
+      canvasStyle: { position: 'relative', width: CW, height: CH, margin: mobile ? '0 auto 120px' : '0 auto' },
+      panelStyle: mobile
+        ? { position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 20, maxHeight: sheet ? '64dvh' : 52, overflow: sheet ? 'auto' : 'hidden', background: 'var(--color-bg)', borderRadius: '16px 16px 0 0', boxShadow: '0 -8px 30px rgba(0,0,0,.14)', padding: '16px 18px calc(28px + env(safe-area-inset-bottom))', display: 'flex', flexDirection: 'column', gap: 16, fontSize: 15, lineHeight: 1.55, transition: 'max-height .25s ease' }
+        : { width: 380, flexShrink: 0, borderLeft: '1px solid var(--color-divider)', overflow: 'auto', padding: '22px 22px 40px', display: 'flex', flexDirection: 'column', gap: 16, fontSize: 14, lineHeight: 1.55 },
+      sheetLabel: sheet ? 'Fechar painel' : (sel ? 'Ver detalhes' : 'Como ler · Defesa · Fontes'),
+      toggleSheet: () => this.setState(s => ({ sheet: !s.sheet })),
+      moveLabel: move ? 'Mover: ligado' : 'Mover nós', moveStyle: chip(move, '#1d1d1f'),
+      toggleMove: () => this.setState(s => ({ move: !s.move }))
+    };
+    const sn = sel && sel.t === 'n' ? nodes.find(n => n.id === sel.id) : null;
+    const se = sel && sel.t === 'e' ? edges.find(e => e.id === sel.id) : null;
+    const sl = sel && sel.t === 'l' ? loops.find(l => l.id === sel.id) : null;
+    const setF = f => ev => { const v = ev.target.value; this.upd(s => ({ nodes: s.nodes.map(n => n.id === sel.id ? { ...n, [f]: v } : n) })); };
+    const T = id => (this.node(id) || {}).title || id;
+    let selLoop = null;
+    if (sl) { const i = this.loopInfo(sl); selLoop = { ...sl, chain: sl.path.concat(sl.path[0]).map(T).join(' → '),
+      check: i.missing ? 'Loop incompleto: falta uma ligação no caminho.' : (i.neg + ' ligação(ões) negativa(s) → ' + (i.type === 'B' ? 'balanceamento' : 'reforço') + (i.ok ? '. Polaridade consistente com ' + sl.id + '.' : '. Atenção: rótulo ' + sl.id + ' não corresponde.')),
+      checkStyle: { padding: '10px 12px', borderRadius: 8, fontSize: 13, background: i.ok ? '#e3f6ee' : '#fcebe8', color: i.ok ? '#0f5a43' : '#7a2c1c' } }; }
+    return {
+      ...layout, rootRef: this.rootRef,
+      canvasRef: this.canvasRef, fileRef: this.fileRef, linking, showBands: this.props.showBands ?? true,
+      layerToggles, loopChips, nodeViews, edgesSvg: this.edgesSvg(vis, hl), sources: srcs,
+      nothingSel: !sel, selNode: sn, selLoop,
+      selSources: sn ? srcs.filter(s => (sn.src || []).includes(s.id)) : [],
+      selLinks: sn ? edges.filter(e => e.from === sn.id || e.to === sn.id).map(e => ({ label: (e.from === sn.id ? '→ ' + T(e.to) : '← ' + T(e.from)) + '  (' + (e.sign === '-' ? '−' : '+') + (e.delay ? ', atraso' : '') + ')', onClick: () => this.setState({ sel: { t: 'e', id: e.id } }) })) : [],
+      layerOpts: sn ? [['red', 'Problema'], ['blue', 'Compensação'], ['green', 'Solução'], ['exo', 'Exógeno']].map(([k, label]) => { const c = LY[k] || {}; return { label, style: chip(sn.layer === k, c.stroke || '#888'), onClick: () => this.upd(s => ({ nodes: s.nodes.map(n => n.id === sn.id ? { ...n, layer: k } : n) })) }; }) : [],
+      selEdge: se ? { ...se, sign: se.sign === '-' ? '−' : '+', fromTitle: T(se.from), toTitle: T(se.to), delayLabel: se.delay ? 'Remover atraso' : 'Marcar atraso',
+        reading: (se.sign === '-' ? 'Polaridade negativa: quanto mais “' + T(se.from) + '”, menos “' + T(se.to) + '”.' : 'Polaridade positiva: “' + T(se.from) + '” e “' + T(se.to) + '” variam no mesmo sentido.') + (se.delay ? ' O efeito ocorre com atraso.' : '') } : null,
+      setTitle: setF('title'), setSub: setF('sub'), setNote: setF('note'),
+      clearSel: () => this.setState({ sel: null, loop: null, linking: false }),
+      onCanvasDown: () => this.setState({ sel: null, loop: null, linking: false }),
+      startLink: () => this.setState(s => ({ linking: true, sheet: s.mobile ? false : s.sheet })),
+      toggleSign: () => this.upd(s => ({ edges: s.edges.map(e => e.id === sel.id ? { ...e, sign: e.sign === '-' ? '+' : '-' } : e) })),
+      toggleDelay: () => this.upd(s => ({ edges: s.edges.map(e => e.id === sel.id ? { ...e, delay: !e.delay } : e) })),
+      deleteSel: () => this.upd(s => s.sel.t === 'n' ? { nodes: s.nodes.filter(n => n.id !== s.sel.id), edges: s.edges.filter(e => e.from !== s.sel.id && e.to !== s.sel.id), sel: null } : { edges: s.edges.filter(e => e.id !== s.sel.id), sel: null }),
+      addRed: () => this.addNode('red', 150), addBlue: () => this.addNode('blue', 620), addGreen: () => this.addNode('green', 1080),
+      exportJson: () => { const { nodes, edges, loops } = this.state; const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify({ nodes, edges, loops }, null, 2)], { type: 'application/json' })); a.download = 'cld-riscos-cognitivos.json'; a.click(); },
+      importJson: () => this.fileRef.current && this.fileRef.current.click(),
+      onFile: ev => { const f = ev.target.files[0]; if (!f) return; f.text().then(t => { try { const d = JSON.parse(t); if (d.nodes && d.edges) this.upd({ nodes: d.nodes, edges: d.edges, loops: d.loops || this.state.loops, sel: null, loop: null }); } catch (e) { alert('JSON inválido'); } }); ev.target.value = ''; },
+      reset: () => { if (confirm('Restaurar o diagrama original? As edições serão perdidas.')) this.upd({ ...fresh(), sel: null, loop: null }); },
+      openSrc6: ev => { ev.preventDefault(); window.open(srcs[5] && srcs[5].url, '_blank'); }
+    };
+  }
+}
+</script>
+</body>
+</html>

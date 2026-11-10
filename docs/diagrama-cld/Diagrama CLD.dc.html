@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/design-system-1a9a97b3-bb61-48b5-a87b-a875df63c762/_ds_bundle.css">
+<link rel="stylesheet" href="_ds/design-system-1a9a97b3-bb61-48b5-a87b-a875df63c762/styles.css">
+<script src="_ds/design-system-1a9a97b3-bb61-48b5-a87b-a875df63c762/_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--color-bg)}a{color:var(--color-text)}a:hover{color:var(--color-text-muted)}</style>
+</helmet>
+<div style="max-width:1120px;margin:0 auto;padding:56px 32px 96px;font-family:var(--font-body);color:var(--color-text);line-height:1.55">
+  <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-muted)">Diagrama de loops causais (CLD)</div>
+  <h1 style="font-size:40px;line-height:1.1;margin:12px 0 16px;font-weight:600;max-width:760px;text-wrap:balance">Gestão de riscos cognitivos na autogestão de projetos</h1>
+  <p style="font-size:18px;max-width:720px;margin:0 0 40px;color:var(--color-text-muted);text-wrap:pretty">O diagrama propõe que a lacuna entre demanda e capacidade gera falhas, que alimentam um ciclo de sobrecarga (R1) e acionam os pilares de gestão que a reduzem (B1).</p>
+
+  <div style="border:1px solid var(--color-divider);border-radius:16px;padding:16px;background:var(--color-surface)">
+  <svg viewBox="100 55 980 590" style="width:100%;height:auto;display:block;font-family:var(--font-body)">
+    <defs>
+      <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b6b66"/></marker>
+    </defs>
+    <rect x="118" y="71" width="945" height="392" rx="22" fill="none" stroke="#c9c9c2" stroke-dasharray="6 5"/>
+    <text x="141" y="100" font-size="17" fill="#55554f">Limite do sistema (autogestão do projeto)</text>
+    <g fill="none" stroke="#6b6b66" stroke-width="2.5" marker-end="url(#a)">
+      <path d="M443 162H272V237"/>
+      <path d="M272 322V399H441"/>
+      <path d="M590 358V205"/>
+      <path d="M738 162H908V237"/>
+      <path d="M908 322V399H740"/>
+      <path d="M398 509L514 443"/>
+      <path d="M782 509L667 443"/>
+    </g>
+    <path d="M346 150V174M358 150V174" stroke="#6b6b66" stroke-width="2.5"/>
+    <g font-size="17" fill="#55554f" text-anchor="middle">
+      <text x="352" y="137">atraso</text>
+      <text x="242" y="205">+</text><text x="242" y="368">−</text><text x="611" y="288">+</text>
+      <text x="929" y="205">+</text><text x="929" y="368">+</text>
+      <text x="431" y="486">+</text><text x="747" y="486">+</text>
+    </g>
+    <g text-anchor="middle">
+      <rect x="443" y="121" width="295" height="82" rx="10" fill="#fcebe8" stroke="#b5654f"/>
+      <text x="590" y="155" font-size="21" font-weight="600" fill="#7a2c1c">Falhas e desvios</text><text x="590" y="180" font-size="17" fill="#a24a34">atrasos, retrabalho</text>
+      <rect x="147" y="239" width="251" height="83" rx="10" fill="#e3f6ee" stroke="#4aa383"/>
+      <text x="272" y="273" font-size="21" font-weight="600" fill="#0f5a43">Pilares de gestão</text><text x="272" y="298" font-size="17" fill="#1c7a5c">compensam déficit</text>
+      <rect x="782" y="239" width="252" height="83" rx="10" fill="#fcebe8" stroke="#b5654f"/>
+      <text x="908" y="273" font-size="21" font-weight="600" fill="#7a2c1c">Backlog (estoque)</text><text x="908" y="298" font-size="17" fill="#a24a34">gera sobrecarga</text>
+      <rect x="443" y="358" width="295" height="82" rx="10" fill="#fcebe8" stroke="#b5654f"/>
+      <text x="590" y="391" font-size="21" font-weight="600" fill="#7a2c1c">Lacuna de capacidade</text><text x="590" y="416" font-size="17" fill="#a24a34">demanda − capacidade</text>
+      <rect x="251" y="509" width="295" height="82" rx="10" fill="#f0f0e8" stroke="#a8a89c"/>
+      <text x="398" y="542" font-size="21" font-weight="600" fill="#3d3d38">TDAH (traço)</text><text x="398" y="567" font-size="17" fill="#55554f">parâmetro, não variável</text>
+      <rect x="635" y="509" width="295" height="82" rx="10" fill="#f0f0e8" stroke="#a8a89c"/>
+      <text x="782" y="542" font-size="21" font-weight="600" fill="#3d3d38">Demanda do projeto</text><text x="782" y="567" font-size="17" fill="#55554f">prazo, escopo</text>
+      <text x="487" y="272" font-size="21" font-weight="700" fill="#222">B1</text><text x="487" y="298" font-size="17" fill="#55554f">balanceamento</text>
+      <text x="686" y="272" font-size="21" font-weight="700" fill="#222">R1</text><text x="686" y="298" font-size="17" fill="#55554f">reforço</text>
+      <text x="590" y="630" font-size="17" fill="#55554f">Fora do limite (exógenos)</text>
+    </g>
+  </svg>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:48px">
+    <div style="border:1px solid var(--color-divider);border-radius:14px;padding:24px">
+      <div style="font-family:var(--font-mono);font-size:12px;color:#7a2c1c;letter-spacing:.06em">R1 · REFORÇO</div>
+      <h3 style="margin:8px 0 10px;font-size:20px;font-weight:600">Espiral de sobrecarga</h3>
+      <p style="margin:0;color:var(--color-text-muted)">Lacuna de capacidade (+) Falhas e desvios (+) Backlog (+) Lacuna de capacidade. Todos os sinais são positivos: cada volta amplia a anterior. O backlog acumulado aumenta a sobrecarga, que amplia a lacuna.</p>
+    </div>
+    <div style="border:1px solid var(--color-divider);border-radius:14px;padding:24px">
+      <div style="font-family:var(--font-mono);font-size:12px;color:#0f5a43;letter-spacing:.06em">B1 · BALANCEAMENTO</div>
+      <h3 style="margin:8px 0 10px;font-size:20px;font-weight:600">Correção por pilares</h3>
+      <p style="margin:0;color:var(--color-text-muted)">Lacuna (+) Falhas (+, com atraso) Pilares de gestão (−) Lacuna. Há um único sinal negativo, logo o loop reduz o desvio. O atraso indica que o efeito dos pilares aparece só depois de reconhecer a falha e aplicar a estratégia.</p>
+    </div>
+    <div style="border:1px solid var(--color-divider);border-radius:14px;padding:24px">
+      <div style="font-family:var(--font-mono);font-size:12px;color:#55554f;letter-spacing:.06em">LIMITE DO SISTEMA</div>
+      <h3 style="margin:8px 0 10px;font-size:20px;font-weight:600">Interno e exógeno</h3>
+      <p style="margin:0;color:var(--color-text-muted)">Dentro: lacuna, falhas, backlog e pilares. Fora: o traço TDAH e a demanda do projeto, tratados como parâmetros que apenas empurram a lacuna. Nenhuma seta volta para eles.</p>
+    </div>
+  </div>
+
+  <h2 style="font-size:28px;font-weight:600;margin:72px 0 8px">Defesa do modelo</h2>
+  <p style="max-width:720px;margin:0 0 28px;color:var(--color-text-muted)">O loop é defensável após quatro correções, todas incorporadas ao diagrama.</p>
+  <div style="display:grid;gap:0;border-top:1px solid var(--color-divider)">
+    <div style="display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:24px 0;border-bottom:1px solid var(--color-divider)"><div style="font-family:var(--font-mono);color:var(--color-text-muted)">01</div><div><h3 style="margin:0 0 6px;font-size:19px;font-weight:600">O loop fecha no lugar certo</h3><p style="margin:0;color:var(--color-text-muted)">No rascunho, a seta externa voltava para “TDAH”. Os pilares de gestão não alteram o traço, então um crítico atacaria isso de imediato. Agora o retorno fecha na lacuna de capacidade, e o TDAH entra como parâmetro exógeno.</p></div></div>
+    <div style="display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:24px 0;border-bottom:1px solid var(--color-divider)"><div style="font-family:var(--font-mono);color:var(--color-text-muted)">02</div><div><h3 style="margin:0 0 6px;font-size:19px;font-weight:600">Os pilares compensam; não fortalecem as funções executivas</h3><p style="margin:0;color:var(--color-text-muted)">O que se sustenta é que os pilares compensam o déficit, externalizando planejamento, organização e execução. A frase “mitigar riscos cognitivos para compensar déficits e fortalecer a Execução” já diz isso. Mantém-se o texto e retira-se “fortalecer as F.E.” de qualquer legenda.</p></div></div>
+    <div style="display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:24px 0;border-bottom:1px solid var(--color-divider)"><div style="font-family:var(--font-mono);color:var(--color-text-muted)">03</div><div><h3 style="margin:0 0 6px;font-size:19px;font-weight:600">O paradoxo fica à mostra</h3><p style="margin:0;color:var(--color-text-muted)">Planejamento, organização e execução são o déficit e também os pilares que o compensam. A correspondência de um para um é a força do modelo, mas o sistema compensatório depende da função que está prejudicada. Por isso a sobrecarga (R1) corrói a adesão aos pilares (B1). O desenho dos pilares precisa ser de baixa fricção, e essa é a tese de projeto.</p></div></div>
+    <div style="display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:24px 0;border-bottom:1px solid var(--color-divider)"><div style="font-family:var(--font-mono);color:var(--color-text-muted)">04</div><div><h3 style="margin:0 0 6px;font-size:19px;font-weight:600">Nem todo TDAH tem déficit executivo</h3><p style="margin:0;color:var(--color-text-muted)">A literatura mostra heterogeneidade. Escreve-se “frequentemente associado”, e o loop é condicional à existência da lacuna de capacidade.</p></div></div>
+  </div>
+
+  <h2 style="font-size:28px;font-weight:600;margin:72px 0 8px">Enquadramento em Systems Thinking</h2>
+  <p style="max-width:720px;margin:0 0 24px;color:var(--color-text-muted)">O esquema é um modelo conceitual sistêmico preliminar: compatível com os fundamentos, ainda não um modelo de dinâmica de sistemas validado.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px">
+    <div style="background:var(--color-surface);border-radius:12px;padding:20px"><div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted)">NÍVEL 1</div><div style="font-weight:600;margin:6px 0">Mapa conceitual</div><div style="color:var(--color-text-muted);font-size:15px">Organiza déficits, funções executivas, demandas, processos e riscos. Coberto.</div></div>
+    <div style="background:var(--color-surface);border-radius:12px;padding:20px"><div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted)">NÍVEL 2</div><div style="font-weight:600;margin:6px 0">Modelo causal com feedback</div><div style="color:var(--color-text-muted);font-size:15px">Variáveis, polaridades, loops R1 e B1, atraso e limites. Este diagrama.</div></div>
+    <div style="background:var(--color-surface);border-radius:12px;padding:20px"><div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted)">NÍVEL 3</div><div style="font-weight:600;margin:6px 0">Modelo dinâmico testável</div><div style="color:var(--color-text-muted);font-size:15px">Exige estoques e fluxos, medidas observáveis e testes de hipóteses.</div></div>
+  </div>
+  <p style="max-width:720px;margin:28px 0 0;color:var(--color-text-muted)">Indicadores para o próximo passo: tarefas concluídas no prazo, retrabalho, frequência de desvios e eficácia das estratégias de compensação.</p>
+
+  <blockquote style="margin:56px 0 0;padding:28px 32px;border-radius:14px;background:var(--color-surface);font-size:18px;max-width:880px;text-wrap:pretty">O esquema propõe uma arquitetura sistêmica de gestão de riscos cognitivos e executivos baseada na interdependência entre características funcionais, demandas operacionais, processos de planejamento, organização e execução, resultados observáveis e mecanismos de compensação. A retroalimentação permite que os resultados de um ciclo informem a revisão das estratégias nos ciclos seguintes. A arquitetura é compatível com o pensamento sistêmico; sua formalização requer explicitar relações causais, limites, atrasos e mecanismos de reforço e balanceamento, além de testes empíricos.</blockquote>
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/design-system-1a9a97b3-bb61-48b5-a87b-a875df63c762/_ds_bundle.css">
+<link rel="stylesheet" href="_ds/design-system-1a9a97b3-bb61-48b5-a87b-a875df63c762/styles.css">
+<script src="_ds/design-system-1a9a97b3-bb61-48b5-a87b-a875df63c762/_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--color-bg)}a{color:var(--color-link)}a:hover{color:var(--color-text)}</style>
+</helmet>
+<div style="max-width:880px;margin:0 auto;padding:48px 20px 96px;font-family:var(--font-body);color:var(--color-text);line-height:1.6">
+  <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-muted)">Plano de UX · Diagrama CLD 3 camadas · outubro 2026</div>
+  <h1 style="font-size:clamp(30px,6vw,44px);line-height:1.1;font-weight:600;margin:12px 0 18px;text-wrap:balance">Do editor ao diagrama que pergunta</h1>
+  <p style="font-size:18px;color:var(--color-text-muted);margin:0 0 36px;text-wrap:pretty">Hoje o diagrama mostra tudo de uma vez e exige que a pessoa saiba o que fazer. As recomendações abaixo seguem heurísticas de usabilidade e pesquisas sobre explicações exploráveis. A proposta: guiar primeiro, fazer perguntas no caminho e só depois abrir a edição.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:56px">
+    <div style="background:var(--color-surface);border-radius:14px;padding:20px"><div style="font-size:30px;font-weight:600;line-height:1">3 modos</div><div style="margin-top:8px;color:var(--color-text-muted);font-size:15px">Ler (tour guiado), Perguntar (“E se…?”) e Editar. A edição fica escondida até ser pedida.</div></div>
+    <div style="background:var(--color-surface);border-radius:14px;padding:20px"><div style="font-size:30px;font-weight:600;line-height:1">44–48 px</div><div style="margin-top:8px;color:var(--color-text-muted);font-size:15px">Área mínima de toque no celular (Apple 44 pt, Material 48 dp). Hoje os chips têm 40 px.</div></div>
+    <div style="background:var(--color-surface);border-radius:14px;padding:20px"><div style="font-size:30px;font-weight:600;line-height:1">Desfazer</div><div style="margin-top:8px;color:var(--color-text-muted);font-size:15px">Trocar os diálogos de confirmação por um aviso com “Desfazer”, para que a pessoa explore sem medo de errar.</div></div>
+  </div>
+
+  <h2 style="font-size:26px;font-weight:600;margin:0 0 6px">Recomendações, por prioridade</h2>
+  <p style="margin:0 0 20px;color:var(--color-text-muted)">Cada item traz o princípio, a evidência e a mudança concreta no diagrama.</p>
+  <div style="border-top:1px solid var(--color-divider)">
+    <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:22px 0;border-bottom:1px solid var(--color-divider)"><div style="font-family:var(--font-mono);color:var(--color-text-muted)">01</div><div>
+      <h3 style="margin:0 0 6px;font-size:19px;font-weight:600">Tour guiado em “taça de martini”</h3>
+      <p style="margin:0 0 8px">Abrir em cinco passos curtos: o problema, R1, os 4E, a solução e os loops B. No fim, liberar a exploração livre. Cada passo acende só os nós e setas daquele trecho.</p>
+      <p style="margin:0;font-size:14px;color:var(--color-text-muted)">Evidência: a estrutura “taça de martini” começa guiada pelo autor e depois se abre para a exploração do leitor. Segel e Heer a apontam como a mais comum nas visualizações interativas que analisaram <a href="https://scrollytelling.ai/scrollytelling-design-patterns/" target="_blank">[1]</a>.</p>
+    </div></div>
+    <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:22px 0;border-bottom:1px solid var(--color-divider)"><div style="font-family:var(--font-mono);color:var(--color-text-muted)">02</div><div>
+      <h3 style="margin:0 0 6px;font-size:19px;font-weight:600">Modo “E se…?”: o diagrama faz perguntas</h3>
+      <p style="margin:0 0 8px">A pessoa toca num nó e escolhe ↑ ou ↓. Antes de mostrar o efeito, o diagrama pergunta: “O que acontece com a Lacuna?”. Depois da resposta, a variação se propaga pelas setas conforme os sinais (+/−), passo a passo, e o loop é identificado como reforço ou balanceamento.</p>
+      <p style="margin:0;font-size:14px;color:var(--color-text-muted)">Evidência: explicações exploráveis convidam o público a <a href="https://en.wikipedia.org/wiki/Explorable_explanation" target="_blank">testar expectativas contra o comportamento real [2]</a>. Para Sterman, o jeito certo de classificar um loop é rastrear o efeito de uma pequena mudança ao longo dele <a href="https://thesystemsthinker.com/fine-tuning-your-causal-loop-diagrams-part-i/" target="_blank">[3]</a>.</p>
+    </div></div>
+    <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:22px 0;border-bottom:1px solid var(--color-divider)"><div style="font-family:var(--font-mono);color:var(--color-text-muted)">03</div><div>
+      <h3 style="margin:0 0 6px;font-size:19px;font-weight:600">Ajuda no contexto, não tutorial inicial</h3>
+      <p style="margin:0 0 8px">Nada de sequência de cartões na abertura. Uma dica curta aparece na primeira vez que a pessoa toca num nó, e cada nó ganha um “?” com a explicação e as fontes.</p>
+      <p style="margin:0;font-size:14px;color:var(--color-text-muted)">Evidência: segundo a NN/g, tutoriais interrompem, nem sempre melhoram o desempenho e são logo esquecidos <a href="https://www.nngroup.com/articles/onboarding-tutorials/" target="_blank">[4]</a>.</p>
+    </div></div>
+    <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:22px 0;border-bottom:1px solid var(--color-divider)"><div style="font-family:var(--font-mono);color:var(--color-text-muted)">04</div><div>
+      <h3 style="margin:0 0 6px;font-size:19px;font-weight:600">Revelação progressiva das ferramentas de edição</h3>
+      <p style="margin:0 0 8px">A barra padrão mostra só Camadas e Loops. Criar nós, ligar, mover, exportar e restaurar passam para o modo Editar. Isso também resolve a barra que rola na horizontal no celular.</p>
+      <p style="margin:0;font-size:14px;color:var(--color-text-muted)">Evidência: a revelação progressiva adia recursos avançados ou pouco usados para uma tela secundária. Isso deixa o aplicativo <a href="https://www.nngroup.com/articles/progressive-disclosure/" target="_blank">mais fácil de aprender e menos sujeito a erros [5]</a>.</p>
+    </div></div>
+    <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:22px 0;border-bottom:1px solid var(--color-divider)"><div style="font-family:var(--font-mono);color:var(--color-text-muted)">05</div><div>
+      <h3 style="margin:0 0 6px;font-size:19px;font-weight:600">Controle, desfazer e estado visível</h3>
+      <p style="margin:0 0 8px">Apagar e restaurar mostram um aviso com “Desfazer”. Um indicador discreto “Salvo” confirma o salvamento automático. No modo de ligação, a ação é mostrada em uma frase (“Ligando Lacuna → …”), junto com um botão para cancelar.</p>
+      <p style="margin:0;font-size:14px;color:var(--color-text-muted)">Evidência: duas das dez heurísticas de Nielsen tratam disso, a visibilidade do estado do sistema e o controle e liberdade do usuário. Toda função precisa de uma saída visível, como desfazer, cancelar ou fechar <a href="https://www.uxtigers.com/post/10-heuristics-reimagined" target="_blank">[6]</a>.</p>
+    </div></div>
+    <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:22px 0;border-bottom:1px solid var(--color-divider)"><div style="font-family:var(--font-mono);color:var(--color-text-muted)">06</div><div>
+      <h3 style="margin:0 0 6px;font-size:19px;font-weight:600">Painel inferior com prévia e botão de fechar</h3>
+      <p style="margin:0 0 8px">No celular, o painel abre primeiro em altura de prévia, com título e o que o elemento significa. Arrastar ou tocar expande. Sempre há um X visível, e o “voltar” do aparelho fecha o painel.</p>
+      <p style="margin:0;font-size:14px;color:var(--color-text-muted)">Evidência: a NN/g recomenda não presumir que as pessoas sabem deslizar para baixo para fechar e <a href="https://www.nngroup.com/articles/accidental-overlay-dismissal/" target="_blank">oferecer um X visível [7]</a>. Painéis inferiores servem para detalhes temporários, <a href="https://www.nngroup.com/articles/bottom-sheet/" target="_blank">não para ferramentas sempre necessárias [8]</a>.</p>
+    </div></div>
+    <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:22px 0;border-bottom:1px solid var(--color-divider)"><div style="font-family:var(--font-mono);color:var(--color-text-muted)">07</div><div>
+      <h3 style="margin:0 0 6px;font-size:19px;font-weight:600">Alvos de toque e legenda sempre visível</h3>
+      <p style="margin:0 0 8px">Chips e botões passam a ter pelo menos 44 px, com 8 px entre eles. Uma legenda fixa e compacta mostra “+ mesmo sentido · − sentido oposto · ‖ atraso” e as três cores, para que ninguém precise memorizar.</p>
+      <p style="margin:0;font-size:14px;color:var(--color-text-muted)">Evidência: a Apple pede área de toque de 44×44 pt e o Material pede 48×48 dp <a href="https://tetralogical.com/blog/2022/12/20/foundations-target-size/" target="_blank">[9]</a>. A heurística “reconhecer em vez de lembrar” <a href="https://www.testdevlab.com/blog/nielsens-usability-heuristics-10-principles" target="_blank">reduz a carga cognitiva [10]</a>, o que é coerente com o tema do próprio modelo.</p>
+    </div></div>
+    <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:22px 0;border-bottom:1px solid var(--color-divider)"><div style="font-family:var(--font-mono);color:var(--color-text-muted)">08</div><div>
+      <h3 style="margin:0 0 6px;font-size:19px;font-weight:600">Linguagem do usuário</h3>
+      <p style="margin:0;color:var(--color-text)">“Exportar JSON” passa a ser “Salvar arquivo”, “Importar” vira “Abrir arquivo” e “Restaurar” vira “Voltar ao original”. Os loops ganham nome junto da sigla (“R1 · Sobrecarga”).</p>
+    </div></div>
+  </div>
+
+  <div style="margin-top:44px;padding:20px 22px;border-radius:14px;background:var(--color-surface);font-size:15px">
+    <strong style="font-weight:600">O que é evidência e o que é inferência.</strong> As fontes tratam de princípios gerais de interface. A aplicação deles a este diagrama, com os três modos, as perguntas do “E se…?” e a ordem do tour, é proposta minha. Vale testar com 3 a 5 pessoas do público-alvo antes de fechar.
+  </div>
+
+  <h2 style="font-size:20px;font-weight:600;margin:48px 0 12px">Fontes</h2>
+  <div style="display:flex;flex-direction:column;gap:6px;font-size:14px">
+    <a href="https://scrollytelling.ai/scrollytelling-design-patterns/" target="_blank">[1] Scrollytelling Design Patterns (2026), sobre Segel &amp; Heer</a>
+    <a href="https://en.wikipedia.org/wiki/Explorable_explanation" target="_blank">[2] Explorable explanation, Wikipedia</a>
+    <a href="https://thesystemsthinker.com/fine-tuning-your-causal-loop-diagrams-part-i/" target="_blank">[3] Sterman, Fine-Tuning Your Causal Loop Diagrams</a>
+    <a href="https://www.nngroup.com/articles/onboarding-tutorials/" target="_blank">[4] NN/g, Onboarding Tutorials vs. Contextual Help</a>
+    <a href="https://www.nngroup.com/articles/progressive-disclosure/" target="_blank">[5] NN/g, Progressive Disclosure</a>
+    <a href="https://www.uxtigers.com/post/10-heuristics-reimagined" target="_blank">[6] Nielsen, 10 Usability Heuristics (UX Tigers)</a>
+    <a href="https://www.nngroup.com/articles/accidental-overlay-dismissal/" target="_blank">[7] NN/g, Accidental Dismissal of Overlays</a>
+    <a href="https://www.nngroup.com/articles/bottom-sheet/" target="_blank">[8] NN/g, Bottom Sheets</a>
+    <a href="https://tetralogical.com/blog/2022/12/20/foundations-target-size/" target="_blank">[9] TetraLogical, Foundations: target sizes</a>
+    <a href="https://www.testdevlab.com/blog/nielsens-usability-heuristics-10-principles" target="_blank">[10] TestDevLab, Nielsen’s Usability Heuristics</a>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
