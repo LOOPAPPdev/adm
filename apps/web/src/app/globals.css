@@ -1,26 +1,47 @@
+/* ADM web — on the shared design system (design-system/ at the repo root, copied from the Risco Cognitivo
+   portfolio). Tokens are plain custom properties; the base and component styles go into Tailwind's layers so
+   utility classes still win. Fonts come from next/font (layout.tsx) and are wired into the DS font tokens. */
 @import "tailwindcss";
+@import "../../../../design-system/tokens/colors.css";
+@import "../../../../design-system/tokens/typography.css";
+@import "../../../../design-system/tokens/spacing.css";
+@import "../../../../design-system/tokens/patterns.css";
+@import "../../../../design-system/tokens/executar.css";
+@import "../../../../design-system/tokens/base.css" layer(base);
+@import "../../../../design-system/components/components.css" layer(components);
 
 :root {
-	--background: #ffffff;
-	--foreground: #171717;
+	--font-heading: var(--font-inter), -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+	--font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+	--font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
+/* Tailwind names for the DS roles (prefixed "ds-" so they never overwrite the DS variables themselves) */
 @theme inline {
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
-	--font-sans: var(--font-geist-sans);
-	--font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: #0a0a0a;
-		--foreground: #ededed;
-	}
+	--color-background: var(--color-bg);
+	--color-foreground: var(--color-text);
+	--color-ds-bg: var(--color-bg);
+	--color-ds-surface: var(--color-surface);
+	--color-ds-raised: var(--color-surface-raised);
+	--color-ds-text: var(--color-text);
+	--color-ds-muted: var(--color-text-muted);
+	--color-ds-line: var(--color-divider);
+	--color-ds-accent: var(--color-accent);
+	--color-ds-on-accent: var(--color-on-accent);
+	--color-ds-link: var(--color-link);
+	--color-ds-success: var(--color-success);
+	--color-ds-warning: var(--color-warning);
+	--color-ds-danger: var(--color-danger);
+	--font-sans: var(--font-body);
+	--font-mono: var(--font-mono);
+	--radius-ds-sm: var(--radius-sm);
+	--radius-ds-md: var(--radius-md);
+	--radius-ds-lg: var(--radius-lg);
+	--radius-ds-pill: var(--radius-pill);
 }
 
 body {
-	background: var(--background);
-	color: var(--foreground);
-	font-family: Arial, Helvetica, sans-serif;
+	background: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font-body);
 }

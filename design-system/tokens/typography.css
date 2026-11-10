@@ -1,0 +1,36 @@
+:root {
+  --font-heading: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-heading-weight: 600;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --text-display: 80px;   /* landing hero headline (clamp 44–80) */
+  --text-hero: 56px;
+  --text-title: 40px;
+  --text-subtitle: 28px;
+  --text-card: 21px;
+  --text-body: 17px;
+  --text-caption: 14px;
+  --text-micro: 12px;
+
+  --leading-display: 1.05;
+  --leading-hero: 1.07;
+  --leading-title: 1.10;
+  --leading-subtitle: 1.14;
+  --leading-card: 1.19;
+  --leading-body: 1.47;
+  --leading-caption: 1.43;
+  --leading-micro: 1.33;
+
+  --tracking-display: -0.015em;
+  --tracking-hero: -0.005em;
+  --tracking-title: -0.003em;
+  --tracking-subtitle: 0.007em;
+  --tracking-card: 0.011em;
+  --tracking-body: -0.022em;
+  --tracking-caption: -0.016em;
+  --tracking-micro: -0.01em;
+}
+@media (max-width: 734px) {
+  :root { --text-hero: 40px; --text-title: 32px; --text-subtitle: 24px; --text-card: 19px; }
+}

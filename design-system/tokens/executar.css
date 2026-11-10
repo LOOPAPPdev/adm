@@ -1,0 +1,30 @@
+/* EXECUTAR ecosystem tokens — ADR-001 §8 (Programaex/Design · EXECUTAR_Claude_Design) + proportions read from the
+   three reference captures (REF-01 institucional, REF-02 artigo, REF-03 showroom). Proposed values, adjustable. */
+:root {
+  --eco-header-height: 48px;
+  --eco-content-max: 1200px;
+  --eco-edge: 48px;
+  --eco-editorial-max: 720px;
+  --eco-text-campaign: clamp(36px, 5vw, 64px);
+  --eco-leading-campaign: 1.08;
+  --eco-text-campaign-sub: clamp(19px, 2vw, 28px);
+  --eco-text-tile: clamp(28px, 3vw, 40px);
+  --eco-text-article: clamp(28px, 3vw, 40px);
+  --eco-leading-article: 1.15;
+  --eco-text-editorial: 18px;
+  --eco-leading-editorial: 1.6;
+  --eco-text-showroom: clamp(48px, 6vw, 80px);
+  --eco-text-section: clamp(28px, 3vw, 40px);
+  --eco-card-radius: 24px;
+  --eco-tile-gap: 12px;
+  --eco-hero-min: clamp(520px, 52vw, 692px); /* @kind spacing */
+  --eco-tile-min: clamp(480px, 44vw, 580px); /* @kind spacing */
+  --eco-bg: #ffffff;
+  --eco-bg-alt: #f5f5f7;
+  --eco-bg-dark: #000000;
+  --eco-kicker: #b64400; /* "Novo" kicker in showroom cards (REF-03) */
+  --eco-hit-min: 44px;
+}
+@media (max-width: 767px) {
+  :root { --eco-header-height: 56px; --eco-edge: 24px; --eco-text-editorial: 17px; }
+}

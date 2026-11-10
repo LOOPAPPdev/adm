@@ -1,0 +1,36 @@
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --layout-column: 1068px;
+  --layout-edge: clamp(20px, 5vw, 48px); /* @kind spacing */
+  --layout-band: clamp(64px, 10vw, 112px); /* @kind spacing */
+  --layout-measure: 48ch;
+  --nav-height: 44px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  --radius-pill: 980px;
+
+  --duration-fast: 160ms; /* @kind other */
+  --duration-base: 240ms; /* @kind other */
+  --ease-standard: cubic-bezier(0.25, 0.1, 0.25, 1); /* @kind other */
+}
+:root, [data-theme="light"] {
+  --shadow-sm: 0 0 0 1px rgba(0,0,0,0.08);
+  --shadow-md: 0 2px 14px rgba(0,0,0,0.10);
+  --shadow-lg: 3px 5px 30px rgba(0,0,0,0.22);
+}
+[data-theme="dark"] {
+  --shadow-sm: 0 0 0 1px #333336;
+  --shadow-md: 0 0 0 1px #424245, 0 6px 18px rgba(0,0,0,0.55);
+  --shadow-lg: 0 0 0 1px #6e6e73, 3px 5px 30px rgba(0,0,0,0.65);
+}

@@ -1,0 +1,32 @@
+/* Editorial page-pattern tokens — measured from the Apple product-page references (uploads/IMG_38xx, IMG_40xx).
+   Used by the four page architectures: Home (landing), Produto, Artigo, Showroom. */
+:root {
+  --text-eyebrow: 28px;        /* "Design dobrável" above a display headline */
+  --leading-eyebrow: 1.14;
+  --text-lead: 21px;           /* muted editorial paragraph with .hl highlights */
+  --leading-lead: 1.38;
+  --tracking-lead: 0.011em;
+  --text-stat: 64px;           /* "3.000 nits" */
+  --leading-stat: 1.05;
+  --text-stat-caption: 17px;
+
+  --subnav-height: 52px;       /* floating product bar under the global nav */
+  --subnav-inset: 10px;
+  --subnav-radius: 18px;
+  --pill-control-height: 56px; /* "(+) Design dobrável" explore pills, carousel dot tray */
+  --icon-button-size: 36px;    /* gallery prev/next */
+  --band-height: 72px;         /* grey price / CTA band */
+
+  --column-narrow: 692px;      /* article / product reading column */
+  --carousel-card-width: 88%;  /* centered card with neighbour peeks */
+  --gallery-card-width: min(640px, 82%); /* @kind spacing */
+  --section-header-gap: 48px;
+  --media-radius: var(--radius-xl);
+
+  --surface-band: var(--color-neutral-100);
+  --surface-pill: var(--color-neutral-200);
+  --text-highlight: var(--color-text);
+}
+@media (max-width: 734px) {
+  :root { --text-eyebrow: 21px; --text-lead: 19px; --text-stat: 48px; --pill-control-height: 48px; }
+}
