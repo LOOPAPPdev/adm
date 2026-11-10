@@ -3,8 +3,12 @@
   "private": true,
   "version": "0.1.0",
   "description": "Monorepo ADM: diretório unificado de Skills, Agents, Plugins e MCP Servers (fonte inicial: Anthropic Directory)",
-  "workspaces": ["apps/*"],
-  "engines": { "node": ">=20" },
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "sync": "npm run sync -w @adm/orchestrator",
     "sync:offline": "npm run sync -w @adm/orchestrator --",
@@ -12,6 +16,11 @@
     "test": "npm test -w @adm/orchestrator",
     "dev": "npm run dev -w @adm/web",
     "build": "npm run build -w @adm/web",
-    "deploy": "npm run deploy -w @adm/web"
+    "deploy": "npm run deploy -w @adm/web",
+    "loop:dev": "npm run dev -w @adm/loop",
+    "loop:test": "npm test -w @adm/loop",
+    "loop:build": "npm run build -w @adm/loop",
+    "loop:e2e": "npm run e2e -w @adm/loop",
+    "loop:zip": "npm run zip -w @adm/loop"
   }
 }

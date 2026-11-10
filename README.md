@@ -6,6 +6,7 @@ Monorepo (npm workspaces) que **cataloga, normaliza e publica** os componentes d
 apps/
   orchestrator/   pipeline DISCOVER → FETCH → VALIDATE → NORMALIZE → DEDUPLICATE → INDEX → PUBLISH
   web/            diretório pesquisável (Next.js 16 + Tailwind 4, deploy em Cloudflare Workers via OpenNext)
+  loop/           LOOP v1.0: site da consultoria, Workspace, Studio e Portal (Vite + React, sem backend) — ver apps/loop/README.md
 registry/
   sources.json    inventário de fontes (adapter, método, limitações)
 storage/
