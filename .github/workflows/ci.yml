@@ -23,4 +23,4 @@ jobs:
       - run: npm run loop:build
       - run: npx playwright install --with-deps chromium
         working-directory: apps/loop
-      - run: npm run loop:e2e -- --trace off
+      - run: npm run loop:e2e # trace is already off in playwright.config.ts (npm would swallow a --trace flag)
