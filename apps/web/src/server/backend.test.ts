@@ -68,6 +68,17 @@ describe('autenticação', () => {
   });
 });
 
+describe('configuração inicial', () => {
+  it('bootstrapStatus: aberto só com segredo configurado e sem usuários', async () => {
+    const { bootstrapStatus } = await import('@/server/services/auth');
+    const ctx = testCtx();
+    expect(await bootstrapStatus(ctx)).toEqual({ open: true });
+    expect(await bootstrapStatus({ ...ctx, bootstrapToken: undefined })).toEqual({ open: false });
+    await bootstrap(ctx, { email: 'a@b.test', name: 'A', password: PW, token: 'test-bootstrap-token' }, null);
+    expect(await bootstrapStatus(ctx)).toEqual({ open: false });
+  });
+});
+
 describe('projetos e permissões', () => {
   let w: Awaited<ReturnType<typeof world>>;
   beforeEach(async () => { w = await world(); });

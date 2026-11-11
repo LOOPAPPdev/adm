@@ -51,7 +51,7 @@ Publique (pelo Workers Builds ao fazer merge na `main`, ou manualmente):
 npx opennextjs-cloudflare build && npx wrangler deploy
 ```
 
-Crie o primeiro administrador (troque os valores; a senha precisa de 12+ caracteres):
+Crie o primeiro administrador. **Pelo navegador:** abra `https://SEU-DOMINIO/configurar`, preencha nome, e-mail, senha (12+ caracteres) e o token (a página só abre enquanto não houver usuário e o segredo existir). **Pelo terminal** (equivalente):
 
 ```bash
 curl -sS -X POST https://SEU-DOMINIO/api/v1/auth/bootstrap -H 'content-type: application/json' -H 'origin: https://SEU-DOMINIO' -d '{"email":"admin@exemplo.com","name":"Admin","password":"SENHA-FORTE-AQUI","token":"O-BOOTSTRAP_TOKEN"}'
