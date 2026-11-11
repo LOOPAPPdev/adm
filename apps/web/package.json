@@ -1,6 +1,6 @@
 {
 	"name": "@adm/web",
-	"description": "Build a full-stack web application with Next.js.",
+	"description": "LOOP unified application: website, Workspace, Studio, Portal, ADM Directory and the /api/v1 backend (Next.js on Cloudflare Workers).",
 	"cloudflare": {
 		"label": "Next.js Framework Starter",
 		"products": [
@@ -12,22 +12,42 @@
 		"publish": true
 	},
 	"dependencies": {
-		"@opennextjs/cloudflare": "1.14.0",
-		"next": "16.0.7",
-		"react": "19.2.1",
-		"react-dom": "19.2.1"
+		"@hookform/resolvers": "7.0.5",
+		"@opennextjs/cloudflare": "1.20.14",
+		"@xyflow/react": "12.12.1",
+		"bpmn-js": "18.31.1",
+		"class-variance-authority": "0.7.1",
+		"clsx": "2.1.1",
+		"dexie": "4.4.7",
+		"elkjs": "0.12.1",
+		"lucide-react": "1.71.0",
+		"motion": "14.12.0",
+		"next": "16.4.3",
+		"react": "19.3.1",
+		"react-dom": "19.3.1",
+		"react-hook-form": "7.91.0",
+		"react-router": "8.5.1",
+		"recharts": "3.10.1",
+		"tailwind-merge": "3.7.0",
+		"zod": "4.6.7",
+		"zustand": "5.1.0"
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "3",
+		"@playwright/test": "1.63.0",
 		"@tailwindcss/postcss": "4.1.17",
 		"@types/node": "24.10.1",
 		"@types/react": "19.2.7",
 		"@types/react-dom": "19.2.3",
+		"bpmn-moddle": "10.3.1",
 		"eslint": "9.39.2",
-		"eslint-config-next": "16.0.7",
+		"eslint-config-next": "16.4.3",
+		"fake-indexeddb": "6.2.8",
 		"tailwindcss": "4.1.17",
 		"typescript": "5.9.3",
-		"wrangler": "4.136.1"
+		"typescript-eslint": "^8.72.2",
+		"vitest": "5.1.0",
+		"wrangler": "4.154.0"
 	},
 	"private": true,
 	"scripts": {
@@ -38,6 +58,10 @@
 		"dev": "next dev",
 		"lint": "next lint",
 		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-		"start": "next start"
+		"start": "next start",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run",
+		"e2e": "playwright test",
+		"cf-build": "opennextjs-cloudflare build"
 	}
 }

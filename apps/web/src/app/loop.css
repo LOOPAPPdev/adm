@@ -1,0 +1,10 @@
+/* LOOP areas only: React Flow base styles and small overrides. Tokens, utilities and components live in globals.css. */
+@import "@xyflow/react/dist/style.css";
+
+.react-flow__attribution { display: none; }
+.react-flow__node { font-family: var(--font-sans); }
+
+@media print {
+  header nav, .no-print { display: none !important; }
+  body { background: #fff; }
+}
