@@ -119,6 +119,13 @@ test('admin screen creates an organization and adds a member', async ({ browser 
   await ctx.close();
 });
 
+test('setup page is closed once an administrator exists', async ({ page, request }) => {
+  expect((await request.get(BASE + '/api/v1/auth/bootstrap')).ok()).toBe(true);
+  expect((await (await request.get(BASE + '/api/v1/auth/bootstrap')).json()).open).toBe(false);
+  await page.goto(BASE + '/configurar');
+  await expect(page.getByRole('heading', { name: 'Configuração já concluída' })).toBeVisible();
+});
+
 test('without a session the API refuses and the app stays in demo mode', async ({ browser }) => {
   const ctx = await browser.newContext();
   const page = await ctx.newPage();

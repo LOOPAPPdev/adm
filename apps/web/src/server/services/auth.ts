@@ -93,3 +93,8 @@ export async function bootstrap(ctx: Ctx, input: unknown, ipHash: string | null)
   const s = await createSession(ctx, userId, ipHash);
   return { ...s, user: { id: userId, email: d.email, name: d.name } };
 }
+
+/** Whether first-admin setup is open: no user exists yet and the BOOTSTRAP_TOKEN secret is configured. */
+export async function bootstrapStatus(ctx: Ctx): Promise<{ open: boolean }> {
+  return { open: !!ctx.bootstrapToken && (await users.count(ctx.db)) === 0 };
+}
