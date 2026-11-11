@@ -1,0 +1,229 @@
+<title>Studio Loop · Arquitetura e SSM</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* Layout: página de leitura única; dois diagramas em SVG com rolagem própria no celular; tabela de mapeamento abaixo. */
+:root{
+  --bg:#f7f6f2; --surface:#ffffff; --fg:#17202a; --muted:#56616d; --line:#8b96a2; --rule:#dcdad2;
+  --client:#b4531c; --client-bg:#fbeee4;
+  --studio:#0f6b6b; --studio-bg:#e2f2f1;
+  --back:#3b3f9e; --back-bg:#e8e9f8;
+  --ext:#56616d; --ext-bg:#ecedf0;
+  --real:#b4531c; --sys:#3b3f9e; --ok:#1f7a45; --warn:#9a6a00;
+  --on-accent:#ffffff; --font-d:"Space Grotesk","Helvetica Neue",Arial,sans-serif;
+  --font-b:"Inter","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1418; --surface:#171e24; --fg:#e9edf0; --muted:#9aa6b1; --line:#6d7a87; --rule:#2b343c;
+  --client:#f09a62; --client-bg:#2b1d14;
+  --studio:#5cc7c1; --studio-bg:#10292a;
+  --back:#a5a8f0; --back-bg:#1c1e3a;
+  --ext:#aab4bf; --ext-bg:#222a31;
+  --real:#f09a62; --sys:#a5a8f0; --ok:#6fd49a; --warn:#e6b84d; --on-accent:#10161b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1418; --surface:#171e24; --fg:#e9edf0; --muted:#9aa6b1; --line:#6d7a87; --rule:#2b343c;
+  --client:#f09a62; --client-bg:#2b1d14;
+  --studio:#5cc7c1; --studio-bg:#10292a;
+  --back:#a5a8f0; --back-bg:#1c1e3a;
+  --ext:#aab4bf; --ext-bg:#222a31;
+  --real:#f09a62; --sys:#a5a8f0; --ok:#6fd49a; --warn:#e6b84d; --on-accent:#10161b; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.55 var(--font-b);margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+main{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+h1,h2,h3{font-family:var(--font-d);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(26px,5vw,38px);font-weight:700}
+h2{font-size:clamp(20px,3.4vw,26px);font-weight:700}
+h3{font-size:17px;font-weight:500}
+p{margin:0;max-width:68ch}
+.lede{color:var(--muted);margin-top:10px}
+.note{font-size:13.5px;color:var(--muted);max-width:76ch}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted);margin-top:12px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;border:2px solid}
+.scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:8px}
+svg{display:block;min-width:820px;width:100%;height:auto;font-family:var(--font-b)}
+svg text{fill:var(--fg)}
+.lane{fill:none;stroke:var(--rule);stroke-width:1;stroke-dasharray:4 4}
+.lane-t{font:600 11px var(--font-b);letter-spacing:.08em;fill:var(--muted)!important}
+.node rect{stroke-width:2}
+.node text{font-size:12.5px;text-anchor:middle}
+.node .sub{font-size:10.5px;fill:var(--muted)}
+.k-client rect{fill:var(--client-bg);stroke:var(--client)}
+.k-studio rect{fill:var(--studio-bg);stroke:var(--studio)}
+.k-back rect{fill:var(--back-bg);stroke:var(--back)}
+.k-ext rect{fill:var(--ext-bg);stroke:var(--ext)}
+.edge{fill:none;stroke:var(--line);stroke-width:1.8}
+.edge.dash{stroke-dasharray:6 5}
+.ml{font-size:10.5px;fill:var(--muted)!important}
+.num{font:700 12px var(--font-d);fill:var(--on-accent)!important;text-anchor:middle}
+.badge{stroke:none}
+.ssm rect{stroke-width:2;fill:var(--surface)}
+.ssm.real rect{stroke:var(--real)} .ssm.sys rect{stroke:var(--sys)} .ssm.cmp rect{stroke:var(--fg);stroke-dasharray:5 3}
+.ssm text{text-anchor:middle;font-size:12.5px}
+.ssm .t{font-weight:600}
+.ssm .s{font-size:10.5px;fill:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}
+th{font:600 12px var(--font-b);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td:first-child{font-family:var(--font-d);font-weight:700;white-space:nowrap}
+.tw{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--surface)}
+.tw table{min-width:860px}
+.pill{display:inline-block;padding:1px 8px;border-radius:99px;border:1px solid;font-size:12px;white-space:nowrap}
+.pill.ok{color:var(--ok);border-color:var(--ok)} .pill.todo{color:var(--warn);border-color:var(--warn)}
+details{border:1px solid var(--rule);border-radius:10px;background:var(--surface);padding:12px 14px}
+summary{cursor:pointer;font-weight:600}
+summary:focus-visible,button:focus-visible{outline:3px solid var(--studio);outline-offset:2px}
+dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:12px 0 0;font-size:14px}
+dt{font-weight:700;font-family:var(--font-d)} dd{margin:0;min-width:0}
+@media (max-width:560px){dl{grid-template-columns:1fr} dt{margin-top:6px}}
+</style>
+
+<main>
+<header>
+  <h1>Studio Loop com o cliente</h1>
+  <p class="lede">Como o cliente entra, vê a própria operação, testa cenários e aprova a proposta, e como cada passo se apoia no backend. Abaixo, as sete etapas da Soft Systems Methodology (SSM) ligadas aos módulos da plataforma.</p>
+  <p class="note" style="margin-top:8px">Leitura de "SOAP": interpretei como <strong>SSM</strong> (Checkland), a metodologia dos slides. Se você quis dizer outra coisa, avise. O desenho é uma proposta (evidência C), não um sistema existente. O protótipo do mapa (DIAGRAMA_V2) é a única peça já construída.</p>
+</header>
+
+<section aria-labelledby="h-arq" style="display:flex;flex-direction:column;gap:14px">
+  <h2 id="h-arq">1 · Arquitetura do Studio</h2>
+  <p class="note">Quatro faixas: quem usa, a interface, o backend e os sistemas externos. Setas contínuas são ações do usuário e chamadas. Setas tracejadas são eventos de retorno e a ligação com o código do cliente.</p>
+  <div class="scroll" role="img" aria-label="Diagrama de arquitetura em quatro faixas: cliente, studio, backend e externos. O gestor entra pelo login individual; o operador responde ao formulário; o desenvolvedor publica o modelo. A interface chama a API de comandos, que grava no domínio e no banco. Efeitos externos saem pela fila de saída para o GitHub do cliente e para e-mail e WhatsApp.">
+    <svg id="arq" viewBox="0 0 1000 600" aria-hidden="true"></svg>
+  </div>
+  <div class="legend" aria-hidden="true">
+    <span><i class="sw" style="border-color:var(--client);background:var(--client-bg)"></i>Pessoas</span>
+    <span><i class="sw" style="border-color:var(--studio);background:var(--studio-bg)"></i>Studio (apps/web)</span>
+    <span><i class="sw" style="border-color:var(--back);background:var(--back-bg)"></i>Backend (API, domínio, Worker)</span>
+    <span><i class="sw" style="border-color:var(--ext);background:var(--ext-bg)"></i>Externos e dados</span>
+  </div>
+</section>
+
+<section aria-labelledby="h-ssm" style="display:flex;flex-direction:column;gap:14px">
+  <h2 id="h-ssm">2 · As sete etapas da SSM</h2>
+  <p class="note">Etapas 1, 2, 6 e 7 acontecem no mundo real, com o cliente. Etapas 3 e 4 são trabalho de modelagem. A etapa 5 compara os dois. O ciclo recomeça quando a ação muda a situação.</p>
+  <div class="scroll" role="img" aria-label="Ciclo das sete etapas da SSM. Mundo real: 1 situação problemática, 2 situação expressa, 6 mudanças desejáveis e viáveis, 7 ação. Pensamento sistêmico: 3 definições básicas, 4 modelos conceituais. A etapa 5 compara o modelo com o mundo real. A etapa 7 volta para a 1.">
+    <svg id="ssm" viewBox="0 0 1000 370" aria-hidden="true"></svg>
+  </div>
+</section>
+
+<section aria-labelledby="h-map" style="display:flex;flex-direction:column;gap:14px">
+  <h2 id="h-map">3 · Etapa por etapa no Loop App (caso CleanSea)</h2>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Etapa</th><th>O que acontece</th><th>Módulo da plataforma</th><th>Quem age</th><th>Exemplo CleanSea</th><th>Hoje</th></tr></thead>
+      <tbody>
+        <tr><td>1 · Situação problemática</td><td>Levantar a situação sem estruturar ainda</td><td>Formulário de intake (<code>SubmitFormResponse</code>)</td><td>Cliente</td><td>Lista de perguntas do João: como chega o pedido, volumes, tempos, regras por porto</td><td><span class="pill todo">a construir</span></td></tr>
+        <tr><td>2 · Situação expressa</td><td>Desenhar a situação (rich picture, mapa)</td><td>Modelo <code>flow_map</code> e <code>rich_picture</code> versionado</td><td>Dev + cliente</td><td>Mapa de Fluxos "da solicitação ao certificado" (9 estações, 3 linhas)</td><td><span class="pill ok">protótipo existe</span></td></tr>
+        <tr><td>3 · Definições básicas</td><td>Definir cada sistema relevante: definição raiz e CATWOE</td><td>Campo de fronteira e papéis no modelo (<code>boundary_json</code>)</td><td>Dev, validado pelo cliente</td><td>Ver CATWOE abaixo (hipótese)</td><td><span class="pill todo">a construir</span></td></tr>
+        <tr><td>4 · Modelos conceituais</td><td>Modelar as atividades do sistema ideal</td><td>Modelo <code>activity_model</code> e versão "desenho" do <code>flow_map</code></td><td>Dev</td><td>Fluxo com A1 triagem, A2 extração e rascunho, A3 FAQ no lugar das esperas</td><td><span class="pill todo">a construir</span></td></tr>
+        <tr><td>5 · Comparação</td><td>Comparar modelo e mundo real; levantar diferenças</td><td>Simulação de cenários + comentários por estação (<code>RecordSimulationRun</code>, <code>PostComment</code>)</td><td>Cliente e dev</td><td>Cenário "anuência lenta" mostra gargalo em Programação; cliente confirma ou discorda com dados reais</td><td><span class="pill ok">simulação existe</span></td></tr>
+        <tr><td>6 · Mudanças desejáveis e viáveis</td><td>Decidir o que melhora a situação e o que a cultura aceita</td><td>Intervenções com impacto humano (<code>ProposeIntervention</code>, <code>DecideIntervention</code>)</td><td>Cliente decide (<code>client_admin</code>)</td><td>Aprovar o agente de triagem; recusar automação de assinatura de documento</td><td><span class="pill todo">a construir</span></td></tr>
+        <tr><td>7 · Ação para melhorar</td><td>Executar as mudanças e medir</td><td>Proposta aprovada → PRs e issues no repo do cliente (<code>ApproveProposal</code>, sync)</td><td>Dev + equipe CleanSea</td><td>Entregas E_2 a E_7 no repositório da CleanSea; medição antes e depois</td><td><span class="pill todo">a construir</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <details>
+    <summary>CATWOE do sistema "operação de coleta de resíduos" (rascunho, evidência C)</summary>
+    <p class="note" style="margin-top:10px"><strong>Definição raiz (rascunho):</strong> um sistema operado pela CleanSea para receber solicitações de navios, coletar e destinar o resíduo conforme as normas do porto e emitir o comprovante, de modo a cumprir prazos e regras sem multas.</p>
+    <dl>
+      <dt>C · Clientes</dt><dd>Navios, armadores e agentes marítimos (quem recebe o serviço e o certificado).</dd>
+      <dt>A · Atores</dt><dd>Análise comercial, programação, equipes de campo, transporte, documentação.</dd>
+      <dt>T · Transformação</dt><dd>Solicitação de coleta vira certificado de destinação emitido.</dd>
+      <dt>W · Visão de mundo</dt><dd>Conformidade e prazo valem mais que velocidade a qualquer custo. Visão alternativa possível: volume e margem primeiro. Precisa ser confirmada com o cliente.</dd>
+      <dt>O · Dono</dt><dd>Direção da CleanSea (quem pode encerrar ou mudar o sistema).</dd>
+      <dt>E · Restrições do ambiente</dt><dd>Normas da ANTAQ e regras de cada porto, autoridades portuárias, janelas de atracação. Resolução ANTAQ nº 99/2023 ainda não confirmada no texto oficial.</dd>
+    </dl>
+  </details>
+</section>
+</main>
+
+<script>
+(function(){
+const NS='http://www.w3.org/2000/svg';
+const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
+
+/* ---------- Diagrama 1: arquitetura ---------- */
+const A=document.getElementById('arq');
+el('defs',{},A).innerHTML='<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--line)"/></marker>';
+const lanes=[['CLIENTE E EQUIPE',16,112],['STUDIO · apps/web',140,150],['BACKEND · API, domínio, Worker',318,128],['EXTERNOS E DADOS',474,110]];
+lanes.forEach(([t,y,h])=>{el('rect',{class:'lane',x:8,y,width:984,height:h,rx:8},A);el('text',{class:'lane-t',x:18,y:y+16},A).textContent=t;});
+const N={
+ gestor:{k:'client',x:150,y:48,w:210,h:56,t:['Gestor do cliente','celular ou computador']},
+ oper:{k:'client',x:380,y:48,w:190,h:56,t:['Operador do cliente','responde formulários']},
+ dev:{k:'client',x:590,y:48,w:230,h:56,t:['Desenvolvedor Loop','área privada + compartilhada']},
+ entrada:{k:'studio',x:150,y:176,w:150,h:60,t:['Entrada /[cliente]','login individual']},
+ form:{k:'studio',x:312,y:176,w:140,h:60,t:['Formulário','rascunho salvo']},
+ mapa:{k:'studio',x:464,y:176,w:206,h:60,t:['Mapa de fluxos','simulação no navegador']},
+ coment:{k:'studio',x:682,y:176,w:120,h:60,t:['Comentários','por estação']},
+ prop:{k:'studio',x:814,y:176,w:170,h:60,t:['Proposta e showroom','aprovação do cliente']},
+ api:{k:'back',x:150,y:352,w:200,h:64,t:['API de comandos','papel + cliente + idempotência']},
+ dom:{k:'back',x:366,y:352,w:230,h:64,t:['Domínio','modelo versionado · evidência A/B/C/D']},
+ out:{k:'back',x:612,y:352,w:150,h:64,t:['Fila de saída','outbox no banco']},
+ wk:{k:'back',x:778,y:352,w:206,h:64,t:['Worker','webhook GitHub · cron · filas']},
+ db:{k:'ext',x:150,y:512,w:150,h:56,t:['D1 e R2','dados e arquivos']},
+ gh:{k:'ext',x:316,y:512,w:250,h:56,t:['GitHub do cliente','PRs e issues (nunca push direto)']},
+ mail:{k:'ext',x:582,y:512,w:150,h:56,t:['E-mail','depois WhatsApp']},
+ ag:{k:'ext',x:748,y:512,w:236,h:56,t:['Agentes CleanSea A0–A3','rodam no repo do cliente']}
+};
+const cx=n=>n.x+n.w/2;
+const edges=[
+ ['gestor','entrada',0],['oper','form',0],['dev','mapa',0],
+ ['entrada','api',0],['form','api',-10],['mapa','dom',0],['coment','dom',8],['prop','out',0],
+ ['api','db',0],['dom','db',12],['out','gh',-6],['out','mail',0],['wk','gh',10,'dash'],['gh','ag',0,'dash','código do cliente','h']
+];
+edges.forEach(([a,b,off,dash,label,mode])=>{
+  const s=N[a],t=N[b];let d,lx,ly;
+  if(mode==='h'){const y=s.y+s.h/2;d=`M${s.x+s.w},${y} H${t.x}`;lx=(s.x+s.w+t.x)/2;ly=y-6;}
+  else{const x1=cx(s)+off,y1=s.y+s.h,x2=cx(t)+off,y2=t.y,m=(y1+y2)/2+off/2;d=`M${x1},${y1} V${m} H${x2} V${y2-1}`;lx=(x1+x2)/2;ly=m-5;}
+  el('path',{class:'edge'+(dash?' dash':''),d,'marker-end':'url(#ah)'},A);
+  if(label){const tx=el('text',{class:'ml',x:lx,y:ly,'text-anchor':'middle'},A);tx.textContent=label;}
+});
+for(const id in N){const n=N[id];const g=el('g',{class:'node k-'+n.k},A);
+  el('rect',{x:n.x,y:n.y,width:n.w,height:n.h,rx:8},g);
+  el('text',{x:cx(n),y:n.y+n.h/2-3,style:'font-weight:600'},g).textContent=n.t[0];
+  el('text',{class:'sub',x:cx(n),y:n.y+n.h/2+14},g).textContent=n.t[1];}
+
+/* ---------- Diagrama 2: SSM ---------- */
+const S=document.getElementById('ssm');
+el('defs',{},S).innerHTML='<marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--line)"/></marker>';
+el('line',{x1:10,x2:990,y1:200,y2:200,stroke:'var(--line)','stroke-width':1.5,'stroke-dasharray':'8 6'},S);
+const lt=(x,y,t,c)=>{const e=el('text',{x,y,class:'lane-t',style:'fill:'+c+'!important'},S);e.textContent=t;};
+lt(14,190,'MUNDO REAL · a empresa e as pessoas','var(--real)');
+lt(14,222,'PENSAMENTO SISTÊMICO · modelos','var(--sys)');
+const P={
+ 1:{k:'real',x:20,y:50,t:'Situação problemática',s:'levantar, sem estruturar'},
+ 2:{k:'real',x:215,y:50,t:'Situação expressa',s:'rich picture · mapa'},
+ 3:{k:'sys',x:215,y:260,t:'Definições básicas',s:'definição raiz · CATWOE'},
+ 4:{k:'sys',x:410,y:260,t:'Modelos conceituais',s:'atividades do sistema ideal'},
+ 5:{k:'cmp',x:605,y:160,t:'Comparação',s:'modelo × mundo real'},
+ 6:{k:'real',x:665,y:50,t:'Mudanças desejáveis|e viáveis',s:'o que melhora e é aceito'},
+ 7:{k:'real',x:850,y:50,t:'Ação para melhorar',s:'executar e medir'}
+};
+const W=150,H=84;
+const pos=i=>({l:P[i].x,r:P[i].x+(P[i].w||W),t:P[i].y,b:P[i].y+H,cx:P[i].x+W/2,cy:P[i].y+H/2});
+P[6].w=165;P[7].w=130;P[5].w=W;
+const link=(d)=>el('path',{class:'edge',d,'marker-end':'url(#ah2)'},S);
+link(`M${pos(1).r},${pos(1).cy} H${pos(2).l-1}`);
+link(`M${pos(2).cx},${pos(2).b} V${pos(3).t-1}`);
+link(`M${pos(3).r},${pos(3).cy} H${pos(4).l-1}`);
+link(`M${pos(4).r},${pos(4).cy} H${pos(5).cx-40} V${pos(5).b+1}`);
+link(`M${pos(5).cx+W/2-20},${pos(5).t} V${pos(5).t-30} H${pos(6).cx} V${pos(6).b+1}`);
+link(`M${pos(6).r},${pos(6).cy} H${P[7].x-1}`);
+link(`M${P[7].x+65},${P[7].y} V24 H${pos(1).cx} V${pos(1).t-1}`);
+const lp=el('text',{class:'ml',x:520,y:18,'text-anchor':'middle'},S);lp.textContent='a ação muda a situação e o ciclo recomeça';
+for(const i in P){const p=P[i];const w=p.w||W;const g=el('g',{class:'ssm '+p.k},S);
+  el('rect',{x:p.x,y:p.y,width:w,height:H,rx:8},g);
+  el('circle',{cx:p.x+16,cy:p.y+16,r:12,fill:p.k==='real'?'var(--real)':p.k==='sys'?'var(--sys)':'var(--fg)',class:'badge'},g);
+  el('text',{class:'num',x:p.x+16,y:p.y+20},g).textContent=i;
+  const words=p.t.split(' ');let l1=p.t,l2='';
+  if(p.t.includes('|')){[l1,l2]=p.t.split('|');}
+  else if(p.t.length>18){const h=Math.ceil(words.length/2);l1=words.slice(0,h).join(' ');l2=words.slice(h).join(' ');}
+  el('text',{class:'t',x:p.x+w/2+8,y:p.y+(l2?38:44)},g).textContent=l1;
+  if(l2)el('text',{class:'t',x:p.x+w/2+8,y:p.y+53},g).textContent=l2;
+  el('text',{class:'s',x:p.x+w/2,y:p.y+H-9},g).textContent=p.s;
+}
+})();
+</script>
