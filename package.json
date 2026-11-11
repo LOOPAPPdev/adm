@@ -2,9 +2,10 @@
   "name": "adm",
   "private": true,
   "version": "0.1.0",
-  "description": "Monorepo ADM: diretório unificado de Skills, Agents, Plugins e MCP Servers (fonte inicial: Anthropic Directory)",
+  "description": "Monorepo LOOP: aplica\u00e7\u00e3o unificada (site, Workspace, Studio, Portal, ADM Directory e API) em apps/web, mais o orquestrador do registry.",
   "workspaces": [
-    "apps/*"
+    "apps/web",
+    "apps/orchestrator"
   ],
   "engines": {
     "node": ">=20"
@@ -13,14 +14,26 @@
     "sync": "npm run sync -w @adm/orchestrator",
     "sync:offline": "npm run sync -w @adm/orchestrator --",
     "orchestrator": "npm run cli -w @adm/orchestrator --",
-    "test": "npm test -w @adm/orchestrator",
+    "test": "npm test -w @adm/orchestrator && npm test -w @adm/web",
     "dev": "npm run dev -w @adm/web",
     "build": "npm run build -w @adm/web",
     "deploy": "npm run deploy -w @adm/web",
-    "loop:dev": "npm run dev -w @adm/loop",
-    "loop:test": "npm test -w @adm/loop",
-    "loop:build": "npm run build -w @adm/loop",
-    "loop:e2e": "npm run e2e -w @adm/loop",
-    "loop:zip": "npm run zip -w @adm/loop"
+    "typecheck": "npm run typecheck -w @adm/web",
+    "e2e": "npm run e2e -w @adm/web",
+    "cf-build": "npm run cf-build -w @adm/web"
+  },
+  "overrides": {
+    "@opennextjs/cloudflare": {
+      "glob": "14.0.3"
+    },
+    "@node-minify/core": {
+      "glob": "14.0.3"
+    },
+    "glob": {
+      "minimatch": "11.0.3"
+    },
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "11.0.3"
+    }
   }
 }

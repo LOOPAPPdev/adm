@@ -19,8 +19,8 @@ const plexMono = IBM_Plex_Mono({
 const themeScript = `try{var m=matchMedia('(prefers-color-scheme: dark)');var s=function(){document.documentElement.dataset.theme=m.matches?'dark':'light'};s();m.addEventListener('change',s)}catch(e){}`;
 
 export const metadata: Metadata = {
-	title: "ADM · Diretório de Skills, Plugins e MCP Servers",
-	description: "Diretório unificado de Skills, Agents, Plugins e MCP Servers a partir do Anthropic Directory.",
+	title: "LOOP",
+	description: "LOOP Consulting: modelagem organizacional, Workspace do Consultor, LOOP Studio, Portal do Cliente e ADM Directory.",
 };
 
 export default function RootLayout({
