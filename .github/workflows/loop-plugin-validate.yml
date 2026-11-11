@@ -1,0 +1,20 @@
+name: LOOP Plugin Validation
+on:
+  pull_request:
+    paths:
+      - 'plugins/loop-engineering-partner/**'
+      - '.github/workflows/loop-plugin-validate.yml'
+  push:
+    paths:
+      - 'plugins/loop-engineering-partner/**'
+      - '.github/workflows/loop-plugin-validate.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node plugins/loop-engineering-partner/scripts/validate.mjs
+      - run: node --test plugins/loop-engineering-partner/test/*.test.mjs
