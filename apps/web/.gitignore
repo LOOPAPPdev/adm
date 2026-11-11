@@ -205,3 +205,5 @@ node_modules
 .next
 .open-next
 .wrangler
+test-results/
+playwright-report/

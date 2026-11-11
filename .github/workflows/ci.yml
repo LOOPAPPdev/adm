@@ -10,17 +10,12 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: npm ci
-      - run: npm test
+      - run: npm audit --audit-level=high
+      - run: npm test # orchestrator + apps/web (domain, API, data layer)
+      - run: npm run typecheck
       - run: npm run build
-  loop:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - run: npm ci
-      - run: npm run loop:test
-      - run: npm run loop:build
+      - run: npm run cf-build # OpenNext must produce apps/web/.open-next/worker.js
+      - run: test -f apps/web/.open-next/worker.js
       - run: npx playwright install --with-deps chromium
-        working-directory: apps/loop
-      - run: npm run loop:e2e # trace is already off in playwright.config.ts (npm would swallow a --trace flag)
+        working-directory: apps/web
+      - run: npm run e2e
