@@ -1,12 +1,23 @@
-# ADM — Diretório unificado de Skills, Agents, Plugins e MCP Servers
+# LOOP · monorepo `adm`
 
-Monorepo (npm workspaces) que **cataloga, normaliza e publica** os componentes do **Anthropic Directory**. Esta primeira fase importa somente fontes oficiais da Anthropic; fontes da comunidade ficam para uma fase seguinte (basta um novo adapter).
+Uma aplicação, uma arquitetura, um deploy: **`apps/web`** (Next.js no Cloudflare Workers) serve o website LOOP Consulting, o Workspace do Consultor, o LOOP Studio, o Portal do Cliente, o **ADM Directory** e o backend `/api/v1` (D1). Decisão: [ADR-0002](docs/loop-app/ADR-0002-aplicacao-unificada.md) · deploy: [DEPLOY_MEMORY](docs/deployment/DEPLOY_MEMORY.md) · rotas e código: [apps/web/README.md](apps/web/README.md).
+
+| Rota | Área |
+|---|---|
+| `/`, `/metodo`, `/solucoes`, `/demonstracao`, `/contato` | Website |
+| `/app`, `/app/projetos/[id]/…` | Workspace |
+| `/studio` | LOOP Studio |
+| `/portal/[id]` | Portal do Cliente |
+| `/directory` | ADM Directory |
+| `/entrar` | Login |
+| `/api/v1/*` | Backend (auth, organizações, projetos, histórico, contato) |
+
+O restante deste README descreve o **ADM Directory** e o orquestrador que o alimenta: ele **cataloga, normaliza e publica** os componentes do **Anthropic Directory**. Esta primeira fase importa somente fontes oficiais da Anthropic; fontes da comunidade ficam para uma fase seguinte (basta um novo adapter).
 
 ```
 apps/
   orchestrator/   pipeline DISCOVER → FETCH → VALIDATE → NORMALIZE → DEDUPLICATE → INDEX → PUBLISH
-  web/            diretório pesquisável (Next.js 16 + Tailwind 4, deploy em Cloudflare Workers via OpenNext)
-  loop/           LOOP v1.0: site da consultoria, Workspace, Studio e Portal (Vite + React, sem backend) — ver apps/loop/README.md
+  web/            aplicação unificada LOOP (Next.js 16 + Tailwind 4 + D1, um Worker via OpenNext): site, Workspace, Studio, Portal, Directory, /api/v1
 registry/
   sources.json    inventário de fontes (adapter, método, limitações)
 storage/
@@ -51,9 +62,11 @@ npm run sync                 # sincroniza todas as fontes (incremental, idempote
 npm run orchestrator -- sync --source anthropics-skills
 npm run orchestrator -- list --type skill
 npm run orchestrator -- mirror skill:anthropics-skills/docx   # copia o código sob demanda (se a licença permitir)
-npm test                     # testes do orquestrador
-npm run dev                  # interface em http://localhost:3000
-npm run build
+npm test                     # orquestrador + apps/web (domínio e backend)
+npm run dev                  # aplicação em http://localhost:3000
+npm run build                # build Next
+npm run cf-build             # build OpenNext (Worker)
+npm run e2e                  # Playwright (ver apps/web/README.md)
 ```
 
 Testes e sync offline usam fixtures/diretórios locais: `sync --offline anthropics-skills=/caminho`.
@@ -68,13 +81,13 @@ Testes e sync offline usam fixtures/diretórios locais: `sync --offline anthropi
 ## Automação
 
 - `.github/workflows/sync-registry.yml`: sync diário (06:17 UTC) e manual (`workflow_dispatch`, com filtro de fonte); testa, builda e commita só se o índice mudou.
-- `.github/workflows/ci.yml`: testes + build.
+- `.github/workflows/ci.yml`: audit, testes, typecheck, build Next, build OpenNext e E2E (inclui o Worker real com D1 local).
 
-## Interface (`apps/web`)
+## Interface do Directory (`apps/web`, rota `/directory`)
 
 Abas (All, Skills, Agents, Plugins, MCP Servers, Workflows, Sources, Installed), busca de texto, filtros (fonte, categoria, oficial/terceiro, status), ordenação, paginação, detalhes, link para a fonte original, copiar comando, pré-visualização do manifesto, comparação (até 3) e itens salvos localmente. Os dados vêm de `apps/web/src/data/registry.json`, gerado pela etapa PUBLISH.
 
-Deploy (Cloudflare Workers): `npm run deploy` com `wrangler login` ou `CLOUDFLARE_API_TOKEN` válido.
+Deploy (Cloudflare Workers): ver [docs/deployment/DEPLOY_MEMORY.md](docs/deployment/DEPLOY_MEMORY.md).
 
 ## Limitações conhecidas
 
@@ -86,4 +99,4 @@ Deploy (Cloudflare Workers): `npm run deploy` com `wrangler login` ou `CLOUDFLAR
 
 A documentação técnica consolidada do LOOP está em [`docs/loop-app/technical-baseline/README.md`](docs/loop-app/technical-baseline/README.md). Contém [arquitetura e diagrama Mermaid](docs/loop-app/technical-baseline/docs/architecture.md), [famílias de componentes](docs/loop-app/technical-baseline/docs/components/README.md), [tokens de FlowMap](docs/loop-app/technical-baseline/design-system/README.md), [referências](docs/loop-app/technical-baseline/docs/references.md), [decisões pendentes D-A–D-L](docs/loop-app/technical-baseline/docs/decisions.md) e [validação](docs/loop-app/technical-baseline/docs/validation.md). Os cinco arquivos originais foram preservados em [`sources/`](docs/loop-app/technical-baseline/sources/) com hashes SHA-256 verificáveis.
 
-**Separação de aplicações:** `apps/loop` é o frontend LOOP v1.0 (React/Vite, sem backend real); `apps/web` permanece o diretório ADM (Next.js/OpenNext/Cloudflare Workers). O `design-system/` da raiz continua como fonte única de tokens executáveis. O baseline é documental e **não** certifica conformidade BPMN, migração de tokens, backend, autenticação ou deploy. As decisões em aberto devem ser tratadas antes de implementar os recursos dependentes.
+**Aplicações:** desde o ADR-0002 (2026-11-11) o antigo `apps/loop` (Vite) foi migrado para `apps/web`; há uma única aplicação Next.js com backend. O `design-system/` da raiz continua como fonte única de tokens executáveis. O baseline é documental e **não** certifica conformidade BPMN, migração de tokens, backend, autenticação ou deploy. As decisões em aberto devem ser tratadas antes de implementar os recursos dependentes.

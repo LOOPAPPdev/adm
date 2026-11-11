@@ -29,16 +29,14 @@ Tailwind's layers so utilities still win, and map the roles to Tailwind names wi
 (`bg-ds-surface`, `text-ds-muted`, `border-ds-line`, `rounded-ds-lg` …). Never name a Tailwind theme variable
 exactly like a DS variable (`--color-accent`): it would overwrite it.
 
-**Vite app** (`apps/loop` does this): import the colour, type and spacing tokens into `src/styles.css` and
-point the app's own Tailwind names at the DS roles with `@theme inline` (`--color-ink: var(--color-text)` …),
-so components keep their class names. Fonts load from `index.html`.
+**Static or Vite page**: import the colour, type and spacing tokens into the stylesheet and point the app's
+Tailwind names at the DS roles with `@theme inline`. (The former `apps/loop` Vite app now lives in `apps/web`.)
 
 ## Who uses it
 
 | App | How |
 |---|---|
-| `apps/web` (ADM directory) | Next.js + Tailwind: tokens, base and components; classes `ds-*`. |
-| `apps/loop` (LOOP site, Workspace, Studio, Portal — loop-app) | Vite + Tailwind: tokens; its names (`paper`, `ink`, `muted`, `red` …) mapped to DS roles; no hard-coded colours left. |
+| `apps/web` (LOOP site, Workspace, Studio, Portal, ADM Directory) | Next.js + Tailwind: tokens, base and components; one set of `ds-*` names in `src/app/globals.css`. |
 
 ## Rules
 

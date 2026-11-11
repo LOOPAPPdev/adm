@@ -1,63 +1,48 @@
-# Next.js Framework Starter
+# @adm/web · LOOP unified application
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/next-starter-template)
+Next.js App Router on Cloudflare Workers (OpenNext). One Worker serves:
 
-<!-- dash-content-start -->
+| Area | Routes |
+|---|---|
+| Website LOOP Consulting | `/`, `/metodo`, `/solucoes`, `/demonstracao`, `/contato` |
+| Workspace do Consultor | `/app`, `/app/projetos`, `/app/projetos/[id]/…`, `/configuracoes`, `/verificacao` |
+| LOOP Studio | `/studio`, `/app/projetos/[id]/{descoberta,organograma,processos,oportunidades,cenarios,sistemas,evidencias,apresentacao}` |
+| Portal do Cliente | `/portal/[id]` |
+| ADM Directory | `/directory` |
+| Login | `/entrar` |
+| API | `/api/v1/*` (health, auth, orgs, projects, history, contact) |
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It's deployed on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
+## Code map
 
-This template uses [OpenNext](https://opennext.js.org/) via the [OpenNext Cloudflare adapter](https://opennext.js.org/cloudflare), which works by taking the Next.js build output and transforming it, so that it can run in Cloudflare Workers.
-
-<!-- dash-content-end -->
-
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
-
-```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/next-starter-template
+```
+src/app/            routes (App Router); (loop)/ = site, Workspace, Studio, Portal; api/v1/ = Route Handlers
+src/screens/        LOOP screens (client components)
+src/components/     UI, diagrams, shell
+src/domain/         LOOP domain: Zod schema, rules, BPMN, causal map (no UI, no I/O) — shared by UI and server
+src/ports/          ProjectRepository + adapters: Http (server), Dexie/Memory (demo mode)
+src/store/          Zustand store (connected vs demo mode)
+src/server/         backend: domain (roles, errors) · data (SQL) · services · infra (D1, crypto) · http
+migrations/         D1 SQL migrations
+e2e/                Playwright: acceptance, responsive, connected (real Worker)
 ```
 
-A live public deployment of this template is available at [https://next-starter-template.templates.workers.dev](https://next-starter-template.templates.workers.dev)
+## Commands
 
-## Getting Started
+Run from the repository root (`npm install` once):
 
-First, run:
+| Command | What it does |
+|---|---|
+| `npm run dev -w @adm/web` | Next dev server |
+| `npm test -w @adm/web` | Vitest: domain + backend (real migrations on node:sqlite) |
+| `npm run typecheck -w @adm/web` | TypeScript |
+| `npm run build -w @adm/web` | Next production build |
+| `npm run cf-build -w @adm/web` | OpenNext build → `.open-next/worker.js` |
+| `npm run e2e -w @adm/web` | Playwright (needs both builds and local D1, see below) |
 
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
-```
-
-Then run the development server (using the package manager of your choice):
+Local D1 for `wrangler dev` and the connected E2E:
 
 ```bash
-npm run dev
+printf 'BOOTSTRAP_TOKEN=local-only\n' > .dev.vars && npx wrangler d1 migrations apply loop-db --local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Deploying To Production
-
-| Command                           | Action                                       |
-| :-------------------------------- | :------------------------------------------- |
-| `npm run build`                   | Build your production site                   |
-| `npm run preview`                 | Preview your build locally, before deploying |
-| `npm run build && npm run deploy` | Deploy your production site to Cloudflare    |
-| `npm wrangler tail`               | View real-time logs for all Workers          |
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Deploy and production setup: [`docs/deployment/DEPLOY_MEMORY.md`](../../docs/deployment/DEPLOY_MEMORY.md). Architecture decision: [`docs/loop-app/ADR-0002-aplicacao-unificada.md`](../../docs/loop-app/ADR-0002-aplicacao-unificada.md).
