@@ -1,0 +1,41 @@
+/* FlowMap tokens, app (monochrome) values. Reference indigo values are in flow-map-tokens.json. */
+:root {
+  --flow-color-module-fill: #f3f3f3;
+  --flow-color-accent: #111111;
+  --flow-color-label-fill: #ffffff;
+  --flow-color-label-border: #d0d0d0;
+  --flow-color-thumb-fill: #ffffff;
+  --flow-color-thumb-border: #e3e3e3;
+  --flow-color-thumb-bar: #f3f3f3;
+  --flow-color-skeleton: #e6e6e6;
+  --flow-color-skeleton-strong: #8c8c8c;
+  --flow-color-line: #111111;
+
+  --flow-module-width: 156px;
+  --flow-module-height: 40px;
+  --flow-module-radius: 8px;
+  --flow-label-width: 185px;
+  --flow-label-height: 24px;
+  --flow-label-radius: 6px;
+  --flow-thumb-width: 251px;
+  --flow-thumb-height: 200px;
+  --flow-thumb-radius: 8px;
+  --flow-label-gap: 10px;
+  --flow-col-gap: 34px;
+  --flow-row-pitch: 280px;
+  --flow-continue-length: 40px;
+  --flow-merge-clearance: 20px;
+  --flow-gutter: 16px;
+
+  --flow-line-width: 1px;
+  --flow-arrow-size: 6px;
+
+  --flow-font-label: 400 11px/1.2 system-ui, sans-serif;
+  --flow-font-module: 500 13px/1.2 system-ui, sans-serif;
+  --flow-font-title: 600 34px/1.2 system-ui, sans-serif;
+  --flow-font-subtitle: 400 14px/1.5 system-ui, sans-serif;
+}
+
+/* Keep lines and arrowheads at a fixed width when the diagram zooms */
+.flow-edge { stroke: var(--flow-color-line); stroke-width: var(--flow-line-width); vector-effect: non-scaling-stroke; }
+.flow-edge[data-kind="back"] { stroke-dasharray: 4 4; }
