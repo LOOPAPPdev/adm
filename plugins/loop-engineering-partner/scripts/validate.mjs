@@ -16,7 +16,7 @@ for(const [dir,suffix] of [['agents','.md'],['skills',null]]){
  const entries=await readdir(resolve(root,dir),{withFileTypes:true});
  ensure(entries.length >= (dir==='agents'?6:6),dir+' minimum count not met');
  for(const entry of entries){
-  const path=dir+'/'+entry.name+(suffix||'/SKILL.md');
+  const path=dir==='agents' ? dir+'/'+entry.name : dir+'/'+entry.name+'/SKILL.md';
   try {
    const s=await text(path);
    ensure(s.startsWith('---\n')&&s.indexOf('\n---\n',4)>0,path+' missing YAML frontmatter');
