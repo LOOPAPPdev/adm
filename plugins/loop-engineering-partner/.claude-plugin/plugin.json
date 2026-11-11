@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "loop-engineering-partner",
+  "displayName": "LOOP Engineering Partner",
+  "version": "0.1.0",
+  "description": "Orchestrated senior coding partnership for unified LOOP Next.js/Cloudflare application. Read-only local memory retrieval, education, audit, migration, backend and verification.",
+  "author": {
+    "name": "LOOPAPPdev"
+  },
+  "repository": "https://github.com/LOOPAPPdev/adm",
+  "license": "UNLICENSED",
+  "keywords": [
+    "claude-code",
+    "agents",
+    "skills",
+    "nextjs",
+    "cloudflare",
+    "rag",
+    "pair-programming"
+  ]
+}
