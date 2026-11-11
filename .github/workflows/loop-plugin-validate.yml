@@ -18,3 +18,14 @@ jobs:
           node-version: '22'
       - run: node plugins/loop-engineering-partner/scripts/validate.mjs
       - run: node --test plugins/loop-engineering-partner/test/*.test.mjs
+
+      - name: Package installable plugin
+        run: |
+          cd plugins/loop-engineering-partner
+          zip -q -r "$RUNNER_TEMP/loop-engineering-partner.plugin" . -x '*.DS_Store'
+          test -s "$RUNNER_TEMP/loop-engineering-partner.plugin"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: loop-engineering-partner-package
+          path: ${{ runner.temp }}/loop-engineering-partner.plugin
+          if-no-files-found: error
