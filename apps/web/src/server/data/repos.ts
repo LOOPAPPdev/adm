@@ -86,7 +86,9 @@ export const revisions = {
   list: async (db: Db, projectId: string) =>
     (await db.prepare(`SELECT r.project_id, r.version, r.user_id, u.name AS user_name, r.summary, r.created_at FROM project_revisions r
                        LEFT JOIN users u ON u.id = r.user_id WHERE r.project_id = ? ORDER BY r.version DESC LIMIT 200`)
-      .bind(projectId).all<RevisionRow>()).results
+      .bind(projectId).all<RevisionRow>()).results,
+  data: async (db: Db, projectId: string, version: number) =>
+    (await db.prepare('SELECT data_json FROM project_revisions WHERE project_id = ? AND version = ?').bind(projectId, version).first<{ data_json: string }>())?.data_json ?? null
 };
 
 export const audit = {

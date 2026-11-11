@@ -63,7 +63,7 @@ Depois disso o bootstrap responde 409. Remova o segredo:
 npx wrangler secret delete BOOTSTRAP_TOKEN
 ```
 
-Organizações de cliente e membros: `POST /api/v1/orgs` e `POST /api/v1/orgs/{id}/members` (logado como admin). Não há envio de e-mail: defina a senha inicial e entregue-a por um canal seguro.
+Organizações de cliente e membros: tela `/admin` (ou `POST /api/v1/orgs` e `POST /api/v1/orgs/{id}/members`), logado como admin. Não há envio de e-mail: defina a senha inicial e entregue-a por um canal seguro.
 
 ## Migrações
 

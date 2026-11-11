@@ -84,6 +84,41 @@ test('GIVEN a user of another client WHEN requesting the project THEN the server
   expect(put.status()).toBe(404);
 });
 
+test('history lists versions and restores an older one as a new version', async ({ browser }) => {
+  const a = await loginUi(browser, consultant);
+  await a.page.goto(projectUrl + '/historico');
+  const rows = a.page.locator('tbody tr');
+  await expect(rows.first()).toBeVisible({ timeout: 10_000 });
+  const before = await rows.count();
+  expect(before).toBeGreaterThan(1);
+  await rows.last().getByRole('button', { name: 'Restaurar' }).click();
+  await expect(a.page.getByText(/Versão 1 restaurada como versão/)).toBeVisible({ timeout: 10_000 });
+  await expect(rows.first()).toContainText('Restaurada a versão 1');
+  await expect(rows).toHaveCount(before + 1);
+  await a.ctx.close();
+});
+
+test('admin screen creates an organization and adds a member', async ({ browser }) => {
+  const ctx = await browser.newContext();
+  const page = await ctx.newPage();
+  await page.goto(BASE + '/entrar');
+  await page.getByLabel('E-mail').fill('admin-e2e@loop.test');
+  await page.getByLabel('Senha').fill(PW);
+  await page.getByRole('button', { name: 'Entrar' }).click();
+  await expect(page.getByText('Conectado', { exact: true })).toBeVisible();
+  await page.getByRole('link', { name: 'Administração' }).click();
+  await page.getByLabel('Nova organização (cliente)').fill(`Cliente UI ${run}`);
+  await page.getByRole('button', { name: 'Criar organização' }).click();
+  await expect(page.getByText(`Organização Cliente UI ${run} criada.`)).toBeVisible();
+  await expect(page.locator('#admin-org option:checked')).toHaveText(`Cliente UI ${run}`);
+  await page.getByLabel('Nome', { exact: true }).fill('Pessoa UI');
+  await page.getByLabel('E-mail', { exact: true }).fill(`pessoa-${run}@ui.test`);
+  await page.getByLabel(/Senha inicial/).fill(PW);
+  await page.getByRole('button', { name: 'Salvar membro' }).click();
+  await expect(page.getByRole('cell', { name: `pessoa-${run}@ui.test` })).toBeVisible();
+  await ctx.close();
+});
+
 test('without a session the API refuses and the app stays in demo mode', async ({ browser }) => {
   const ctx = await browser.newContext();
   const page = await ctx.newPage();

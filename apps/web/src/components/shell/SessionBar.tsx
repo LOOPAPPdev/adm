@@ -23,6 +23,7 @@ export function SessionBar() {
             </label>
           )}
           {session.organizations.length === 1 && org && <span>· {org.name}</span>}
+          {(session.user.platformAdmin || session.organizations.some(o => o.role === 'owner' || o.role === 'consultant' || o.role === 'client_admin')) && <Link to="/admin">Administração</Link>}
           <button type="button" className="underline" onClick={() => void logout()}>Sair</button>
         </span>
         <span aria-live="polite">{saveError ? `Não salvo: ${saveErrorMsg}` : savedAt ? `Salvo no servidor às ${savedAt}` : 'Alterações são salvas no servidor.'}</span>

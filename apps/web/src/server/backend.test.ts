@@ -135,6 +135,23 @@ describe('projetos e permissões', () => {
     await expect(createProject(w.ctx, admin, { organizationId: w.acme.id, project: big })).rejects.toMatchObject({ status: 413 });
   });
 
+  it('restaurar uma versão cria versão nova com o conteúdo antigo; cliente não restaura', async () => {
+    const { restoreRevision } = await import('@/server/services/projects');
+    const consultor = await w.as('consultor@loop.test');
+    const p = await createProject(w.ctx, consultor, { organizationId: w.acme.id, project: newProject('Original') });
+    await saveProject(w.ctx, consultor, p.project.id, 1, { ...p.project, name: 'Alterado' });
+    const cliente = await w.as('cliente@acme.test');
+    await expect(restoreRevision(w.ctx, cliente, p.project.id, 1, 2)).rejects.toMatchObject({ status: 403 });
+    await expect(restoreRevision(w.ctx, consultor, p.project.id, 1, 1)).rejects.toMatchObject({ status: 409 });
+    await expect(restoreRevision(w.ctx, consultor, p.project.id, 99, 2)).rejects.toMatchObject({ status: 404 });
+    const r = await restoreRevision(w.ctx, consultor, p.project.id, 1, 2);
+    expect(r.version).toBe(3);
+    expect(r.project.name).toBe('Original');
+    const hist = await projectHistory(w.ctx, consultor, p.project.id);
+    expect(hist[0]).toMatchObject({ version: 3, summary: 'Restaurada a versão 1' });
+    expect(hist).toHaveLength(3);
+  });
+
   it('documento inválido é recusado com a lista de problemas', async () => {
     const consultor = await w.as('consultor@loop.test');
     await expect(createProject(w.ctx, consultor, { organizationId: w.acme.id, project: { name: '' } })).rejects.toMatchObject({ status: 422 });

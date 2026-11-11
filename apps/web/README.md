@@ -9,8 +9,8 @@ Next.js App Router on Cloudflare Workers (OpenNext). One Worker serves:
 | LOOP Studio | `/studio`, `/app/projetos/[id]/{descoberta,organograma,processos,oportunidades,cenarios,sistemas,evidencias,apresentacao}` |
 | Portal do Cliente | `/portal/[id]` |
 | ADM Directory | `/directory` |
-| Login | `/entrar` |
-| API | `/api/v1/*` (health, auth, orgs, projects, history, contact) |
+| Login e administração | `/entrar`, `/admin` (organizações e membros), `/app/projetos/[id]/historico` (versões) |
+| API | `/api/v1/*` (health, auth, orgs, members, projects, history, restore, contact) |
 
 ## Code map
 

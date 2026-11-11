@@ -93,7 +93,7 @@ export async function createProject(ctx: Ctx, u: SessionUser, input: unknown): P
 /** Fields a client role may change. Everything else must stay identical. */
 const CLIENT_FIELDS: (keyof Project)[] = ['portalReview'];
 
-export async function saveProject(ctx: Ctx, u: SessionUser, id: string, expectedVersion: number | null, input: unknown): Promise<ProjectDto> {
+export async function saveProject(ctx: Ctx, u: SessionUser, id: string, expectedVersion: number | null, input: unknown, summaryOverride?: string): Promise<ProjectDto> {
   if (!expectedVersion || !Number.isInteger(expectedVersion)) throw new AppError(428, 'version_required', 'Envie o cabeçalho If-Match com a versão lida.');
   const { row, role } = await load(ctx, u, id);
   const before = JSON.parse(row.data_json) as Project;
@@ -115,7 +115,7 @@ export async function saveProject(ctx: Ctx, u: SessionUser, id: string, expected
   const json = sized(JSON.stringify(stored));
   const res = await projects.update(ctx.db, { id, name: stored.name, archived: stored.archived ? 1 : 0, data_json: json, updated_by: u.id, updated_at: now, expected: expectedVersion }).run();
   if (!res.meta.changes) throw new AppError(409, 'version_conflict', 'Outra pessoa salvou este projeto. Recarregue para ver a versão atual.');
-  const summary = summarize(before, stored);
+  const summary = summaryOverride ?? summarize(before, stored);
   await ctx.db.batch([
     revisions.insert(ctx.db, { project_id: id, version, data_json: json, user_id: u.id, summary, created_at: now }),
     audit.insert(ctx.db, { id: newId('aud'), organization_id: row.organization_id, user_id: u.id, action: canEdit ? 'project.save' : 'project.portal_review', target: `project:${id}`, meta: { version, summary }, created_at: now })
@@ -137,4 +137,17 @@ export async function projectHistory(ctx: Ctx, u: SessionUser, id: string) {
   const { role } = await load(ctx, u, id);
   if (!can(role, 'project.history', u.platformAdmin)) throw forbidden();
   return revisions.list(ctx.db, id);
+}
+
+/**
+ * Restores an earlier version by saving its content as a new version (history is never rewritten).
+ * Needs edit rights and the current version in If-Match, like any save.
+ */
+export async function restoreRevision(ctx: Ctx, u: SessionUser, id: string, version: number, expectedVersion: number | null): Promise<ProjectDto> {
+  const { role } = await load(ctx, u, id);
+  if (!can(role, 'project.edit', u.platformAdmin)) throw forbidden('Seu papel não permite restaurar versões.');
+  if (!Number.isInteger(version) || version < 1) throw invalid('Versão inválida.');
+  const json = await revisions.data(ctx.db, id, version);
+  if (!json) throw notFound('Versão');
+  return saveProject(ctx, u, id, expectedVersion, JSON.parse(json), `Restaurada a versão ${version}`);
 }

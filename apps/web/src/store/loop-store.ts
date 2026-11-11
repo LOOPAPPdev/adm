@@ -32,6 +32,10 @@ interface LoopState {
   reload: () => Promise<void>;
   setActiveOrg: (id: string) => Promise<void>;
   logout: () => Promise<void>;
+  /** Replaces a project with the server's copy without saving it again. */
+  applyServer: (p: Project) => void;
+  /** Re-reads the session (e.g. after joining an organization) without reloading screens. */
+  refreshSession: () => Promise<void>;
   notify: (msg: string) => void;
   update: (id: string, fn: (p: Project) => void, msg?: string) => void;
   add: (p: Project, msg?: string) => void;
@@ -100,6 +104,13 @@ export const useLoop = create<LoopState>((set, get) => {
       set({ activeOrgId: id });
       await get().reload();
     },
+
+    async refreshSession() {
+      const session = await apiFetch<SessionInfo>('/api/v1/auth/me').catch(() => null);
+      if (session) set({ session });
+    },
+
+    applyServer(p) { set(s => ({ projects: s.projects.map(x => (x.id === p.id ? p : x)) })); },
 
     async logout() {
       await apiFetch('/api/v1/auth/logout', { method: 'POST' }).catch(() => undefined);

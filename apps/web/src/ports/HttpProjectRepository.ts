@@ -42,6 +42,8 @@ export class HttpProjectRepository implements ProjectRepository {
 
   setOrganization(id: string | null) { this.organizationId = id; }
   versionOf(id: string) { return this.versions.get(id); }
+  /** After a server-side change made outside put() (e.g. restore), keep the version in sync. */
+  setVersion(id: string, v: number) { this.versions.set(id, v); }
 
   async list(): Promise<Project[]> {
     const q = this.organizationId ? `?organizationId=${encodeURIComponent(this.organizationId)}` : '';
