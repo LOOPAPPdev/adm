@@ -21,7 +21,7 @@
 		{
 			"binding": "DB",
 			"database_name": "loop-db",
-			"database_id": "00000000-0000-0000-0000-000000000000",
+			"database_id": "e965c51a-910f-408f-a456-919b11ae74f5",
 			"migrations_dir": "migrations"
 		}
 	],

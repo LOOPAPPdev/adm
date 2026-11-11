@@ -9,7 +9,7 @@ Atualize este arquivo a cada mudança de infraestrutura.
 |---|---|
 | Build OpenNext (`.open-next/worker.js`) | ✅ gerado localmente e no CI |
 | Worker testado localmente (`wrangler dev` + D1 local) | ✅ E2E conectado 5/5 |
-| Banco D1 de produção (`loop-db`) | ❌ **não criado** — `database_id` em `wrangler.jsonc` é um marcador (zeros) |
+| Banco D1 de produção (`loop-db`) | ✅ criado em 2026-11-11 (`e965c51a-910f-408f-a456-919b11ae74f5`, região ENAM); migração `0001_init.sql` aplicada e registrada em `d1_migrations` |
 | Segredo `BOOTSTRAP_TOKEN` | ❌ não configurado |
 | Publicação em produção | ❌ **não feita** — a credencial Cloudflare deste ambiente de desenvolvimento foi recusada pela API |
 | Domínio | ❌ a definir (TD-08) |
@@ -25,7 +25,7 @@ Atualize este arquivo a cada mudança de infraestrutura.
 | Deploy command | `npx wrangler deploy` |
 | Node | 22 |
 
-O Workers Builds já está conectado ao repositório (Worker `adm`). Em 2026-11-11, no PR #3, ele detectou o monorepo, instalou, gerou o build OpenNext e enviou os assets a partir de `apps/web`; o deploy parou só porque o D1 `loop-db` ainda não existe (erro 10181). O nome do Worker no `wrangler.jsonc` precisa continuar `adm`.
+O Workers Builds já está conectado ao repositório (Worker `adm`). Em 2026-11-11, no PR #3, ele detectou o monorepo, instalou, gerou o build OpenNext e enviou os assets a partir de `apps/web`; o deploy parou porque o D1 `loop-db` ainda não existia (erro 10181); o banco foi criado em seguida. O nome do Worker no `wrangler.jsonc` precisa continuar `adm`.
 
 ## Primeira publicação (uma vez)
 
@@ -99,4 +99,5 @@ npm run cf-build && npx wrangler dev
 
 | Data | Mudança |
 |---|---|
+| 2026-11-11 | D1 `loop-db` criado pela API do Cloudflare e migração `0001_init.sql` aplicada (registrada em `d1_migrations`, compatível com `wrangler d1 migrations apply`). |
 | 2026-11-11 | Worker renomeado de `next-starter-template` para `adm` (nome exigido pelo Workers Builds conectado ao repositório); binding D1 `DB`; migração `0001_init`; aplicação unificada (ADR-0002). |
