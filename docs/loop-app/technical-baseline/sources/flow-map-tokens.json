@@ -1,0 +1,41 @@
+{
+  "$description": "FlowMap tokens. Structure from the Wireframe reference (1200px wide, assumed 1x). Reference colors estimated by eye; 'app' values follow the main monochrome design system.",
+  "color": {
+    "module-fill":      { "reference": "#F0F0FF", "app": "#F3F3F3" },
+    "accent":           { "reference": "#4540D6", "app": "#111111" },
+    "label-fill":       { "reference": "#F6F6F7", "app": "#FFFFFF" },
+    "label-border":     { "reference": "#D9DADF", "app": "#D0D0D0" },
+    "thumb-fill":       { "reference": "#FAFAFB", "app": "#FFFFFF" },
+    "thumb-border":     { "reference": "#D9D9DE", "app": "#E3E3E3" },
+    "thumb-bar":        { "reference": "#F1F1F4", "app": "#F3F3F3" },
+    "skeleton":         { "reference": "#E4E5E9", "app": "#E6E6E6" },
+    "skeleton-strong":  { "reference": "#9A9EA8", "app": "#8C8C8C" },
+    "line":             { "reference": "#1F1F1F", "app": "#111111" }
+  },
+  "size": {
+    "module":  { "width": "156px", "height": "40px", "radius": "8px" },
+    "label":   { "width": "185px", "height": "24px", "radius": "6px" },
+    "thumb":   { "width": "251px", "height": "200px", "radius": "8px" },
+    "label-gap": "10px",
+    "col-gap": "34px",
+    "row-pitch": "280px",
+    "continue-length": "40px",
+    "merge-clearance": "20px",
+    "gutter": "16px",
+    "max-screens-per-row": 3
+  },
+  "line": { "width": "1px", "arrow": "6px", "cornerRadius": "0px", "hop": "6px", "backLink": "dashed" },
+  "font": {
+    "label": { "size": "11px", "weight": 400 },
+    "module": { "size": "13px", "weight": 500 },
+    "title": { "size": "34px", "weight": 600, "align": "center" },
+    "subtitle": { "size": "14px", "weight": 400, "align": "center", "maxWidth": "620px" }
+  },
+  "edges": ["spine", "branch", "next", "continue", "merge"],
+  "templates": ["auth", "dashboard", "panel", "cards", "table", "calendar"],
+  "responsive": [
+    { "min": 1200, "screensPerRow": 3 },
+    { "min": 768, "screensPerRow": 2 },
+    { "min": 0, "layout": "list" }
+  ]
+}

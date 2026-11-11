@@ -81,3 +81,9 @@ Deploy (Cloudflare Workers): `npm run deploy` com `wrangler login` ou `CLOUDFLAR
 - Contagens de instalação/popularidade não existem nas fontes públicas e **não são inventadas**.
 - Plugins de terceiros não têm licença/segurança verificadas aqui.
 - Detecção de licença é heurística (Apache-2.0, MIT, BSD, MPL, GPL); qualquer outra vira `UNRECOGNIZED`.
+
+## LOOP — baseline de arquitetura e Design System (2026-11-11)
+
+A documentação técnica consolidada do LOOP está em [`docs/loop-app/technical-baseline/README.md`](docs/loop-app/technical-baseline/README.md). Contém [arquitetura e diagrama Mermaid](docs/loop-app/technical-baseline/docs/architecture.md), [famílias de componentes](docs/loop-app/technical-baseline/docs/components/README.md), [tokens de FlowMap](docs/loop-app/technical-baseline/design-system/README.md), [referências](docs/loop-app/technical-baseline/docs/references.md), [decisões pendentes D-A–D-L](docs/loop-app/technical-baseline/docs/decisions.md) e [validação](docs/loop-app/technical-baseline/docs/validation.md). Os cinco arquivos originais foram preservados em [`sources/`](docs/loop-app/technical-baseline/sources/) com hashes SHA-256 verificáveis.
+
+**Separação de aplicações:** `apps/loop` é o frontend LOOP v1.0 (React/Vite, sem backend real); `apps/web` permanece o diretório ADM (Next.js/OpenNext/Cloudflare Workers). O `design-system/` da raiz continua como fonte única de tokens executáveis. O baseline é documental e **não** certifica conformidade BPMN, migração de tokens, backend, autenticação ou deploy. As decisões em aberto devem ser tratadas antes de implementar os recursos dependentes.
