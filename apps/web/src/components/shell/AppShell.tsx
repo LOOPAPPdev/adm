@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { Link, NavLink, useLocation } from '@/lib/router';
 import { useEffect, type ReactNode } from 'react';
 import { useLoop } from '@/store/loop-store';
+import { SessionBar } from './SessionBar';
 import { cn } from '@/lib/cn';
 
 const NAV = [
@@ -22,7 +23,7 @@ export function areaOf(path: string): { word: string; stamp: string } {
 export function AppShell({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const area = areaOf(pathname);
-  const { toast, savedAt, saveError, repo } = useLoop();
+  const toast = useLoop(st => st.toast);
   const reduce = useReducedMotion();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   useEffect(() => { document.title = `LOOP · ${area.word.charAt(0) + area.word.slice(1).toLowerCase()}`; }, [area.word]);
@@ -39,18 +40,15 @@ export function AppShell({ children }: { children: ReactNode }) {
         ))}
       </header>
       <div className="mx-auto max-w-[1200px] px-4 pb-16 pt-6 sm:px-6">
-        <div className="mb-6 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-ds-micro text-ds-muted">
-          <span><span className="eyebrow text-ds-accent">Modo demo</span> · dados só neste navegador · sem backend, sem autenticação, sem envio de mensagens, sem IA em execução</span>
-          <span aria-live="polite">{saveError ? 'Falha ao salvar no armazenamento local.' : savedAt ? `Salvo localmente às ${savedAt}${repo?.kind === 'memory' ? ' (memória da aba)' : ''}` : 'Alterações são salvas automaticamente neste navegador.'}</span>
-        </div>
+        <SessionBar />
         <AnimatePresence mode="wait">
           <motion.main id="conteudo" key={pathname.split('/').slice(0, 4).join('/')} initial={reduce ? false : { opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={reduce ? undefined : { opacity: 0 }} transition={{ duration: 0.18 }}>
             {children}
           </motion.main>
         </AnimatePresence>
         <footer className="mt-16 flex flex-wrap justify-between gap-3 border-t border-ds-line pt-6 text-ds-micro text-ds-muted">
-          <span>LOOP · protótipo de front-end · estados e aprovações são locais e demonstrativos. <span className="eyebrow">{area.stamp}</span></span>
-          <span className="flex gap-4"><Link to="/verificacao">Verificações</Link><Link to="/configuracoes">Configurações</Link><Link to="/contato">Contato</Link></span>
+          <span>LOOP · <span className="eyebrow">{area.stamp}</span></span>
+          <span className="flex gap-4"><Link to="/directory">Directory</Link><Link to="/entrar">Entrar</Link><Link to="/verificacao">Verificações</Link><Link to="/configuracoes">Configurações</Link><Link to="/contato">Contato</Link></span>
         </footer>
       </div>
       <AnimatePresence>

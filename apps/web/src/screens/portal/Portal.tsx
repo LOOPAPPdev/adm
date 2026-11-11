@@ -12,13 +12,15 @@ import { Segmented } from '@/components/ui/segmented';
 import { cn } from '@/lib/cn';
 import { NotFound } from '../NotFound';
 
-const REVIEW = { pending: ['Aguardando revisão do cliente', 'neutral'], ok: ['Validação registrada localmente', 'green'], adjust: ['Ajustes solicitados localmente', 'red'] } as const;
+const REVIEW = { pending: ['Aguardando revisão do cliente', 'neutral'], ok: ['Validação registrada', 'green'], adjust: ['Ajustes solicitados', 'red'] } as const;
 
-/** Client portal preview. Roles are simulated: there is no authentication in v1.0. */
+/** Client portal. Logged in: the role comes from the server and client roles see only the client view. Demo: the role is simulated. */
 export function Portal() {
   const { id } = useParams();
   const p = useProject(id);
-  const { update, portalRole, setPortalRole } = useLoop();
+  const { update, portalRole, setPortalRole, mode, session, activeOrgId } = useLoop();
+  const serverRole = session?.organizations.find(o => o.id === activeOrgId)?.role;
+  const lockedClient = mode === 'connected' && (serverRole === 'client_admin' || serverRole === 'client_member' || serverRole === 'viewer');
   const layout = useMemo(() => (p ? layoutFlow(p.activities, p.people, p.discovery.B04[0]?.answer) : null), [p]);
   if (!p || !layout) return <NotFound />;
   const gl = gaps(p), nx = nextInfo(p), cur = p.consulting.currentStep;
@@ -27,7 +29,7 @@ export function Portal() {
     <>
       <PageHeader eyebrow={`Portal do cliente · ${p.isDemo ? 'dados de exemplo' : 'preview'}`} title={p.name}
         lead="Acompanhe o andamento, veja o fluxo modelado e indique se ele representa a sua operação."
-        actions={<Segmented label="Perfil simulado" value={portalRole} onChange={(r: Role) => setPortalRole(r)} options={[{ value: 'cliente', label: 'Perfil Cliente' }, { value: 'consultor', label: 'Perfil Consultor' }]} />} />
+        actions={lockedClient ? undefined : <Segmented label={mode === 'connected' ? 'Visão' : 'Perfil simulado'} value={portalRole} onChange={(r: Role) => setPortalRole(r)} options={[{ value: 'cliente', label: 'Perfil Cliente' }, { value: 'consultor', label: 'Perfil Consultor' }]} />} />
       <Notice className="mb-4">Perfis simulados. Não há login nesta versão; em produção cada cliente acessa só o próprio projeto, com rota e senha próprias.</Notice>
       <Card className="mb-4 p-4">
         <Eyebrow className="mb-3">Andamento do projeto</Eyebrow>

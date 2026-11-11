@@ -1,10 +1,15 @@
 /**
- * For more details on how to configure Wrangler, refer to:
+ * LOOP unified application: one Worker serves the website, Workspace, Studio, Portal, ADM Directory and /api/v1.
  * https://developers.cloudflare.com/workers/wrangler/configuration/
+ *
+ * Before the first deploy (see docs/deployment/DEPLOY_MEMORY.md):
+ *   npx wrangler d1 create loop-db            → copy the database_id below
+ *   npx wrangler d1 migrations apply loop-db --remote
+ *   npx wrangler secret put BOOTSTRAP_TOKEN    → only to create the first admin, then delete it
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "next-starter-template",
+	"name": "loop",
 	"main": ".open-next/worker.js",
 	"compatibility_date": "2025-10-08",
 	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
@@ -12,6 +17,14 @@
 		"binding": "ASSETS",
 		"directory": ".open-next/assets"
 	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "loop-db",
+			"database_id": "00000000-0000-0000-0000-000000000000",
+			"migrations_dir": "migrations"
+		}
+	],
 	"observability": {
 		"enabled": true
 	},

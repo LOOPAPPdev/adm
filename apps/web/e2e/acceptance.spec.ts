@@ -112,7 +112,7 @@ test('contact form validates and saves a local draft only', async ({ page }) => 
 test('portal review records locally', async ({ page }) => {
   await go(page, '/portal/demo');
   await page.getByRole('button', { name: 'O fluxo representa a operação' }).click();
-  await expect(page.getByTestId('portal-review')).toContainText('Validação registrada localmente');
+  await expect(page.getByTestId('portal-review')).toContainText('Validação registrada');
 });
 
 test('BPMN view renders', async ({ page }) => {

@@ -121,8 +121,38 @@ describe('repositórios', () => {
     await repo.put({ id: 'bad', name: '' } as never);
     expect(await repo.list()).toEqual([]);
   });
-  it('HTTP: contrato existe e falha explicitamente', async () => {
-    await expect(new HttpProjectRepository('/api').list()).rejects.toThrow(/não implementado/);
+  it('HTTP: cria com POST, salva com If-Match e junta gravações rápidas numa só', async () => {
+    const calls: { method: string; url: string; ifMatch?: string; name?: string }[] = [];
+    let version = 0;
+    const realFetch = globalThis.fetch;
+    globalThis.fetch = (async (url: string, init: RequestInit) => {
+      const body = JSON.parse(String(init.body ?? '{}'));
+      const doc = body.project ?? body;
+      calls.push({ method: init.method ?? 'GET', url, ifMatch: (init.headers as Record<string, string>)['if-match'], name: doc.name });
+      await new Promise(r => setTimeout(r, 5));
+      version += 1;
+      return new Response(JSON.stringify({ project: { ...doc, id: 'p1' }, organizationId: 'org1', version }), { status: init.method === 'POST' ? 201 : 200 });
+    }) as typeof fetch;
+    try {
+      const repo = new HttpProjectRepository('org1');
+      const p = { ...seedDemo(), id: 'p1' };
+      await repo.put(p);
+      await Promise.all([repo.put({ ...p, name: 'A' }), repo.put({ ...p, name: 'B' }), repo.put({ ...p, name: 'C' })]);
+      expect(calls.map(c => c.method)).toEqual(['POST', 'PUT', 'PUT']);
+      expect(calls[1]).toMatchObject({ ifMatch: '"1"', name: 'A' });
+      expect(calls[2]).toMatchObject({ ifMatch: '"2"', name: 'C' }); // B was superseded by C
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+  });
+  it('HTTP: conflito 409 chega como erro com a mensagem do servidor', async () => {
+    const realFetch = globalThis.fetch;
+    globalThis.fetch = (async () => new Response(JSON.stringify({ error: { code: 'version_conflict', message: 'Outra pessoa salvou este projeto.' } }), { status: 409 })) as unknown as typeof fetch;
+    try {
+      await expect(new HttpProjectRepository('org1').list()).rejects.toThrow('Outra pessoa salvou este projeto.');
+    } finally {
+      globalThis.fetch = realFetch;
+    }
   });
 });
 

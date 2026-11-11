@@ -18,4 +18,9 @@ jobs:
       - run: test -f apps/web/.open-next/worker.js
       - run: npx playwright install --with-deps chromium
         working-directory: apps/web
-      - run: npm run e2e
+      - name: Local D1 for the Worker E2E (wrangler dev)
+        working-directory: apps/web
+        run: |
+          printf 'BOOTSTRAP_TOKEN=local-e2e-token-only\n' > .dev.vars
+          npx wrangler d1 migrations apply loop-db --local
+      - run: npm run e2e # website, Workspace, Studio, Portal (next start) + connected mode on the Worker (wrangler dev)
