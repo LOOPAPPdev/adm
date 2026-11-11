@@ -18,6 +18,12 @@ import type { SessionUser } from './auth';
 export interface ProjectDto { project: Project; organizationId: string; version: number; role: Role | null; updatedAt: string }
 
 const iso = (c: Ctx) => c.now().toISOString();
+/** Largest stored document (bytes of JSON). LOOP projects are a few kB; this stops abuse, not real use. */
+export const MAX_DOC_BYTES = 1_000_000;
+function sized(json: string): string {
+  if (new TextEncoder().encode(json).length > MAX_DOC_BYTES) throw new AppError(413, 'too_large', 'Projeto grande demais para salvar (limite de 1 MB).');
+  return json;
+}
 
 function parseDoc(input: unknown): Project {
   const r = ProjectSchema.safeParse(input);
@@ -72,10 +78,10 @@ export async function createProject(ctx: Ctx, u: SessionUser, input: unknown): P
   if (!org || !can(role, 'org.read', u.platformAdmin)) throw notFound('Organização');
   if (!can(role, 'project.create', u.platformAdmin)) throw forbidden('Seu papel não permite criar projetos.');
   const doc = parseDoc(p.data.project);
-  const id = doc.id && /^[\w-]{3,64}$/.test(doc.id) && !(await projects.byId(ctx.db, doc.id)) ? doc.id : newId('prj');
+  const id = doc.id && /^[\w-]{3,64}$/.test(doc.id) && !(await projects.idTaken(ctx.db, doc.id)) ? doc.id : newId('prj');
   const now = iso(ctx);
   const stored = { ...doc, id, version: 1, isDemo: false, createdAt: now, updatedAt: now };
-  const json = JSON.stringify(stored);
+  const json = sized(JSON.stringify(stored));
   await ctx.db.batch([
     projects.insert(ctx.db, { id, organization_id: org.id, name: stored.name, version: 1, archived: stored.archived ? 1 : 0, data_json: json, created_by: u.id, created_at: now, updated_by: u.id, updated_at: now, deleted_at: null }),
     revisions.insert(ctx.db, { project_id: id, version: 1, data_json: json, user_id: u.id, summary: summarize(null, stored), created_at: now }),
@@ -106,7 +112,7 @@ export async function saveProject(ctx: Ctx, u: SessionUser, id: string, expected
   const now = iso(ctx);
   const version = row.version + 1;
   const stored = { ...next, id, version, isDemo: false, createdAt: row.created_at, updatedAt: now };
-  const json = JSON.stringify(stored);
+  const json = sized(JSON.stringify(stored));
   const res = await projects.update(ctx.db, { id, name: stored.name, archived: stored.archived ? 1 : 0, data_json: json, updated_by: u.id, updated_at: now, expected: expectedVersion }).run();
   if (!res.meta.changes) throw new AppError(409, 'version_conflict', 'Outra pessoa salvou este projeto. Recarregue para ver a versão atual.');
   const summary = summarize(before, stored);

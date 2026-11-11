@@ -124,6 +124,17 @@ describe('projetos e permissões', () => {
     await expect(createProject(w.ctx, cliente, { organizationId: w.acme.id, project: newProject('X') })).rejects.toMatchObject({ status: 403 });
   });
 
+  it('id de projeto excluído não é reutilizado e documento gigante é recusado', async () => {
+    const admin = w.admin;
+    const p = await createProject(w.ctx, admin, { organizationId: w.acme.id, project: { ...newProject('Antigo'), id: 'prj_fixo' } });
+    const { deleteProject } = await import('@/server/services/projects');
+    await deleteProject(w.ctx, admin, p.project.id);
+    const again = await createProject(w.ctx, admin, { organizationId: w.acme.id, project: { ...newProject('Novo'), id: 'prj_fixo' } });
+    expect(again.project.id).not.toBe('prj_fixo');
+    const big = { ...newProject('Grande'), people: Array.from({ length: 12000 }, (_, i) => ({ id: `p${i}`, name: 'x'.repeat(80), role: 'r', kind: 'pessoa' as const, reportsTo: 'top' })) };
+    await expect(createProject(w.ctx, admin, { organizationId: w.acme.id, project: big })).rejects.toMatchObject({ status: 413 });
+  });
+
   it('documento inválido é recusado com a lista de problemas', async () => {
     const consultor = await w.as('consultor@loop.test');
     await expect(createProject(w.ctx, consultor, { organizationId: w.acme.id, project: { name: '' } })).rejects.toMatchObject({ status: 422 });

@@ -65,6 +65,8 @@ export const projects = {
     return (await db.prepare(`SELECT p.* FROM projects p WHERE ${where.join(' AND ')} ORDER BY p.updated_at DESC`).bind(...args).all<ProjectRow>()).results;
   },
   byId: (db: Db, id: string) => db.prepare('SELECT * FROM projects WHERE id = ? AND deleted_at IS NULL').bind(id).first<ProjectRow>(),
+  /** True when the id was ever used, including soft-deleted projects (ids are never reused). */
+  idTaken: async (db: Db, id: string) => !!(await db.prepare('SELECT 1 AS x FROM projects WHERE id = ?').bind(id).first()),
   insert: (db: Db, p: ProjectRow) =>
     db.prepare(`INSERT INTO projects (id, organization_id, name, version, archived, data_json, created_by, created_at, updated_by, updated_at)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
