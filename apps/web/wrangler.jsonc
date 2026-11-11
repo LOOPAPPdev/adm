@@ -1,5 +1,5 @@
 /**
- * LOOP unified application: one Worker serves the website, Workspace, Studio, Portal, ADM Directory and /api/v1.
+ * LOOP unified application: one Worker ("adm", the name Workers Builds expects) serves the website, Workspace, Studio, Portal, ADM Directory and /api/v1.
  * https://developers.cloudflare.com/workers/wrangler/configuration/
  *
  * Before the first deploy (see docs/deployment/DEPLOY_MEMORY.md):
@@ -9,7 +9,7 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "loop",
+	"name": "adm",
 	"main": ".open-next/worker.js",
 	"compatibility_date": "2025-10-08",
 	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],

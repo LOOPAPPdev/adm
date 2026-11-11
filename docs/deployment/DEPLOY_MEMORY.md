@@ -1,6 +1,6 @@
 # DEPLOY_MEMORY · LOOP no Cloudflare Workers
 
-Memória operacional do deploy. Um Worker (`loop`) serve site, Workspace, Studio, Portal, ADM Directory e `/api/v1`.
+Memória operacional do deploy. Um Worker (`adm`) serve site, Workspace, Studio, Portal, ADM Directory e `/api/v1`.
 Atualize este arquivo a cada mudança de infraestrutura.
 
 ## Estado em 2026-11-11
@@ -25,7 +25,7 @@ Atualize este arquivo a cada mudança de infraestrutura.
 | Deploy command | `npx wrangler deploy` |
 | Node | 22 |
 
-O monorepo usa npm workspaces com o `package-lock.json` na raiz. Rodar `npm ci` dentro de `apps/web` resolve a raiz do workspace (verificado com npm 10.9 neste repositório). **Não verificado no Workers Builds.** Se a instalação falhar lá, use: root directory `/`, build `npm ci && npm run cf-build`, deploy `cd apps/web && npx wrangler deploy`.
+O Workers Builds já está conectado ao repositório (Worker `adm`). Em 2026-11-11, no PR #3, ele detectou o monorepo, instalou, gerou o build OpenNext e enviou os assets a partir de `apps/web`; o deploy parou só porque o D1 `loop-db` ainda não existe (erro 10181). O nome do Worker no `wrangler.jsonc` precisa continuar `adm`.
 
 ## Primeira publicação (uma vez)
 
@@ -99,4 +99,4 @@ npm run cf-build && npx wrangler dev
 
 | Data | Mudança |
 |---|---|
-| 2026-11-11 | Worker renomeado de `next-starter-template` para `loop`; binding D1 `DB`; migração `0001_init`; aplicação unificada (ADR-0002). |
+| 2026-11-11 | Worker renomeado de `next-starter-template` para `adm` (nome exigido pelo Workers Builds conectado ao repositório); binding D1 `DB`; migração `0001_init`; aplicação unificada (ADR-0002). |
