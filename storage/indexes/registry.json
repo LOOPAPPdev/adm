@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-10T11:41:41.048Z",
+  "generatedAt": "2026-11-11T07:31:06.598Z",
   "total": 351,
   "resources": [
     {
@@ -37,7 +37,7 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/aws-kb-retrieval-server"
       },
       "provider": "mcp-reference-servers",
@@ -78,7 +78,7 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/brave-search"
       },
       "provider": "mcp-reference-servers",
@@ -119,7 +119,7 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/everart"
       },
       "provider": "mcp-reference-servers",
@@ -160,7 +160,7 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/github"
       },
       "provider": "mcp-reference-servers",
@@ -201,7 +201,7 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/gitlab"
       },
       "provider": "mcp-reference-servers",
@@ -242,7 +242,7 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/gdrive"
       },
       "provider": "mcp-reference-servers",
@@ -283,7 +283,7 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/google-maps"
       },
       "provider": "mcp-reference-servers",
@@ -324,7 +324,7 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/postgres"
       },
       "provider": "mcp-reference-servers",
@@ -365,7 +365,7 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/puppeteer"
       },
       "provider": "mcp-reference-servers",
@@ -406,7 +406,7 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/redis"
       },
       "provider": "mcp-reference-servers",
@@ -447,7 +447,7 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/sentry"
       },
       "provider": "mcp-reference-servers",
@@ -488,7 +488,7 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/slack"
       },
       "provider": "mcp-reference-servers",
@@ -529,7 +529,7 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/sqlite"
       },
       "provider": "mcp-reference-servers",
@@ -554,11 +554,11 @@
       "official": true,
       "sourceUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/everything",
       "repositoryUrl": "https://github.com/modelcontextprotocol/servers",
-      "version": "2.2.1",
+      "version": "2.3.0",
       "license": "Apache-2.0",
       "installation": "npx -y @modelcontextprotocol/server-everything",
       "manifestPath": "src/everything/package.json",
-      "contentHash": "a7076ff71f94d3e3b0c67a3346994e08b97e515c6f9b2a2062a6dd62a0818296",
+      "contentHash": "07d3f021623c31e3535bdd339e484b436c70073128947b362f39119698fcc4d4",
       "status": "verified",
       "licensing": {
         "redistributable": true,
@@ -574,12 +574,12 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/everything"
       },
       "provider": "mcp-reference-servers",
       "id": "mcp-server:mcp-reference-servers/everything",
-      "lastSynced": "2026-11-10T11:40:21.066Z"
+      "lastSynced": "2026-11-11T07:31:06.598Z"
     },
     {
       "tags": [
@@ -599,11 +599,11 @@
       "official": true,
       "sourceUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
       "repositoryUrl": "https://github.com/modelcontextprotocol/servers",
-      "version": "2026.11.4",
+      "version": "2026.11.11",
       "license": "MIT",
       "installation": "uvx mcp-server-fetch",
       "manifestPath": "src/fetch/pyproject.toml",
-      "contentHash": "c3021d561b57674893d8e66d4268ba96046ad61893d65615c61f031be0d76340",
+      "contentHash": "2de9d03e718d0bebfb803fa870a5098ace588de6f35762ef3646c73014413b66",
       "status": "verified",
       "licensing": {
         "redistributable": true,
@@ -619,12 +619,12 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/fetch"
       },
       "provider": "mcp-reference-servers",
       "id": "mcp-server:mcp-reference-servers/fetch",
-      "lastSynced": "2026-11-10T11:40:21.066Z"
+      "lastSynced": "2026-11-11T07:31:06.598Z"
     },
     {
       "tags": [
@@ -644,11 +644,11 @@
       "official": true,
       "sourceUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
       "repositoryUrl": "https://github.com/modelcontextprotocol/servers",
-      "version": "2.2.0",
+      "version": "2.3.0",
       "license": "Apache-2.0",
       "installation": "npx -y @modelcontextprotocol/server-filesystem",
       "manifestPath": "src/filesystem/package.json",
-      "contentHash": "90e044be92ea84ab236fe3d7c5fdd4f940bf8a5d4928cb154e5645d96d5f4fac",
+      "contentHash": "3c2ac88eff0d516f56c5fbdc5e2bd0ab95e0df5d0e98f11608498549ea0a70b7",
       "status": "verified",
       "licensing": {
         "redistributable": true,
@@ -664,12 +664,12 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/filesystem"
       },
       "provider": "mcp-reference-servers",
       "id": "mcp-server:mcp-reference-servers/filesystem",
-      "lastSynced": "2026-11-10T11:40:21.066Z"
+      "lastSynced": "2026-11-11T07:31:06.598Z"
     },
     {
       "tags": [
@@ -689,11 +689,11 @@
       "official": true,
       "sourceUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/git",
       "repositoryUrl": "https://github.com/modelcontextprotocol/servers",
-      "version": "2026.11.4",
+      "version": "2026.11.11",
       "license": "MIT",
       "installation": "uvx mcp-server-git",
       "manifestPath": "src/git/pyproject.toml",
-      "contentHash": "078487e4b9cad8f48caedd89f66d311fc19a645effd119ed6a031232c1ca91f0",
+      "contentHash": "c8fdf03c16f9c8095c5ec75c458f4b4da4675f6948700554e9afbdcae9dcf9c9",
       "status": "verified",
       "licensing": {
         "redistributable": true,
@@ -709,12 +709,12 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/git"
       },
       "provider": "mcp-reference-servers",
       "id": "mcp-server:mcp-reference-servers/git",
-      "lastSynced": "2026-11-10T11:40:21.066Z"
+      "lastSynced": "2026-11-11T07:31:06.598Z"
     },
     {
       "tags": [
@@ -734,11 +734,11 @@
       "official": true,
       "sourceUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
       "repositoryUrl": "https://github.com/modelcontextprotocol/servers",
-      "version": "2.1.0",
+      "version": "2.1.1",
       "license": "Apache-2.0",
       "installation": "npx -y @modelcontextprotocol/server-memory",
       "manifestPath": "src/memory/package.json",
-      "contentHash": "5fa2f47640074c2e4702d2ca178609c69ac5a1b851446c4d4cafd48b5327d38a",
+      "contentHash": "69df917d2255bc71dcff1c8db43b4d4d1d52ccadf046e70ebfb6cc35fcc58ee9",
       "status": "verified",
       "licensing": {
         "redistributable": true,
@@ -754,12 +754,12 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/memory"
       },
       "provider": "mcp-reference-servers",
       "id": "mcp-server:mcp-reference-servers/memory",
-      "lastSynced": "2026-11-10T11:40:21.066Z"
+      "lastSynced": "2026-11-11T07:31:06.598Z"
     },
     {
       "tags": [
@@ -799,7 +799,7 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/sequentialthinking"
       },
       "provider": "mcp-reference-servers",
@@ -824,11 +824,11 @@
       "official": true,
       "sourceUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/time",
       "repositoryUrl": "https://github.com/modelcontextprotocol/servers",
-      "version": "2026.11.4",
+      "version": "2026.11.11",
       "license": "Apache-2.0",
       "installation": "uvx mcp-server-time",
       "manifestPath": "src/time/pyproject.toml",
-      "contentHash": "9056956abdf0143f640979e6dee1801251b1565f4a048ee69d43d52841d93b3a",
+      "contentHash": "5892bd93f3f4cc64f0c6c12bd4f8967ea54802a9772c1865345e842c196b7aee",
       "status": "verified",
       "licensing": {
         "redistributable": true,
@@ -844,12 +844,12 @@
       "provenance": {
         "source": "mcp-reference-servers",
         "ref": "main",
-        "sha": "36380287ed3b15d115b55f546617d723072b1296",
+        "sha": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
         "path": "src/time"
       },
       "provider": "mcp-reference-servers",
       "id": "mcp-server:mcp-reference-servers/time",
-      "lastSynced": "2026-11-10T11:40:21.066Z"
+      "lastSynced": "2026-11-11T07:31:06.598Z"
     },
     {
       "tags": [
@@ -1016,7 +1016,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/agent-sdk-dev"
       },
       "provider": "claude-plugins-official",
@@ -1755,7 +1755,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "external_plugins/asana"
       },
       "provider": "claude-plugins-official",
@@ -3200,7 +3200,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/champion-kit"
       },
       "provider": "claude-plugins-official",
@@ -3486,7 +3486,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/clangd-lsp"
       },
       "provider": "claude-plugins-official",
@@ -3532,7 +3532,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/claude-code-setup"
       },
       "provider": "claude-plugins-official",
@@ -3579,7 +3579,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/claude-md-management"
       },
       "provider": "claude-plugins-official",
@@ -3627,7 +3627,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/claude-security"
       },
       "provider": "claude-plugins-official",
@@ -4036,7 +4036,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/code-modernization"
       },
       "provider": "claude-plugins-official",
@@ -4082,7 +4082,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/code-review"
       },
       "provider": "claude-plugins-official",
@@ -4128,7 +4128,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/code-simplifier"
       },
       "provider": "claude-plugins-official",
@@ -4254,7 +4254,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/commit-commands"
       },
       "provider": "claude-plugins-official",
@@ -4340,7 +4340,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "external_plugins/context7"
       },
       "provider": "claude-plugins-official",
@@ -4545,7 +4545,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/csharp-lsp"
       },
       "provider": "claude-plugins-official",
@@ -4592,7 +4592,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/cwc-makers"
       },
       "provider": "claude-plugins-official",
@@ -5129,7 +5129,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "external_plugins/discord"
       },
       "provider": "claude-plugins-official",
@@ -5418,7 +5418,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/explanatory-output-style"
       },
       "provider": "claude-plugins-official",
@@ -5506,7 +5506,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "external_plugins/fakechat"
       },
       "provider": "claude-plugins-official",
@@ -5592,7 +5592,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/feature-dev"
       },
       "provider": "claude-plugins-official",
@@ -5716,7 +5716,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "external_plugins/firebase"
       },
       "provider": "claude-plugins-official",
@@ -5882,7 +5882,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/frontend-design"
       },
       "provider": "claude-plugins-official",
@@ -6008,7 +6008,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "external_plugins/github"
       },
       "provider": "claude-plugins-official",
@@ -6093,7 +6093,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "external_plugins/gitlab"
       },
       "provider": "claude-plugins-official",
@@ -6177,7 +6177,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/gopls-lsp"
       },
       "provider": "claude-plugins-official",
@@ -6516,7 +6516,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/hookify"
       },
       "provider": "claude-plugins-official",
@@ -6809,7 +6809,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "external_plugins/imessage"
       },
       "provider": "claude-plugins-official",
@@ -7017,7 +7017,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/jdtls-lsp"
       },
       "provider": "claude-plugins-official",
@@ -7141,7 +7141,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/kotlin-lsp"
       },
       "provider": "claude-plugins-official",
@@ -7266,7 +7266,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "external_plugins/laravel-boost"
       },
       "provider": "claude-plugins-official",
@@ -7394,7 +7394,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/learning-output-style"
       },
       "provider": "claude-plugins-official",
@@ -7481,7 +7481,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "external_plugins/linear"
       },
       "provider": "claude-plugins-official",
@@ -7815,7 +7815,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/lua-lsp"
       },
       "provider": "claude-plugins-official",
@@ -7980,7 +7980,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/math-olympiad"
       },
       "provider": "claude-plugins-official",
@@ -8026,7 +8026,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/math-proof"
       },
       "provider": "claude-plugins-official",
@@ -8153,7 +8153,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/mcp-server-dev"
       },
       "provider": "claude-plugins-official",
@@ -8198,7 +8198,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/mcp-tunnels"
       },
       "provider": "claude-plugins-official",
@@ -9559,7 +9559,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/php-lsp"
       },
       "provider": "claude-plugins-official",
@@ -9764,7 +9764,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/playground"
       },
       "provider": "claude-plugins-official",
@@ -9809,7 +9809,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "external_plugins/playwright"
       },
       "provider": "claude-plugins-official",
@@ -9831,7 +9831,7 @@
       "author": "Anthropic",
       "installation": "/plugin install plugin-dev@claude-plugins-official",
       "manifestPath": ".claude-plugin/marketplace.json",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "official": true,
       "sourceUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/plugin-dev",
       "repositoryUrl": "https://github.com/anthropics/claude-plugins-official",
@@ -9841,7 +9841,7 @@
         "agents",
         "commands"
       ],
-      "contentHash": "5c3fb64c62226709c8dab0adfb7d088fec78e5bea68991ae268acdf988686b48",
+      "contentHash": "a9d85cbfe217e55865d858e0f16f8bab4592b2e12781401679663af617f3fcab",
       "status": "verified",
       "licensing": {
         "redistributable": true,
@@ -9857,12 +9857,12 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/plugin-dev"
       },
       "provider": "claude-plugins-official",
       "id": "plugin:claude-plugins-official/plugin-dev",
-      "lastSynced": "2026-11-10T11:40:07.895Z"
+      "lastSynced": "2026-11-11T07:31:06.598Z"
     },
     {
       "tags": [
@@ -10023,7 +10023,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/pr-review-toolkit"
       },
       "provider": "claude-plugins-official",
@@ -10149,7 +10149,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/project-artifact"
       },
       "provider": "claude-plugins-official",
@@ -10235,7 +10235,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/pyright-lsp"
       },
       "provider": "claude-plugins-official",
@@ -10530,7 +10530,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/ralph-loop"
       },
       "provider": "claude-plugins-official",
@@ -10619,7 +10619,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/receipts"
       },
       "provider": "claude-plugins-official",
@@ -10904,7 +10904,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/ruby-lsp"
       },
       "provider": "claude-plugins-official",
@@ -10991,7 +10991,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/rust-analyzer-lsp"
       },
       "provider": "claude-plugins-official",
@@ -11366,7 +11366,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/security-guidance"
       },
       "provider": "claude-plugins-official",
@@ -11535,7 +11535,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "external_plugins/serena"
       },
       "provider": "claude-plugins-official",
@@ -11622,7 +11622,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/session-report"
       },
       "provider": "claude-plugins-official",
@@ -11833,7 +11833,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/skill-creator"
       },
       "provider": "claude-plugins-official",
@@ -12485,7 +12485,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/swift-lsp"
       },
       "provider": "claude-plugins-official",
@@ -12654,7 +12654,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "external_plugins/telegram"
       },
       "provider": "claude-plugins-official",
@@ -12699,7 +12699,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "external_plugins/terraform"
       },
       "provider": "claude-plugins-official",
@@ -12823,7 +12823,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9",
+        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
         "path": "plugins/typescript-lsp"
       },
       "provider": "claude-plugins-official",
