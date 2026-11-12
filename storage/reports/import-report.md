@@ -31,9 +31,9 @@ Gerado por `apps/orchestrator`. Total: **351** recursos.
 
 | fonte | commit | último sucesso | itens | estado |
 |---|---|---|---|---|
-| anthropics-skills | `2c5958ecac` | 2026-11-11T07:31:06.598Z | 19 | ok |
-| claude-plugins-official | `43fd1f9db0` | 2026-11-11T07:31:06.598Z | 312 | ok |
-| mcp-reference-servers | `e1dc4b18db` | 2026-11-11T07:31:06.598Z | 20 | ok |
+| anthropics-skills | `2c5958ecac` | 2026-11-12T07:35:48.489Z | 19 | ok |
+| claude-plugins-official | `e0ab6e5121` | 2026-11-12T07:35:48.489Z | 312 | ok |
+| mcp-reference-servers | `e1dc4b18db` | 2026-11-12T07:35:48.489Z | 20 | ok |
 
 ## Fontes indisponíveis, restritas ou fora de escopo
 

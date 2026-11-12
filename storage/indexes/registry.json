@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-11T07:31:06.598Z",
+  "generatedAt": "2026-11-12T07:35:48.489Z",
   "total": 351,
   "resources": [
     {
@@ -1016,7 +1016,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/agent-sdk-dev"
       },
       "provider": "claude-plugins-official",
@@ -1755,7 +1755,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "external_plugins/asana"
       },
       "provider": "claude-plugins-official",
@@ -3200,7 +3200,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/champion-kit"
       },
       "provider": "claude-plugins-official",
@@ -3486,7 +3486,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/clangd-lsp"
       },
       "provider": "claude-plugins-official",
@@ -3532,7 +3532,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/claude-code-setup"
       },
       "provider": "claude-plugins-official",
@@ -3579,7 +3579,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/claude-md-management"
       },
       "provider": "claude-plugins-official",
@@ -3627,7 +3627,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/claude-security"
       },
       "provider": "claude-plugins-official",
@@ -4036,7 +4036,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/code-modernization"
       },
       "provider": "claude-plugins-official",
@@ -4082,7 +4082,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/code-review"
       },
       "provider": "claude-plugins-official",
@@ -4128,7 +4128,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/code-simplifier"
       },
       "provider": "claude-plugins-official",
@@ -4254,7 +4254,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/commit-commands"
       },
       "provider": "claude-plugins-official",
@@ -4340,7 +4340,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "external_plugins/context7"
       },
       "provider": "claude-plugins-official",
@@ -4545,7 +4545,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/csharp-lsp"
       },
       "provider": "claude-plugins-official",
@@ -4592,7 +4592,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/cwc-makers"
       },
       "provider": "claude-plugins-official",
@@ -5129,7 +5129,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "external_plugins/discord"
       },
       "provider": "claude-plugins-official",
@@ -5418,7 +5418,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/explanatory-output-style"
       },
       "provider": "claude-plugins-official",
@@ -5506,7 +5506,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "external_plugins/fakechat"
       },
       "provider": "claude-plugins-official",
@@ -5592,7 +5592,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/feature-dev"
       },
       "provider": "claude-plugins-official",
@@ -5716,7 +5716,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "external_plugins/firebase"
       },
       "provider": "claude-plugins-official",
@@ -5882,7 +5882,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/frontend-design"
       },
       "provider": "claude-plugins-official",
@@ -6008,7 +6008,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "external_plugins/github"
       },
       "provider": "claude-plugins-official",
@@ -6093,7 +6093,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "external_plugins/gitlab"
       },
       "provider": "claude-plugins-official",
@@ -6177,7 +6177,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/gopls-lsp"
       },
       "provider": "claude-plugins-official",
@@ -6516,7 +6516,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/hookify"
       },
       "provider": "claude-plugins-official",
@@ -6809,7 +6809,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "external_plugins/imessage"
       },
       "provider": "claude-plugins-official",
@@ -7017,7 +7017,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/jdtls-lsp"
       },
       "provider": "claude-plugins-official",
@@ -7141,7 +7141,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/kotlin-lsp"
       },
       "provider": "claude-plugins-official",
@@ -7266,7 +7266,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "external_plugins/laravel-boost"
       },
       "provider": "claude-plugins-official",
@@ -7394,7 +7394,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/learning-output-style"
       },
       "provider": "claude-plugins-official",
@@ -7481,7 +7481,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "external_plugins/linear"
       },
       "provider": "claude-plugins-official",
@@ -7815,7 +7815,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/lua-lsp"
       },
       "provider": "claude-plugins-official",
@@ -7980,7 +7980,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/math-olympiad"
       },
       "provider": "claude-plugins-official",
@@ -8026,7 +8026,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/math-proof"
       },
       "provider": "claude-plugins-official",
@@ -8153,7 +8153,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/mcp-server-dev"
       },
       "provider": "claude-plugins-official",
@@ -8198,7 +8198,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/mcp-tunnels"
       },
       "provider": "claude-plugins-official",
@@ -9559,7 +9559,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/php-lsp"
       },
       "provider": "claude-plugins-official",
@@ -9764,7 +9764,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/playground"
       },
       "provider": "claude-plugins-official",
@@ -9809,7 +9809,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "external_plugins/playwright"
       },
       "provider": "claude-plugins-official",
@@ -9857,7 +9857,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/plugin-dev"
       },
       "provider": "claude-plugins-official",
@@ -10023,7 +10023,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/pr-review-toolkit"
       },
       "provider": "claude-plugins-official",
@@ -10149,7 +10149,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/project-artifact"
       },
       "provider": "claude-plugins-official",
@@ -10235,7 +10235,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/pyright-lsp"
       },
       "provider": "claude-plugins-official",
@@ -10530,7 +10530,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/ralph-loop"
       },
       "provider": "claude-plugins-official",
@@ -10619,7 +10619,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/receipts"
       },
       "provider": "claude-plugins-official",
@@ -10904,7 +10904,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/ruby-lsp"
       },
       "provider": "claude-plugins-official",
@@ -10991,7 +10991,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/rust-analyzer-lsp"
       },
       "provider": "claude-plugins-official",
@@ -11366,7 +11366,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/security-guidance"
       },
       "provider": "claude-plugins-official",
@@ -11535,7 +11535,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "external_plugins/serena"
       },
       "provider": "claude-plugins-official",
@@ -11622,7 +11622,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/session-report"
       },
       "provider": "claude-plugins-official",
@@ -11833,7 +11833,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/skill-creator"
       },
       "provider": "claude-plugins-official",
@@ -12485,7 +12485,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/swift-lsp"
       },
       "provider": "claude-plugins-official",
@@ -12654,7 +12654,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "external_plugins/telegram"
       },
       "provider": "claude-plugins-official",
@@ -12699,7 +12699,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "external_plugins/terraform"
       },
       "provider": "claude-plugins-official",
@@ -12823,7 +12823,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
+        "sha": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
         "path": "plugins/typescript-lsp"
       },
       "provider": "claude-plugins-official",

@@ -2,19 +2,19 @@
   "sources": {
     "anthropics-skills": {
       "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
-      "lastSuccess": "2026-11-11T07:31:06.598Z",
+      "lastSuccess": "2026-11-12T07:35:48.489Z",
       "count": 19,
       "lastError": null
     },
     "claude-plugins-official": {
-      "commit": "43fd1f9db0941b2b83cb62268e35970d4a67c202",
-      "lastSuccess": "2026-11-11T07:31:06.598Z",
+      "commit": "e0ab6e51219eef74e417a0e1d89e5d53e5e763d4",
+      "lastSuccess": "2026-11-12T07:35:48.489Z",
       "count": 312,
       "lastError": null
     },
     "mcp-reference-servers": {
       "commit": "e1dc4b18dbb948921da37f3d4224a628730b43b0",
-      "lastSuccess": "2026-11-11T07:31:06.598Z",
+      "lastSuccess": "2026-11-12T07:35:48.489Z",
       "count": 20,
       "lastError": null
     }
