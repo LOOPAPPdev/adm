@@ -16,9 +16,9 @@ Gerado por `apps/orchestrator`. Total: **351** recursos.
 |---|---|
 | verified | 78 |
 | available | 2 |
-| external | 271 |
+| external | 270 |
 | restricted | 0 |
-| error | 0 |
+| error | 1 |
 
 ## Oficial × terceiros
 
@@ -31,9 +31,9 @@ Gerado por `apps/orchestrator`. Total: **351** recursos.
 
 | fonte | commit | último sucesso | itens | estado |
 |---|---|---|---|---|
-| anthropics-skills | `2c5958ecac` | 2026-11-12T07:35:48.489Z | 19 | ok |
-| claude-plugins-official | `e0ab6e5121` | 2026-11-12T07:35:48.489Z | 312 | ok |
-| mcp-reference-servers | `e1dc4b18db` | 2026-11-12T07:35:48.489Z | 20 | ok |
+| anthropics-skills | `2c5958ecac` | 2026-11-13T07:32:36.109Z | 19 | ok |
+| claude-plugins-official | `f75f5b25ae` | 2026-11-13T07:32:36.109Z | 311 | ok |
+| mcp-reference-servers | `e1dc4b18db` | 2026-11-13T07:32:36.109Z | 20 | ok |
 
 ## Fontes indisponíveis, restritas ou fora de escopo
 
@@ -47,7 +47,7 @@ Gerado por `apps/orchestrator`. Total: **351** recursos.
 
 ## Não espelhados / não verificados
 
-- **271** recursos `external` (apenas metadados + link de origem; código não copiado).
+- **270** recursos `external` (apenas metadados + link de origem; código não copiado).
 - **2** recursos `available` ou com licença não reconhecida (sem redistribuição automática).
-- **0** recursos marcados como removidos/ausentes na fonte.
+- **1** recursos marcados como removidos/ausentes na fonte.
 - 0 verificados sem licença detectada (deve ser 0).
