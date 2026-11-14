@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-13T07:32:36.109Z",
-  "total": 351,
+  "generatedAt": "2026-11-14T07:19:37.795Z",
+  "total": 353,
   "resources": [
     {
       "tags": [
@@ -1016,7 +1016,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/agent-sdk-dev"
       },
       "provider": "claude-plugins-official",
@@ -1756,7 +1756,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "external_plugins/asana"
       },
       "provider": "claude-plugins-official",
@@ -2606,7 +2606,7 @@
       "official": false,
       "sourceUrl": "https://github.com/blackrock/advisor-center-agent-skills",
       "repositoryUrl": "https://github.com/blackrock/advisor-center-agent-skills",
-      "contentHash": "9d82df372f620609bc9cdbd5400793bcba81166cac9887928b0cb4f6ecbbfc2c",
+      "contentHash": "3efd95c5ffb9a9f9df01c9ffac9bc69b7b9118df55768d6507d65c17bfeba438",
       "status": "external",
       "statusReason": "Plugin de terceiros apenas listado no diretório da Anthropic; código não é espelhado.",
       "licensing": {
@@ -2622,11 +2622,11 @@
       },
       "provenance": {
         "source": "claude-plugins-official",
-        "sha": "591c758960c18c26fe8342ddb8ad3ba4dcfac6fe"
+        "sha": "736344f85fd43d5038f35170abd034f8fd0e1684"
       },
       "provider": "claude-plugins-official",
       "id": "plugin:claude-plugins-official/blackrock-advisor-center-plugin",
-      "lastSynced": "2026-11-10T11:40:07.895Z"
+      "lastSynced": "2026-11-14T07:19:37.795Z"
     },
     {
       "tags": [
@@ -3201,7 +3201,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/champion-kit"
       },
       "provider": "claude-plugins-official",
@@ -3487,7 +3487,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/clangd-lsp"
       },
       "provider": "claude-plugins-official",
@@ -3533,7 +3533,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/claude-code-setup"
       },
       "provider": "claude-plugins-official",
@@ -3580,7 +3580,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/claude-md-management"
       },
       "provider": "claude-plugins-official",
@@ -3628,7 +3628,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/claude-security"
       },
       "provider": "claude-plugins-official",
@@ -4037,7 +4037,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/code-modernization"
       },
       "provider": "claude-plugins-official",
@@ -4083,7 +4083,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/code-review"
       },
       "provider": "claude-plugins-official",
@@ -4129,7 +4129,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/code-simplifier"
       },
       "provider": "claude-plugins-official",
@@ -4255,7 +4255,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/commit-commands"
       },
       "provider": "claude-plugins-official",
@@ -4341,7 +4341,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "external_plugins/context7"
       },
       "provider": "claude-plugins-official",
@@ -4447,7 +4447,7 @@
       "official": false,
       "sourceUrl": "https://github.com/CrowdStrike/foundry-skills",
       "repositoryUrl": "https://github.com/CrowdStrike/foundry-skills",
-      "contentHash": "a5a793888d2c08343c31eff1d916dd53e5480e58731d717df6ce30bc4b88fb2d",
+      "contentHash": "07737ea5ce1fa168ef9b70378181232a18796a86bb72ccc2f95497a07c600af9",
       "status": "external",
       "statusReason": "Plugin de terceiros apenas listado no diretório da Anthropic; código não é espelhado.",
       "licensing": {
@@ -4463,11 +4463,11 @@
       },
       "provenance": {
         "source": "claude-plugins-official",
-        "sha": "61572f38592d47c747e2595182459781bf0bc679"
+        "sha": "90082f829c6c2c4192b1459a01488863a1e82d1e"
       },
       "provider": "claude-plugins-official",
       "id": "plugin:claude-plugins-official/crowdstrike-falcon-foundry",
-      "lastSynced": "2026-11-10T11:40:07.895Z"
+      "lastSynced": "2026-11-14T07:19:37.795Z"
     },
     {
       "tags": [
@@ -4487,7 +4487,7 @@
       "official": false,
       "sourceUrl": "https://github.com/CrowdStrike/fusion-skills",
       "repositoryUrl": "https://github.com/CrowdStrike/fusion-skills",
-      "contentHash": "27d53bc2e47115f684e3b30c86f94f0b3036c007643bddbf41838c3cb4a61bea",
+      "contentHash": "6ee40287cd7d80e98c343d1e8f11708506904bc7e98a9ea6629e278b37712f0c",
       "status": "external",
       "statusReason": "Plugin de terceiros apenas listado no diretório da Anthropic; código não é espelhado.",
       "licensing": {
@@ -4503,11 +4503,11 @@
       },
       "provenance": {
         "source": "claude-plugins-official",
-        "sha": "38527dc5afa970543859c31ca5dbf69352bfaa28"
+        "sha": "d4e2abf93b1f0900fcc67fe040e98d086fa1fb0c"
       },
       "provider": "claude-plugins-official",
       "id": "plugin:claude-plugins-official/crowdstrike-falcon-fusion",
-      "lastSynced": "2026-11-10T11:40:07.895Z"
+      "lastSynced": "2026-11-14T07:19:37.795Z"
     },
     {
       "tags": [
@@ -4546,7 +4546,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/csharp-lsp"
       },
       "provider": "claude-plugins-official",
@@ -4593,7 +4593,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/cwc-makers"
       },
       "provider": "claude-plugins-official",
@@ -5130,7 +5130,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "external_plugins/discord"
       },
       "provider": "claude-plugins-official",
@@ -5419,7 +5419,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/explanatory-output-style"
       },
       "provider": "claude-plugins-official",
@@ -5507,7 +5507,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "external_plugins/fakechat"
       },
       "provider": "claude-plugins-official",
@@ -5593,7 +5593,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/feature-dev"
       },
       "provider": "claude-plugins-official",
@@ -5717,7 +5717,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "external_plugins/firebase"
       },
       "provider": "claude-plugins-official",
@@ -5883,7 +5883,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/frontend-design"
       },
       "provider": "claude-plugins-official",
@@ -6009,7 +6009,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "external_plugins/github"
       },
       "provider": "claude-plugins-official",
@@ -6094,7 +6094,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "external_plugins/gitlab"
       },
       "provider": "claude-plugins-official",
@@ -6178,7 +6178,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/gopls-lsp"
       },
       "provider": "claude-plugins-official",
@@ -6517,7 +6517,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/hookify"
       },
       "provider": "claude-plugins-official",
@@ -6810,7 +6810,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "external_plugins/imessage"
       },
       "provider": "claude-plugins-official",
@@ -7018,7 +7018,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/jdtls-lsp"
       },
       "provider": "claude-plugins-official",
@@ -7142,7 +7142,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/kotlin-lsp"
       },
       "provider": "claude-plugins-official",
@@ -7267,7 +7267,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "external_plugins/laravel-boost"
       },
       "provider": "claude-plugins-official",
@@ -7395,7 +7395,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/learning-output-style"
       },
       "provider": "claude-plugins-official",
@@ -7482,7 +7482,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "external_plugins/linear"
       },
       "provider": "claude-plugins-official",
@@ -7816,7 +7816,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/lua-lsp"
       },
       "provider": "claude-plugins-official",
@@ -7981,7 +7981,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/math-olympiad"
       },
       "provider": "claude-plugins-official",
@@ -8027,7 +8027,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/math-proof"
       },
       "provider": "claude-plugins-official",
@@ -8154,7 +8154,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/mcp-server-dev"
       },
       "provider": "claude-plugins-official",
@@ -8199,7 +8199,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/mcp-tunnels"
       },
       "provider": "claude-plugins-official",
@@ -9560,7 +9560,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/php-lsp"
       },
       "provider": "claude-plugins-official",
@@ -9765,7 +9765,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/playground"
       },
       "provider": "claude-plugins-official",
@@ -9810,7 +9810,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "external_plugins/playwright"
       },
       "provider": "claude-plugins-official",
@@ -9858,7 +9858,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/plugin-dev"
       },
       "provider": "claude-plugins-official",
@@ -10024,7 +10024,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/pr-review-toolkit"
       },
       "provider": "claude-plugins-official",
@@ -10150,7 +10150,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/project-artifact"
       },
       "provider": "claude-plugins-official",
@@ -10236,7 +10236,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/pyright-lsp"
       },
       "provider": "claude-plugins-official",
@@ -10302,7 +10302,7 @@
       "official": false,
       "sourceUrl": "https://github.com/qodo-ai/qodo-skills.git",
       "repositoryUrl": "https://github.com/qodo-ai/qodo-skills",
-      "contentHash": "9976fb58b5bb9948ee9496399dd72f805b0b7d4694f3e7f80e589e903802ccd7",
+      "contentHash": "96f39dfa513c2f96a67946fc359e2210cf60d69da645999144ae6cb1d54175f8",
       "status": "external",
       "statusReason": "Plugin de terceiros apenas listado no diretório da Anthropic; código não é espelhado.",
       "licensing": {
@@ -10319,12 +10319,12 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "b8c21854199c538b1c35c981c12a93bab4839ef2",
+        "sha": "588e413a73b466ec4fe9cec79a34051d13f06ab3",
         "path": "packages/qodo"
       },
       "provider": "claude-plugins-official",
       "id": "plugin:claude-plugins-official/qodo",
-      "lastSynced": "2026-11-10T11:40:07.895Z"
+      "lastSynced": "2026-11-14T07:19:37.795Z"
     },
     {
       "tags": [
@@ -10531,7 +10531,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/ralph-loop"
       },
       "provider": "claude-plugins-official",
@@ -10620,7 +10620,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/receipts"
       },
       "provider": "claude-plugins-official",
@@ -10905,7 +10905,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/ruby-lsp"
       },
       "provider": "claude-plugins-official",
@@ -10992,7 +10992,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/rust-analyzer-lsp"
       },
       "provider": "claude-plugins-official",
@@ -11142,8 +11142,8 @@
       "sourceUrl": "https://github.com/SAP/open-ux-tools/tree/main/packages/fiori-mcp-server",
       "repositoryUrl": "https://github.com/SAP/open-ux-tools",
       "contentHash": "c2a9f46b5400d877907255cbcdb17ef31909abd122b510b8935a1665a2d81529",
-      "status": "external",
-      "statusReason": "Plugin de terceiros apenas listado no diretório da Anthropic; código não é espelhado.",
+      "status": "error",
+      "statusReason": "Removido ou não listado mais pela fonte.",
       "licensing": {
         "redistributable": false,
         "mirrorable": false
@@ -11163,7 +11163,8 @@
       },
       "provider": "claude-plugins-official",
       "id": "plugin:claude-plugins-official/sap-fiori-mcp-server",
-      "lastSynced": "2026-11-10T11:40:07.895Z"
+      "lastSynced": "2026-11-10T11:40:07.895Z",
+      "missingSince": "2026-11-14T07:19:37.795Z"
     },
     {
       "tags": [
@@ -11244,6 +11245,48 @@
       "provider": "claude-plugins-official",
       "id": "plugin:claude-plugins-official/sap-mdk-server",
       "lastSynced": "2026-11-10T11:40:07.895Z"
+    },
+    {
+      "tags": [
+        "plugin",
+        "development"
+      ],
+      "dependencies": [],
+      "compatibility": [
+        "claude-code"
+      ],
+      "name": "sap-ux-fiori-tools",
+      "description": "MCP server and skills for SAP Fiori development. Build, modify, and test SAP Fiori Elements applications with AI assistance.",
+      "type": "plugin",
+      "author": "SAP SE",
+      "installation": "/plugin install sap-ux-fiori-tools@claude-plugins-official",
+      "manifestPath": ".claude-plugin/marketplace.json",
+      "official": false,
+      "sourceUrl": "https://github.com/SAP/open-ux-tools/tree/main/plugins-coding-agents/fiori",
+      "repositoryUrl": "https://github.com/SAP/open-ux-tools",
+      "contentHash": "ae894d8c9c574b86e8c7d278cecfa478d6e88a614814ae567f66ba771377dd70",
+      "status": "external",
+      "statusReason": "Plugin de terceiros apenas listado no diretório da Anthropic; código não é espelhado.",
+      "licensing": {
+        "redistributable": false,
+        "mirrorable": false
+      },
+      "security": {
+        "risk": "high",
+        "requiresApproval": true,
+        "notes": [
+          "Código de terceiros, não auditado aqui. Pode empacotar hooks/MCP; revise o repositório de origem."
+        ]
+      },
+      "provenance": {
+        "source": "claude-plugins-official",
+        "ref": "main",
+        "sha": "08afc41ddb24c1be3142c4fe609971c7f3501ca1",
+        "path": "plugins-coding-agents/fiori"
+      },
+      "provider": "claude-plugins-official",
+      "id": "plugin:claude-plugins-official/sap-ux-fiori-tools",
+      "lastSynced": "2026-11-14T07:19:37.795Z"
     },
     {
       "tags": [
@@ -11367,7 +11410,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/security-guidance"
       },
       "provider": "claude-plugins-official",
@@ -11536,7 +11579,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "external_plugins/serena"
       },
       "provider": "claude-plugins-official",
@@ -11623,7 +11666,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/session-report"
       },
       "provider": "claude-plugins-official",
@@ -11834,7 +11877,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/skill-creator"
       },
       "provider": "claude-plugins-official",
@@ -12486,7 +12529,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/swift-lsp"
       },
       "provider": "claude-plugins-official",
@@ -12655,7 +12698,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "external_plugins/telegram"
       },
       "provider": "claude-plugins-official",
@@ -12700,12 +12743,58 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "external_plugins/terraform"
       },
       "provider": "claude-plugins-official",
       "id": "plugin:claude-plugins-official/terraform",
       "lastSynced": "2026-11-10T11:40:07.895Z"
+    },
+    {
+      "tags": [
+        "plugin",
+        "design"
+      ],
+      "dependencies": [],
+      "compatibility": [
+        "claude-code"
+      ],
+      "name": "theme-examples",
+      "description": "An example plugin to read, copy and change: twenty animated backdrops behind the chat in the Claude desktop app, with frosted-glass panels, one per project or per session. Needs a version of Claude Desktop that draws a plugin's backdrop.",
+      "type": "plugin",
+      "author": "Anthropic",
+      "installation": "/plugin install theme-examples@claude-plugins-official",
+      "manifestPath": ".claude-plugin/marketplace.json",
+      "version": "0.4.3",
+      "official": true,
+      "sourceUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/theme-examples",
+      "repositoryUrl": "https://github.com/anthropics/claude-plugins-official",
+      "license": "Apache-2.0",
+      "provides": [
+        "hooks"
+      ],
+      "contentHash": "e2c7513ab20d3e62bbdf5946acaefea178a419347bf2039eed700f63501f9623",
+      "status": "verified",
+      "licensing": {
+        "redistributable": true,
+        "mirrorable": true
+      },
+      "security": {
+        "risk": "high",
+        "requiresApproval": true,
+        "notes": [
+          "Empacota: hooks. Hooks/MCP/comandos podem executar código, acessar arquivos ou rede."
+        ]
+      },
+      "provenance": {
+        "source": "claude-plugins-official",
+        "ref": "main",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
+        "path": "plugins/theme-examples"
+      },
+      "provider": "claude-plugins-official",
+      "id": "plugin:claude-plugins-official/theme-examples",
+      "lastSynced": "2026-11-14T07:19:37.795Z"
     },
     {
       "tags": [
@@ -12824,7 +12913,7 @@
       "provenance": {
         "source": "claude-plugins-official",
         "ref": "main",
-        "sha": "f75f5b25ae94f4332be4ff5f18435741d2589bdb",
+        "sha": "b5b01ac4f889fec0c4c6bb89f27ca7c8574473f6",
         "path": "plugins/typescript-lsp"
       },
       "provider": "claude-plugins-official",

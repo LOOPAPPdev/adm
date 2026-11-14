@@ -1,39 +1,39 @@
 # Import report
 
-Gerado por `apps/orchestrator`. Total: **351** recursos.
+Gerado por `apps/orchestrator`. Total: **353** recursos.
 
 ## Por tipo e fonte
 
 | fonte | skill | agent | plugin | mcp-server | workflow | total |
 |---|---|---|---|---|---|---|
 | mcp-reference-servers | 0 | 0 | 0 | 20 | 0 | 20 |
-| claude-plugins-official | 0 | 0 | 312 | 0 | 0 | 312 |
+| claude-plugins-official | 0 | 0 | 314 | 0 | 0 | 314 |
 | anthropics-skills | 19 | 0 | 0 | 0 | 0 | 19 |
 
 ## Por status
 
 | status | qtd |
 |---|---|
-| verified | 78 |
+| verified | 79 |
 | available | 2 |
 | external | 270 |
 | restricted | 0 |
-| error | 1 |
+| error | 2 |
 
 ## Oficial × terceiros
 
 | classe | qtd |
 |---|---|
-| oficial (Anthropic/MCP) | 91 |
-| terceiros listados no diretório | 260 |
+| oficial (Anthropic/MCP) | 92 |
+| terceiros listados no diretório | 261 |
 
 ## Última sincronização por fonte
 
 | fonte | commit | último sucesso | itens | estado |
 |---|---|---|---|---|
-| anthropics-skills | `2c5958ecac` | 2026-11-13T07:32:36.109Z | 19 | ok |
-| claude-plugins-official | `f75f5b25ae` | 2026-11-13T07:32:36.109Z | 311 | ok |
-| mcp-reference-servers | `e1dc4b18db` | 2026-11-13T07:32:36.109Z | 20 | ok |
+| anthropics-skills | `2c5958ecac` | 2026-11-14T07:19:37.795Z | 19 | ok |
+| claude-plugins-official | `b5b01ac4f8` | 2026-11-14T07:19:37.795Z | 312 | ok |
+| mcp-reference-servers | `e1dc4b18db` | 2026-11-14T07:19:37.795Z | 20 | ok |
 
 ## Fontes indisponíveis, restritas ou fora de escopo
 
@@ -49,5 +49,5 @@ Gerado por `apps/orchestrator`. Total: **351** recursos.
 
 - **270** recursos `external` (apenas metadados + link de origem; código não copiado).
 - **2** recursos `available` ou com licença não reconhecida (sem redistribuição automática).
-- **1** recursos marcados como removidos/ausentes na fonte.
+- **2** recursos marcados como removidos/ausentes na fonte.
 - 0 verificados sem licença detectada (deve ser 0).
